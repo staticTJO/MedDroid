@@ -62,7 +62,7 @@ public class PatientReport extends AbstractJsonModel {
     }
 
 
-    public static Patient fromJson(String json) {
+    public static PatientReport fromJson(String json) {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(json);
@@ -70,7 +70,7 @@ public class PatientReport extends AbstractJsonModel {
             e.printStackTrace();
         }
 
-        return (Patient) new Patient().fromJson(jsonObject);
+        return (PatientReport) new PatientReport().fromJson(jsonObject);
     }
 
     @Override
