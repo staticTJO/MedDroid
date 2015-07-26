@@ -18,23 +18,23 @@ public class MainActivity extends ActionBarActivity {
         tabHost.setup();
 
         TabHost.TabSpec spec1 = tabHost.newTabSpec("tab1");
-        spec1.setContent(R.id.tab1);
+        spec1.setContent(R.id.homeTab);
         spec1.setIndicator("Home");
         tabHost.addTab(spec1);
 
         TabHost.TabSpec spec2 = tabHost.newTabSpec("tab2");
-        spec2.setContent(R.id.tab2);
+        spec2.setContent(R.id.allPatientsTab);
         spec2.setIndicator("All Patients");
         tabHost.addTab(spec2);
 
         TabHost.TabSpec spec3 = tabHost.newTabSpec("tab3");
-        spec3.setContent(R.id.tab3);
+        spec3.setContent(R.id.patientInfoTab);
         spec3.setIndicator("Patient Info");
         tabHost.addTab(spec3);
 
         TabHost.TabSpec spec4 = tabHost.newTabSpec("tab4");
-        spec4.setContent(R.id.tab4);
-        spec4.setIndicator("Assesment");
+        spec4.setContent(R.id.assessmentTab);
+        spec4.setIndicator("Assessment");
         tabHost.addTab(spec4);
 
 
