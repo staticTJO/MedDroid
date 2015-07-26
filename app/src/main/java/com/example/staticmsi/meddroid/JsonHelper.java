@@ -31,26 +31,24 @@ public class JsonHelper {
 
     private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
 
-
     public static String GET(String path) {
         Requesting rq = new Requesting();
-
         rq.execute("get", domain + path);
 
-        while (rq.result == null) {
+        do {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        } while (rq.lock);
+
 
         return rq.result;
     }
 
     public static String PUT(String path, String json) {
         Requesting rq = new Requesting();
-
         rq.execute("put", domain + path, json);
 
         return rq.result;
@@ -58,7 +56,6 @@ public class JsonHelper {
 
     public static String POST(String path, String json) {
         Requesting rq = new Requesting();
-
         rq.execute("post", domain + path, json);
 
         return rq.result;
@@ -66,7 +63,6 @@ public class JsonHelper {
 
     public static String DELETE(String path) {
         Requesting rq = new Requesting();
-
         rq.execute("delete", domain + path);
 
         return rq.result;
@@ -75,17 +71,35 @@ public class JsonHelper {
     private static class Requesting extends AsyncTask<String, Void, String> {
 
         public static String result = null;
+        public static boolean lock = false;
 
         @Override
         protected String doInBackground(String... urls) {
-            if (urls[0].equals("get"))
-                return GET(urls[1]);
-            else if (urls[0].equals("put"))
-                return PUT(urls[1], urls[2]);
-            else if (urls[0].equals("post"))
-                return POST(urls[1], urls[2]);
-            else if (urls[0].equals("delete"))
-                return DELETE(urls[1]);
+
+            synchronized (this) {
+
+                while (lock) {
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                result = null;
+                lock = true;
+
+
+                if (urls[0].equals("get"))
+                    return GET(urls[1]);
+                else if (urls[0].equals("put"))
+                    return PUT(urls[1], urls[2]);
+                else if (urls[0].equals("post"))
+                    return POST(urls[1], urls[2]);
+                else if (urls[0].equals("delete"))
+                    return DELETE(urls[1]);
+            }
+
 
             return "-1";
         }
@@ -105,6 +119,8 @@ public class JsonHelper {
             }
 
             result = "done";
+
+            lock = false;
             return result;
         }
 
@@ -136,6 +152,8 @@ public class JsonHelper {
             }
 
             result = "done";
+
+            lock = false;
             return result;
         }
 
@@ -168,6 +186,8 @@ public class JsonHelper {
             }
 
             result = "done";
+
+            lock = false;
             return result;
         }
 
@@ -198,6 +218,8 @@ public class JsonHelper {
             }
 
             Requesting.result = result;
+
+            lock = false;
             return result;
         }
 

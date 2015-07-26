@@ -43,8 +43,15 @@ public class PatientReport extends AbstractJsonModel {
 
     @Override
     public String toString() {
+        String idTemp;
+
+        if (id == null)
+            idTemp = "null";
+        else
+            idTemp = id.toString();
+
         return "PatientReport{" +
-                "id=" + id +
+                "id=" + idTemp +
                 ", reportName='" + reportName + '\'' +
                 ", patient{" + patientFile.toString() + "}" +
                 ", version=" + version +

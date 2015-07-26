@@ -126,18 +126,25 @@ public class Patient extends AbstractJsonModel {
 
     @Override
     public String toString() {
-        return "Patient{" +
-                "id=" + id +
-                ", healthCardNumber='" + healthCardNumber + '\'' +
-                ", age='" + age + '\'' +
-                ", gender='" + gender + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address + '\'' +
-                ", version=" + version +
-                '}';
+        String idTemp;
+
+        if (id == null)
+            idTemp = "null";
+        else
+            idTemp = id.toString();
+
+            return "Patient{" +
+                    "id=" + idTemp +
+                    ", healthCardNumber='" + healthCardNumber + '\'' +
+                    ", age='" + age + '\'' +
+                    ", gender='" + gender + '\'' +
+                    ", firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", middleName='" + middleName + '\'' +
+                    ", phoneNumber='" + phoneNumber + '\'' +
+                    ", address='" + address + '\'' +
+                    ", version=" + version +
+                    '}';
     }
 
     @Override
