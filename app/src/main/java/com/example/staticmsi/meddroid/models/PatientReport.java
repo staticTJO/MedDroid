@@ -14,6 +14,7 @@ public class PatientReport extends AbstractJsonModel {
     private Long id = null;
     private String reportName;
     private Patient patientFile = null;
+    private Nurse createdBy;
     private Long version = 0L;
 
 
@@ -31,6 +32,14 @@ public class PatientReport extends AbstractJsonModel {
 
     public Patient getPatientFile() {
         return patientFile;
+    }
+
+    public Nurse getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Nurse createdBy) {
+        this.createdBy = createdBy;
     }
 
     public void setPatientFile(Patient patientFile) {
@@ -82,25 +91,28 @@ public class PatientReport extends AbstractJsonModel {
 
     @Override
     public AbstractJsonModel fromJson(JSONObject jsonObject) {
-        PatientReport p = new PatientReport();
+        PatientReport pr = new PatientReport();
 
         try {
             if (jsonObject.has("id"))
-                p.id = jsonObject.getLong("id");
+                pr.id = jsonObject.getLong("id");
 
-            p.setReportName(jsonObject.getString("reportName"));
+            pr.setReportName(jsonObject.getString("reportName"));
+
+            if (jsonObject.has("createdBy"))
+                pr.createdBy = Nurse.fromJson(jsonObject.getString("createdBy"));
 
             if (jsonObject.has("patientFile"))
-                p.patientFile = Patient.fromJson(jsonObject.getString("patientFile"));
+                pr.patientFile = Patient.fromJson(jsonObject.getString("patientFile"));
 
             if (jsonObject.has("version"))
-                p.version = jsonObject.getLong("version");
+                pr.version = jsonObject.getLong("version");
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return p;
+        return pr;
     }
 
     @Override
@@ -109,7 +121,8 @@ public class PatientReport extends AbstractJsonModel {
 
         try {
 
-            jsonObject.put("createdBy", JSONObject.NULL);
+            if (createdBy != null)
+                jsonObject.put("createdBy", new JSONObject(createdBy.toJson(true)));
 
 
             if (id != null)
