@@ -25,29 +25,12 @@
                     android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <RelativeLayout
 
-                        android:id="@+id/tab1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></RelativeLayout>
+                    <include layout="@layout/all_patients_tab"/>
+                    <include layout="@layout/assessment_tab"/>
+                    <include layout="@layout/home_tab"/>
+                    <include layout="@layout/patient_info_tab"/>
 
-                    <RelativeLayout
-                        android:id="@+id/tab2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/tab3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/tab4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></RelativeLayout>
                 </FrameLayout>
             </LinearLayout>
         </TabHost>

@@ -6,37 +6,54 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.RelativeLayout; // Used for dynamic layouts coded in Java, Container for widgets used in a layout
+import android.widget.Button;
+import android.util.Log;
 
 public class MainActivity extends ActionBarActivity {
+
+    // log function used to trace life cycle of Activity
+    // Click 6:Android
+    // Click Longcat tab
+    // Click Filter, Name your filter whatever you like then copy "MedDroidMessages"
+    // Paste into LongTag(Regex)
+    // Click ok, then select the Filter name you created
+    private static final String TAG = "MedDroidMessages";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //RelativeLayout NurseLayout = new RelativeLayout(this);
+
         setContentView(R.layout.activity_main);
+
+        Log.i(TAG, "onCreate Instance Initated");
+
 
         TabHost tabHost = (TabHost)findViewById(R.id.tabhost);
         tabHost.setup();
 
         TabHost.TabSpec spec1 = tabHost.newTabSpec("tab1");
-        spec1.setContent(R.id.tab1);
+        spec1.setContent(R.id.homeTab);
         spec1.setIndicator("Home");
         tabHost.addTab(spec1);
 
         TabHost.TabSpec spec2 = tabHost.newTabSpec("tab2");
-        spec2.setContent(R.id.tab2);
+        spec2.setContent(R.id.allPatientsTab);
         spec2.setIndicator("All Patients");
         tabHost.addTab(spec2);
 
         TabHost.TabSpec spec3 = tabHost.newTabSpec("tab3");
-        spec3.setContent(R.id.tab3);
+        spec3.setContent(R.id.patientInfoTab);
         spec3.setIndicator("Patient Info");
         tabHost.addTab(spec3);
 
         TabHost.TabSpec spec4 = tabHost.newTabSpec("tab4");
-        spec4.setContent(R.id.tab4);
-        spec4.setIndicator("Assesment");
+        spec4.setContent(R.id.assessmentTab);
+        spec4.setIndicator("Assessment");
         tabHost.addTab(spec4);
-
 
     }
 
@@ -60,5 +77,61 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume");
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "onSaveInstanceState");
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(TAG, "onRestoreInstanceState");
     }
 }
