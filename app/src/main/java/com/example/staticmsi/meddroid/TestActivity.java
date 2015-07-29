@@ -33,7 +33,7 @@ public class TestActivity extends Activity {
         n.setLastName("James");
         n.save();
 
-        n = Nurse.findById(2L);
+        n = Nurse.findById(1L);
 
         Patient p = Patient.findById(1L);
         PatientReport pr = new PatientReport();
@@ -43,7 +43,7 @@ public class TestActivity extends Activity {
 
         pr.save();
 
-        pr = PatientReport.findById(2L);
+        pr = PatientReport.findById(1L);
 
         ReportEntry rp = new ReportEntry();
         rp.setBloodPressureDiastolic(3);

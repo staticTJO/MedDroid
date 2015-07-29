@@ -29,7 +29,8 @@ import java.io.UnsupportedEncodingException;
 public class JsonHelper {
 
 
-    private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
+//    private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
+    private static String domain = "http://69.11.16.153/mypatients";
 
     public static String GET(String path) {
         Requesting rq = new Requesting();
