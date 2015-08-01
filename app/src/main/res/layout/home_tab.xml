@@ -20,11 +20,10 @@
 
     <TableLayout
         android:layout_width="317dp"
-        android:layout_height="137dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
-        android:id="@+id/home_table"
-        android:layout_weight="0.30">
+        android:id="@+id/home_table">
 
         <TableRow
             android:layout_width="match_parent"
@@ -39,86 +38,7 @@
                 android:textAppearance="@android:style/TextAppearance" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="943 367 510"
-                android:id="@+id/textView1"
-                android:layout_column="0"
-                android:background="#8ebbc9" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View"
-                android:id="@+id/button2"
-                android:layout_column="1" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="658 281 092"
-                android:id="@+id/textView2"
-                android:layout_column="0" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View"
-                android:id="@+id/button3"
-                android:layout_column="1" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="402 981 397"
-                android:id="@+id/textView3"
-                android:layout_column="0"
-                android:background="#8ebbc9" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View"
-                android:id="@+id/button4"
-                android:layout_column="1" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="315 271 824"
-                android:id="@+id/textView4"
-                android:layout_column="0" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View"
-                android:id="@+id/button5"
-                android:layout_column="1" />
-        </TableRow>
     </TableLayout>
 
 </LinearLayout>

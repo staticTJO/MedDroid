@@ -1,6 +1,8 @@
 package com.example.staticmsi.meddroid;
 
 import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +17,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.staticmsi.meddroid.models.Patient;
 import com.example.staticmsi.meddroid.models.PatientAssessment;
 
 import java.util.List;
@@ -66,7 +69,37 @@ public class MainActivity extends ActionBarActivity {
         spec4.setIndicator("Assessment");
         tabHost.addTab(spec4);
 
+
+        fillHomePatients();
         fillPatients();
+    }
+
+    private void fillHomePatients() {
+        TableLayout tbl = (TableLayout) findViewById(R.id.home_table);
+        List<Patient> patients = Patient.findAll();
+
+        int i = 0;
+
+        for (Patient p : patients) {
+            TableRow tr = new TableRow(this);
+            TextView tvID = new TextView(this);
+            Button b = new Button(this);
+
+            if (i % 2 == 1)
+                tr.setBackgroundColor(Color.parseColor("#8ebbc9"));
+
+
+            tvID.setText(p.getHealthCardNumber());
+
+            b.setText("VIEW");
+
+            tr.addView(tvID);
+            tr.addView(b);
+
+            tbl.addView(tr);
+
+            i++;
+        }
 
     }
 
