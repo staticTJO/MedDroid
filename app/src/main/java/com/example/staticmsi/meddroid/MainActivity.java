@@ -11,6 +11,15 @@ import android.widget.TabHost;
 import android.widget.RelativeLayout; // Used for dynamic layouts coded in Java, Container for widgets used in a layout
 import android.widget.Button;
 import android.util.Log;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import com.example.staticmsi.meddroid.models.PatientAssessment;
+
+import java.util.List;
+
+import static android.R.attr.textAppearanceLarge;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -34,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
         Log.i(TAG, "onCreate Instance Initated");
 
 
-        TabHost tabHost = (TabHost)findViewById(R.id.tabhost);
+        TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
         tabHost.setup();
 
         TabHost.TabSpec spec1 = tabHost.newTabSpec("tab1");
@@ -57,41 +66,32 @@ public class MainActivity extends ActionBarActivity {
         spec4.setIndicator("Assessment");
         tabHost.addTab(spec4);
 
-     fillPatients();
+        fillPatients();
 
     }
 
     private void fillPatients() {
         TableLayout tbl = (TableLayout) findViewById(R.id.tblPatient);
-        TableRow tr = new TableRow(this);
-
-        tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT));
-        TextView tvID = new TextView(this);
-        TextView tvStatus = new TextView(this);
-
-
-        tvID.setText("Patient ID");
-        tvStatus.setText("Status");
-
-        tr.addView(tvID);
-        tr.addView(tvStatus);
-
-
-        tbl.addView(tr);
-
-
         List<PatientAssessment> patientAssessments = PatientAssessment.findAll();
 
         for (PatientAssessment pa : patientAssessments) {
             TableRow trR = new TableRow(this);
             TextView tvIDR = new TextView(this);
             TextView tvStatusR = new TextView(this);
+            Button b = new Button(this);
+
+
+            tvIDR.setTextAppearance(this, android.R.style.TextAppearance_Large);
+            tvStatusR.setTextAppearance(this, android.R.style.TextAppearance_Large);
 
             tvIDR.setText(pa.getPatientFile().getHealthCardNumber());
             tvStatusR.setText(pa.getStatus());
 
+            b.setText("INFO");
+
             trR.addView(tvIDR);
             trR.addView(tvStatusR);
+            trR.addView(b);
 
             tbl.addView(trR);
         }

@@ -1630,6 +1630,7 @@ public class PatientAssessment extends AbstractJsonModel {
             if (jsonObject.has("id"))
                 pa.id = jsonObject.getLong("id");
 
+            pa.status= jsonObject.getString("status");
             pa.neurological_Vision_Eye = jsonObject.getString("neurological_Vision_Eye");
             pa.neurological_Vision_Pupils_L = jsonObject.getString("neurological_Vision_Pupils_L");
             pa.neurological_Vision_Pupils_R = jsonObject.getString("neurological_Vision_Pupils_R");
@@ -1796,6 +1797,7 @@ public class PatientAssessment extends AbstractJsonModel {
         JSONObject jsonObject = new JSONObject();
 
         try {
+            jsonObject.put("status", this.status);
             jsonObject.put("neurological_Vision_Eye", this.neurological_Vision_Eye);
             jsonObject.put("neurological_Vision_Pupils_L", this.neurological_Vision_Pupils_L);
             jsonObject.put("neurological_Vision_Pupils_R", this.neurological_Vision_Pupils_R);
