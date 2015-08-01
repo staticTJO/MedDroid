@@ -57,7 +57,47 @@ public class MainActivity extends ActionBarActivity {
         spec4.setIndicator("Assessment");
         tabHost.addTab(spec4);
 
+     fillPatients();
+
     }
+
+    private void fillPatients() {
+        TableLayout tbl = (TableLayout) findViewById(R.id.tblPatient);
+        TableRow tr = new TableRow(this);
+
+        tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT));
+        TextView tvID = new TextView(this);
+        TextView tvStatus = new TextView(this);
+
+
+        tvID.setText("Patient ID");
+        tvStatus.setText("Status");
+
+        tr.addView(tvID);
+        tr.addView(tvStatus);
+
+
+        tbl.addView(tr);
+
+
+        List<PatientAssessment> patientAssessments = PatientAssessment.findAll();
+
+        for (PatientAssessment pa : patientAssessments) {
+            TableRow trR = new TableRow(this);
+            TextView tvIDR = new TextView(this);
+            TextView tvStatusR = new TextView(this);
+
+            tvIDR.setText(pa.getPatientFile().getHealthCardNumber());
+            tvStatusR.setText(pa.getStatus());
+
+            trR.addView(tvIDR);
+            trR.addView(tvStatusR);
+
+            tbl.addView(trR);
+        }
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
