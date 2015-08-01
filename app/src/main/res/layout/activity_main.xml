@@ -26,10 +26,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <include layout="@layout/all_patients_tab"/>
-                    <include layout="@layout/assessment_tab"/>
                     <include layout="@layout/home_tab"/>
+                    <include layout="@layout/all_patients_tab"/>
                     <include layout="@layout/patient_info_tab"/>
+                    <include layout="@layout/assessment_tab"
+                        android:layout_gravity="center_vertical" />
 
                 </FrameLayout>
             </LinearLayout>
