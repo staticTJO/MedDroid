@@ -8,5 +8,6 @@
     <string name="Doctor_patient_Home_number">Patient</string>
     <string name="Doctor_patient_Home_satus">Status</string>
     <string name="Doctor_patient_Home_info">Info</string>
+    <string name="title_activity_notification">Notification</string>
 
 </resources>
