@@ -4,7 +4,9 @@ import android.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TabHost;
 import android.widget.RelativeLayout; // Used for dynamic layouts coded in Java, Container for widgets used in a layout
 import android.widget.Button;
