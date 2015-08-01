@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:id="@+id/allPatientsTab">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/allPatientsTab">
 
     <!--Tab Content Goes Here-->
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Welcome to MedDroid. This is the All Patients tab!"/>
+        android:text="Welcome to MedDroid. This is the All Patients tab!"
+        /> -->
+    <TableLayout
+        android:layout_width="match parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+
+    </TableLayout>
+
 </RelativeLayout>
