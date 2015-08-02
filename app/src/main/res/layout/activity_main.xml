@@ -1,39 +1,75 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
 
-        <TabHost
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnNotification"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_action_event_note" />
+
+        <TextView
+            android:id="@+id/counterNotification"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignRight="@id/btnNotification"
+            android:layout_alignTop="@id/btnNotification"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="3dp"
+            android:text="+99"
+            android:gravity="center"
+            android:textSize="12dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/shape_notification" />
+
+    </RelativeLayout>
+
+
+    <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/tabhost"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TabWidget
+                android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"></TabWidget>
 
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></TabWidget>
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <include layout="@layout/home_tab" />
 
-                    <include layout="@layout/home_tab"/>
-                    <include layout="@layout/all_patients_tab"/>
-                    <include layout="@layout/patient_info_tab"/>
-                    <include layout="@layout/assessment_tab"/>
+                <include layout="@layout/all_patients_tab" />
 
-                </FrameLayout>
-            </LinearLayout>
-        </TabHost>
+                <include layout="@layout/patient_info_tab" />
+
+                <include layout="@layout/assessment_tab" />
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 
 
 </RelativeLayout>

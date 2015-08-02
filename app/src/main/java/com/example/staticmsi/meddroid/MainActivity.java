@@ -1,16 +1,22 @@
 package com.example.staticmsi.meddroid;
 
 import android.app.ActionBar;
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.RelativeLayout; // Used for dynamic layouts coded in Java, Container for widgets used in a layout
@@ -31,7 +37,7 @@ import java.util.List;
 
 import static android.R.attr.textAppearanceLarge;
 
-public class MainActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     // log function used to trace life cycle of Activity
     // Click 6:Android
@@ -50,6 +56,14 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
 
         //RelativeLayout NurseLayout = new RelativeLayout(this);
+
+
+        //Remove title bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         setContentView(R.layout.activity_main);
 
@@ -83,6 +97,38 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         fillHomePatients();
         fillPatients();
         fillPatientsSpanner();
+
+        setupNotification();
+    }
+
+    private void setupNotification() {
+        ImageButton notifBtn = (ImageButton) findViewById(R.id.btnNotification);
+
+        updateCountNotification();
+
+        notifBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void updateCountNotification() {
+        TextView counter = (TextView) findViewById(R.id.counterNotification);
+        int counts = 100;
+
+        if (counts == 0) {
+            counter.setVisibility(View.INVISIBLE);
+        } else if (counts > 99) {
+            counter.setText("+99");
+            counter.setVisibility(View.VISIBLE);
+        } else {
+            counter.setText(String.valueOf(counts));
+            counter.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void fillPatientsSpanner() {
@@ -140,7 +186,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         patientIR.append("Phone: " + patient.getPhoneNumber() + '\n');
         patientIR.append("Address: " + patient.getAddress() + '\n');
-
 
 
     }
@@ -207,29 +252,59 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        getMenuInflater().inflate(R.menu.menu_notification, menu);
-        return true;
-    }
+//    static Button notifCount;
+//    static int mNotifCount = 0;
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        getMenuInflater().inflate(R.menu.menu_notification, menu);
+//
+//
+//
+////        View count = menu.findItem(R.menu.menu_notification).getActionView();
+////        notifCount = (Button) count.findViewById(R.id.notif_count);
+////        notifCount.setText(String.valueOf(mNotifCount));
+////        return super.onCreateOptionsMenu(menu);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
-
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//
+//            Toast t = Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT);
+//            t.show();
+//
+//            return true;
+//        }
+//
+//        if (id == R.id.TestAction) {
+//            Toast t = Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT);
+//            t.show();
+//
+//            return true;
+//        }
+//
+//        if (id == R.id.notificationBtn2) {
+//            Toast t = Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT);
+//            t.show();
+//
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+//
 
     @Override
     protected void onStart() {
