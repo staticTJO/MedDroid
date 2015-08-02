@@ -5,6 +5,16 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import com.example.staticmsi.meddroid.models.Notification;
+
+import java.util.List;
 
 
 public class NotificationActivity extends Activity {
@@ -13,6 +23,34 @@ public class NotificationActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+
+        fillNotifications();
+    }
+
+    private void fillNotifications() {
+        TableLayout t = (TableLayout) findViewById(R.id.tblNotifications);
+        List<Notification> notifications = Notification.findAll();
+
+        for (Notification n : notifications) {
+            TableRow tr = new TableRow(this);
+            Button btnStatus = new Button(this);
+            TextView tvDesc = new TextView(this);
+            Button btnView = new Button(this);
+
+            if (!n.isRead())
+                btnStatus.setText("mark as read");
+            else
+                btnStatus.setVisibility(View.INVISIBLE);
+
+            tvDesc.setText(n.getText());
+            btnView.setText("view");
+
+            tr.addView(btnStatus);
+            tr.addView(tvDesc);
+            tr.addView(btnView);
+
+            t.addView(tr);
+        }
     }
 
     @Override

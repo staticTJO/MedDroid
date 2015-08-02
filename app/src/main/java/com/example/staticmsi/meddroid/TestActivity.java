@@ -27,9 +27,8 @@ public class TestActivity extends Activity {
 
 
         Notification x = Notification.findById(2L);
-        
+
         tv.append(x.toJson());
 
     }
-
 }
