@@ -21,6 +21,7 @@ public class Notification extends AbstractJsonModel {
     private Date dateAndTime;
     private Nurse toNurse;
     private Doctor toDoctor;
+    private boolean isRead;
     private Long version = 0L;
 
 
@@ -88,6 +89,14 @@ public class Notification extends AbstractJsonModel {
         this.toDoctor = toDoctor;
     }
 
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setIsRead(boolean isRead) {
+        this.isRead = isRead;
+    }
+
     @Override
     public String toString() {
         String idTemp;
@@ -106,6 +115,7 @@ public class Notification extends AbstractJsonModel {
                 ", dateAndTime=" + dateAndTime +
                 ", toNurse=" + toNurse +
                 ", toDoctor=" + toDoctor +
+                ", isRead=" + isRead +
                 ", version=" + version +
                 '}';
     }
@@ -146,18 +156,20 @@ public class Notification extends AbstractJsonModel {
 
             n.dateAndTime = new Date(jsonObject.getLong("dateAndTime"));
 
+            n.isRead = jsonObject.getBoolean("isRead");
 
-            if (jsonObject.has("byNurse"))
+
+            if (jsonObject.has("byNurse") && !jsonObject.isNull("byNurse"))
                 n.byNurse = Nurse.fromJson(jsonObject.getString("byNurse"));
 
-            if (jsonObject.has("toNurse"))
+            if (jsonObject.has("toNurse") && !jsonObject.isNull("toNurse"))
                 n.toNurse = Nurse.fromJson(jsonObject.getString("toNurse"));
 
 
-            if (jsonObject.has("byDoctor"))
+            if (jsonObject.has("byDoctor") && !jsonObject.isNull("byDoctor"))
                 n.byDoctor = Doctor.fromJson(jsonObject.getString("byDoctor"));
 
-            if (jsonObject.has("toDoctor"))
+            if (jsonObject.has("toDoctor") && !jsonObject.isNull("toDoctor"))
                 n.toDoctor = Doctor.fromJson(jsonObject.getString("toDoctor"));
 
 
@@ -184,6 +196,9 @@ public class Notification extends AbstractJsonModel {
             jsonObject.put("importance", this.importance); // make sure (NORMAL, or URGEN"importanceT)
 
             jsonObject.put("dateAndTime", this.dateAndTime.toString());
+
+            jsonObject.put("isRead", this.isRead);
+
 
             if (byNurse != null)
                 jsonObject.put("byNurse", new JSONObject(byNurse.toJson(true)));
