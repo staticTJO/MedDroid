@@ -1,6 +1,7 @@
 package com.example.staticmsi.meddroid;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +19,27 @@ import java.util.List;
 
 
 public class NotificationActivity extends Activity {
+
+    static class OnReadBtnClick implements View.OnClickListener {
+        Long id;
+
+        OnReadBtnClick(Long id) {
+            this.id = id;
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            Button b = (Button) v;
+            Notification n = Notification.findById(this.id);
+
+            n.setIsRead(true);
+            n.update();
+
+            b.setVisibility(View.INVISIBLE);
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +59,9 @@ public class NotificationActivity extends Activity {
             TextView tvDesc = new TextView(this);
             Button btnView = new Button(this);
 
-            if (!n.isRead())
-                btnStatus.setText("mark as read");
-            else
+            if (!n.isRead()) {
+                btnStatus = setAsReadButton(n.getId());
+            } else
                 btnStatus.setVisibility(View.INVISIBLE);
 
             tvDesc.setText(n.getText());
@@ -51,6 +73,16 @@ public class NotificationActivity extends Activity {
 
             t.addView(tr);
         }
+    }
+
+
+    private Button setAsReadButton(Long id) {
+        Button b = new Button(this);
+        b.setText("mark as read");
+
+        b.setOnClickListener(new OnReadBtnClick(id));
+
+        return b;
     }
 
     @Override
