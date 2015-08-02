@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.RelativeLayout; // Used for dynamic layouts coded in Java, Container for widgets used in a layout
 import android.widget.Button;
@@ -16,15 +19,19 @@ import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.staticmsi.meddroid.models.Patient;
 import com.example.staticmsi.meddroid.models.PatientAssessment;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.attr.textAppearanceLarge;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
     // log function used to trace life cycle of Activity
     // Click 6:Android
@@ -33,6 +40,9 @@ public class MainActivity extends ActionBarActivity {
     // Paste into LongTag(Regex)
     // Click ok, then select the Filter name you created
     private static final String TAG = "MedDroidMessages";
+
+
+    List<Patient> patients;
 
 
     @Override
@@ -72,6 +82,71 @@ public class MainActivity extends ActionBarActivity {
 
         fillHomePatients();
         fillPatients();
+        fillPatientsSpanner();
+    }
+
+    private void fillPatientsSpanner() {
+        Spinner spinner = (Spinner) findViewById(R.id.patients_spinner);
+        List<String> items = new ArrayList<String>();
+        this.patients = Patient.findAll();
+
+        items.add("Select Patient ...");
+
+        for (Patient p : this.patients) {
+            items.add(p.getFirstName());
+        }
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                R.layout.spinner_view, items);
+
+
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
+
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+
+        String firstName = parent.getItemAtPosition(pos).toString();
+        Patient patient = null;
+        TextView patientId = (TextView) findViewById(R.id.textPatientId);
+        TextView patientIL = (TextView) findViewById(R.id.textPatientInfoLeft);
+        TextView patientIR = (TextView) findViewById(R.id.textPatientInfoRight);
+
+        for (Patient p : this.patients) {
+            if (p.getFirstName().equals(firstName)) {
+                patient = p;
+                break;
+            }
+        }
+
+        if (patient == null)
+            return;
+
+        patientId.setText("Patient# " + patient.getHealthCardNumber());
+
+        patientIL.setText("");
+        patientIR.setText("");
+
+        patientIL.append("Name: " + patient.getFirstName() + " " + patient.getLastName() + '\n');
+        patientIL.append("Age: " + patient.getAge() + '\n');
+        patientIL.append("Gender: " + patient.getGender() + '\n');
+
+        patientIR.append("Phone: " + patient.getPhoneNumber() + '\n');
+        patientIR.append("Address: " + patient.getAddress() + '\n');
+
+
+
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
     }
 
     private void fillHomePatients() {

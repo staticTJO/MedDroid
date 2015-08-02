@@ -1,12 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:id="@+id/patientInfoTab">
+    android:layout_height="match_parent" android:id="@+id/patientInfoTab"
+    android:weightSum="1">
 
     <!--Tab Content Goes Here-->
+
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="38dp"
         android:text="Welcome to MedDroid. This is the Patient Info tab!"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+
+        <TableRow>
+            <Spinner
+                android:id="@+id/patients_spinner"
+                android:layout_weight="0.5"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/textPatientId"
+                android:layout_weight="0.5"
+                android:gravity="right"
+                android:layout_span="2"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/textPatientInfoLeft"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/textPatientInfoRight"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:textSize="16dp"
+                android:paddingLeft="20dp"
+                android:layout_span="2" />
+        </TableRow>
+
+        <TableRow>
+            <TextView android:layout_span="1" />
+
+            <Button android:text="Edit Assessment" />
+            <Button android:text="Modify" />
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>
