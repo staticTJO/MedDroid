@@ -27,6 +27,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.staticmsi.meddroid.models.Notification;
 import com.example.staticmsi.meddroid.models.Patient;
 import com.example.staticmsi.meddroid.models.PatientAssessment;
 
@@ -117,7 +118,16 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     private void updateCountNotification() {
         TextView counter = (TextView) findViewById(R.id.counterNotification);
-        int counts = 100;
+        int counts = 0;
+        List<Notification> notifications = Notification.findAll();
+
+        // find toNurse or toDoctor
+        // find unread yet
+        for (Notification n : notifications) {
+            if (!n.isRead())
+                counts++;
+        }
+
 
         if (counts == 0) {
             counter.setVisibility(View.INVISIBLE);
@@ -128,7 +138,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             counter.setText(String.valueOf(counts));
             counter.setVisibility(View.VISIBLE);
         }
-
     }
 
     private void fillPatientsSpanner() {
@@ -317,6 +326,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "onResume");
+
+        setupNotification();
     }
 
 

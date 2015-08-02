@@ -26,45 +26,9 @@ public class TestActivity extends Activity {
         TextView tv = (TextView) findViewById(R.id.testResult);
 
 
-        Nurse n = new Nurse();
-        n.setAge("22");
-        n.setFirstName("Noor");
-        n.setGivenID("65165165");
-        n.setLastName("James");
-        n.save();
+        Notification x = Notification.findById(2L);
 
-        n = Nurse.findById(1L);
-
-        Patient p = Patient.findById(1L);
-        PatientReport pr = new PatientReport();
-        pr.setPatientFile(p);
-        pr.setReportName("second repo");
-        pr.setCreatedBy(n);
-
-        pr.save();
-
-        pr = PatientReport.findById(1L);
-
-        ReportEntry rp = new ReportEntry();
-        rp.setBloodPressureDiastolic(3);
-        rp.setBloodPressureSystolic(2);
-        rp.setBodyTemperature(2.1f);
-        rp.setHeartRate(60);
-        rp.setNurse(n);
-        rp.setOther("dlkfhgldjfhgld");
-        rp.setPainLevel(5);
-        rp.setReport(pr);
-        rp.setRespitory(1);
-
-        rp.save();
-
-
-
-//        Notification x = Notification.findById(1L);
-
-
-//        tv.append(x.toJson());
+        tv.append(x.toJson());
 
     }
-
 }
