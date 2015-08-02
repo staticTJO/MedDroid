@@ -2,12 +2,14 @@ package com.example.staticmsi.meddroid;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -21,9 +23,11 @@ import java.util.List;
 public class NotificationActivity extends Activity {
 
     static class OnReadBtnClick implements View.OnClickListener {
+        NotificationActivity na;
         Long id;
 
-        OnReadBtnClick(Long id) {
+        OnReadBtnClick(NotificationActivity na, Long id) {
+            this.na = na;
             this.id = id;
         }
 
@@ -37,6 +41,7 @@ public class NotificationActivity extends Activity {
             n.update();
 
             b.setVisibility(View.INVISIBLE);
+            na.setupNotification();
         }
     }
 
@@ -46,7 +51,32 @@ public class NotificationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
+        setupNotification();
         fillNotifications();
+    }
+
+
+    void setupNotification() {
+        TextView counter = (TextView) findViewById(R.id.counterNotification);
+        int counts = 0;
+        List<Notification> notifications = Notification.findAll();
+
+        // find toNurse or toDoctor
+        // find unread yet
+        for (Notification n : notifications) {
+            if (!n.isRead())
+                counts++;
+        }
+
+        if (counts == 0) {
+            counter.setVisibility(View.INVISIBLE);
+        } else if (counts > 99) {
+            counter.setText("+99");
+            counter.setVisibility(View.VISIBLE);
+        } else {
+            counter.setText(String.valueOf(counts));
+            counter.setVisibility(View.VISIBLE);
+        }
     }
 
     private void fillNotifications() {
@@ -79,8 +109,7 @@ public class NotificationActivity extends Activity {
     private Button setAsReadButton(Long id) {
         Button b = new Button(this);
         b.setText("mark as read");
-
-        b.setOnClickListener(new OnReadBtnClick(id));
+        b.setOnClickListener(new OnReadBtnClick(this, id));
 
         return b;
     }

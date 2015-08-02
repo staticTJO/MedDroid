@@ -138,7 +138,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             counter.setText(String.valueOf(counts));
             counter.setVisibility(View.VISIBLE);
         }
-
     }
 
     private void fillPatientsSpanner() {
@@ -327,6 +326,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "onResume");
+
+        setupNotification();
     }
 
 
