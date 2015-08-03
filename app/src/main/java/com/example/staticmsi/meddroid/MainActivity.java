@@ -40,6 +40,26 @@ import static android.R.attr.textAppearanceLarge;
 
 public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
+
+    static class BtnViewPatientOnClick implements View.OnClickListener {
+
+        Patient p = null;
+        MainActivity ma;
+
+        public BtnViewPatientOnClick(MainActivity ma, Patient p) {
+            this.ma = ma;
+            this.p = p;
+        }
+
+        @Override
+        public void onClick(View v) {
+            ma.changeTapTo(2);
+            ma.selectPatientSpinner(p);
+        }
+
+    }
+
+
     // log function used to trace life cycle of Activity
     // Click 6:Android
     // Click Longcat tab
@@ -100,6 +120,41 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         fillPatientsSpanner();
 
         setupNotification();
+
+        setBtnAddNewPatient();
+    }
+
+
+    void changeTapTo(int tabNumber) {
+        TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
+        tabHost.setCurrentTab(tabNumber);
+    }
+
+    void selectPatientSpinner(Patient p) {
+        Spinner spinner = (Spinner) findViewById(R.id.patients_spinner);
+        int i = 0;
+
+        for (Patient patient : this.patients) {
+            if (patient.getHealthCardNumber().equals(p.getHealthCardNumber())) {
+                spinner.setSelection(i + 1);
+                break;
+            }
+
+            i++;
+        }
+
+    }
+
+    private void setBtnAddNewPatient() {
+        Button btn = (Button) findViewById(R.id.btnAddNewPatient);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddPatientActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
 
     private void setupNotification() {
@@ -205,36 +260,17 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     private void fillHomePatients() {
         TableLayout tbl = (TableLayout) findViewById(R.id.home_table);
-        List<Patient> patients = Patient.findAll();
+        TextView tvNoPatients = (TextView) findViewById(R.id.textViewNoPatient);
 
-        int i = 0;
+        List<PatientAssessment> patientAssessments = PatientAssessment.findAll();
 
-        for (Patient p : patients) {
-            TableRow tr = new TableRow(this);
-            TextView tvID = new TextView(this);
-            Button b = new Button(this);
-
-            if (i % 2 == 1)
-                tr.setBackgroundColor(Color.parseColor("#8ebbc9"));
-
-
-            tvID.setText(p.getHealthCardNumber());
-
-            b.setText("VIEW");
-
-            tr.addView(tvID);
-            tr.addView(b);
-
-            tbl.addView(tr);
-
-            i++;
+        if (patientAssessments.isEmpty()) {
+            tbl.setVisibility(View.INVISIBLE);
+            return;
         }
 
-    }
+        tvNoPatients.setVisibility(View.INVISIBLE);
 
-    private void fillPatients() {
-        TableLayout tbl = (TableLayout) findViewById(R.id.tblPatient);
-        List<PatientAssessment> patientAssessments = PatientAssessment.findAll();
 
         for (PatientAssessment pa : patientAssessments) {
             TableRow trR = new TableRow(this);
@@ -257,6 +293,43 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
             tbl.addView(trR);
         }
+    }
+
+    private void fillPatients() {
+
+        TableLayout tbl = (TableLayout) findViewById(R.id.tblPatient);
+        List<Patient> patients = Patient.findAll();
+
+        tbl.removeAllViews();
+
+        int i = 0;
+
+        for (Patient p : patients) {
+            TableRow tr = new TableRow(this);
+            TextView tvID = new TextView(this);
+            TextView tvName = new TextView(this);
+            Button b = new Button(this);
+
+            if (i % 2 == 1)
+                tr.setBackgroundColor(Color.parseColor("#8ebbc9"));
+
+
+            tvID.setText(p.getHealthCardNumber());
+            tvName.setText(p.getFirstName());
+
+
+            b.setText("VIEW");
+
+            b.setOnClickListener(new BtnViewPatientOnClick(this, p));
+
+            tr.addView(tvID);
+            tr.addView(tvName);
+            tr.addView(b);
+
+            tbl.addView(tr);
+
+            i++;
+        }
 
     }
 
@@ -277,7 +350,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 ////        notifCount.setText(String.valueOf(mNotifCount));
 ////        return super.onCreateOptionsMenu(menu);
 //    }
-
 
 
 //
@@ -370,5 +442,20 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(TAG, "onRestoreInstanceState");
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        Log.i("onActivityResult", String.valueOf(requestCode));
+//        Log.i("onActivityResult", String.valueOf(resultCode));
+
+
+
+        if (resultCode != 0) {
+            fillPatients();
+            fillPatientsSpanner();
+            changeTapTo(resultCode);
+        }
     }
 }
