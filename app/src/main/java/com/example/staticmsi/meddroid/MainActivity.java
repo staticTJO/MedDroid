@@ -40,6 +40,26 @@ import static android.R.attr.textAppearanceLarge;
 
 public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
+
+    static class BtnViewPatientOnClick implements View.OnClickListener {
+
+        Patient p = null;
+        MainActivity ma;
+
+        public BtnViewPatientOnClick(MainActivity ma, Patient p) {
+            this.ma = ma;
+            this.p = p;
+        }
+
+        @Override
+        public void onClick(View v) {
+            ma.changeTapTo(2);
+            ma.selectPatientSpinner(p);
+        }
+
+    }
+
+
     // log function used to trace life cycle of Activity
     // Click 6:Android
     // Click Longcat tab
@@ -100,6 +120,41 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         fillPatientsSpanner();
 
         setupNotification();
+
+        setBtnAddNewPatient();
+    }
+
+
+    void changeTapTo(int tabNumber) {
+        TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
+        tabHost.setCurrentTab(tabNumber);
+    }
+
+    void selectPatientSpinner(Patient p) {
+        Spinner spinner = (Spinner) findViewById(R.id.patients_spinner);
+        int i = 0;
+
+        for (Patient patient : this.patients) {
+            if (patient.getHealthCardNumber().equals(p.getHealthCardNumber())) {
+                spinner.setSelection(i + 1);
+                break;
+            }
+
+            i++;
+        }
+
+    }
+
+    private void setBtnAddNewPatient() {
+        Button btn = (Button) findViewById(R.id.btnAddNewPatient);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddPatientActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupNotification() {
@@ -222,6 +277,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
             b.setText("VIEW");
 
+            b.setOnClickListener(new BtnViewPatientOnClick(this, p));
+
             tr.addView(tvID);
             tr.addView(b);
 
@@ -277,7 +334,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 ////        notifCount.setText(String.valueOf(mNotifCount));
 ////        return super.onCreateOptionsMenu(menu);
 //    }
-
 
 
 //
