@@ -66,8 +66,8 @@ public class AddPatientActivity extends ActionBarActivity {
                 Toast t = Toast.makeText(AddPatientActivity.this, "Patient is added", Toast.LENGTH_SHORT);
                 t.show();
 
-                Intent intent = new Intent(AddPatientActivity.this, MainActivity.class);
-                startActivity(intent);
+                setResult(1);
+                finish();
             }
         });
     }

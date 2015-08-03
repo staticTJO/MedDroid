@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:id="@+id/homeTab"
+    android:id="@+id/homeTab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <!--Tab Content Goes Here-->
@@ -12,30 +14,53 @@
         android:text="Welcome Doctor #235806" />
 
     <Button
+        android:id="@+id/btnAddNewPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add New Patient"
-        android:id="@+id/btnAddNewPatient"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:text="Add New Patient" />
+
+
+    <TextView
+        android:id="@+id/textViewNoPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_span="3"
+        android:text="There is no patients needing assessment"
+        android:layout_weight="1"
+        android:textAppearance="@android:style/TextAppearance" />
 
     <TableLayout
+        android:id="@+id/home_table"
         android:layout_width="317dp"
-        android:layout_height="match_parent"
+        android:layout_height="360dp"
         android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:id="@+id/home_table">
+        android:orientation="horizontal">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Doctor_patient_Home_number"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/productID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/Doctor_patient_Home_satus"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Patients Needing Assessment"
-                android:id="@+id/textView"
-                android:layout_column="0"
-                android:textAppearance="@android:style/TextAppearance" />
+                android:layout_marginLeft="10dp"
+                android:text="@string/Doctor_patient_Home_info"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
 
