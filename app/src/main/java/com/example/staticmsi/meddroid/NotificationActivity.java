@@ -1,16 +1,11 @@
 package com.example.staticmsi.meddroid;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -22,30 +17,6 @@ import java.util.List;
 
 public class NotificationActivity extends Activity {
 
-    static class OnReadBtnClick implements View.OnClickListener {
-        NotificationActivity na;
-        Long id;
-
-        OnReadBtnClick(NotificationActivity na, Long id) {
-            this.na = na;
-            this.id = id;
-        }
-
-
-        @Override
-        public void onClick(View v) {
-            Button b = (Button) v;
-            Notification n = Notification.findById(this.id);
-
-            n.setIsRead(true);
-            n.update();
-
-            b.setVisibility(View.INVISIBLE);
-            na.setupNotification();
-        }
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +25,6 @@ public class NotificationActivity extends Activity {
         setupNotification();
         fillNotifications();
     }
-
 
     void setupNotification() {
         TextView counter = (TextView) findViewById(R.id.counterNotification);
@@ -105,7 +75,6 @@ public class NotificationActivity extends Activity {
         }
     }
 
-
     private Button setAsReadButton(Long id) {
         Button b = new Button(this);
         b.setText("mark as read");
@@ -134,5 +103,28 @@ public class NotificationActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    static class OnReadBtnClick implements View.OnClickListener {
+        NotificationActivity na;
+        Long id;
+
+        OnReadBtnClick(NotificationActivity na, Long id) {
+            this.na = na;
+            this.id = id;
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            Button b = (Button) v;
+            Notification n = Notification.findById(this.id);
+
+            n.setIsRead(true);
+            n.update();
+
+            b.setVisibility(View.INVISIBLE);
+            na.setupNotification();
+        }
     }
 }

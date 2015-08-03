@@ -20,15 +20,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                //Launcher Activity This is the activity that is opened first when the android application is started
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".NotificationActivity"
             android:label="@string/title_activity_notification" >
         </activity>

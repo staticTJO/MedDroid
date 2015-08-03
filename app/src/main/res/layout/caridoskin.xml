@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Cardiovascular"
+        android:id="@+id/textView53" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03"></LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.03">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Skin (peripheral):"
+                android:id="@+id/textView54" />
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="672dp"
+            android:layout_height="95dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pink"
+                android:id="@+id/checkBox30"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pale"
+                android:id="@+id/checkBox31"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jaundiced"
+                android:id="@+id/checkBox32"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flushed"
+                android:id="@+id/checkBox33"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mottled"
+                android:id="@+id/checkBox34"
+                android:layout_row="0"
+                android:layout_column="4"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cyanotic"
+                android:id="@+id/checkBox35"
+                android:layout_row="0"
+                android:layout_column="5"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diaphoretic"
+                android:id="@+id/checkBox36"
+                android:layout_row="0"
+                android:layout_column="6"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cold"
+                android:id="@+id/checkBox37"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cool"
+                android:id="@+id/checkBox38"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hot"
+                android:id="@+id/checkBox39"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Warm"
+                android:id="@+id/checkBox40"
+                android:layout_row="1"
+                android:layout_column="3"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dry"
+                android:id="@+id/checkBox41"
+                android:layout_row="1"
+                android:layout_column="4"
+                android:checked="false" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moist"
+                android:id="@+id/checkBox42"
+                android:layout_row="1"
+                android:layout_column="5"
+                android:checked="false" />
+        </GridLayout>
+    </LinearLayout>
+</LinearLayout>
