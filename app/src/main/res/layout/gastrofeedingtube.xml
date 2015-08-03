@@ -28,8 +28,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="145dp"
-            android:layout_height="match_parent"
-            android:id="@+id/">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +42,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:id="@+id/"
             android:weightSum="1">
 
             <TextView
@@ -86,7 +84,6 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/"
         android:weightSum="1">
 
         <LinearLayout
@@ -179,8 +176,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/">
+            android:layout_height="wrap_content">
 
             <CheckBox
                 android:layout_width="wrap_content"

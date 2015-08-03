@@ -15,15 +15,13 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.02"
-        android:id="@+id/"></LinearLayout>
+        android:layout_weight="0.02"></LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/">
+        android:layout_gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +31,7 @@
             android:id="@+id/textView15" />
 
         <EditText
-            android:layout_width="100"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
             android:ems="10"
@@ -46,8 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.02"
-        android:id="@+id/">
+        android:layout_weight="0.02">
 
     </LinearLayout>
 

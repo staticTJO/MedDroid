@@ -24,8 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.08"
-        android:weightSum="1"
-        android:id="@+id/">
+        android:weightSum="1">
 
         <LinearLayout
             android:orientation="vertical"
