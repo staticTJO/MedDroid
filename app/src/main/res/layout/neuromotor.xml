@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Neuro Motor"
         android:id="@+id/textView8"
         android:layout_alignParentTop="true"
@@ -15,12 +15,12 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="67dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Motor"
                 android:id="@+id/textView9"
                 android:layout_row="1"
@@ -29,15 +29,15 @@
             <EditText
                 android:layout_width="76dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText5"
+                android:id="@+id/etMotor"
                 android:layout_row="1"
                 android:layout_column="1" />
 
             <TextView
-                android:layout_width="111dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="  Reaction"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Reaction "
                 android:id="@+id/textView10"
                 android:layout_row="1"
                 android:layout_column="2" />
@@ -45,45 +45,45 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="L"
                 android:id="@+id/textView11"
                 android:layout_row="1"
                 android:layout_column="3" />
 
             <EditText
-                android:layout_width="55dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText6"
+                android:id="@+id/etReactionL"
                 android:layout_row="1"
                 android:layout_column="4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="R"
                 android:id="@+id/textView12"
                 android:layout_row="1"
                 android:layout_column="5" />
 
             <EditText
-                android:layout_width="66dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText7"
+                android:id="@+id/etReactionR"
                 android:layout_row="1"
                 android:layout_column="6" />
         </GridLayout>
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="79dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Restraints:"
             android:id="@+id/textView13"
             android:layout_row="0"
@@ -92,7 +92,7 @@
         <EditText
             android:layout_width="104dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText8"
+            android:id="@+id/etRestraints"
             android:layout_row="0"
             android:layout_column="1" />
 

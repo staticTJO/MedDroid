@@ -62,7 +62,9 @@
         <TableRow>
             <TextView android:layout_span="1" />
 
-            <Button android:text="Edit Assessment" />
+            <Button android:text="Start Assessment"
+                android:id="@+id/btnStartAssess" />
+
             <Button android:text="Modify" />
         </TableRow>
 

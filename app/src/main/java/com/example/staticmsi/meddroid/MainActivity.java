@@ -36,10 +36,56 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.tag;
 import static android.R.attr.textAppearanceLarge;
 
 public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
+
+    // log function used to trace life cycle of Activity
+    // Click 6:Android
+    // Click Longcat tab
+    // Click Filter, Name your filter whatever you like then copy "MedDroidMessages"
+    // Paste into LongTag(Regex)
+    // Click ok, then select the Filter name you created
+    private static final String TAG = "MedDroidMessages";
+
+
+    List<Patient> patients;
+    Patient newPatientToBeAssesst = null;
+    PatientAssessment patientToBeAssesst = null;
+
+
+    class BtnStartAssessmentOnClick implements View.OnClickListener {
+
+        Patient p = null;
+        PatientAssessment pa = null;
+        MainActivity ma;
+
+        public BtnStartAssessmentOnClick(MainActivity ma, Patient p, PatientAssessment pa) {
+            this.ma = ma;
+            this.p = p;
+            this.pa = pa;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, NeuroActivity.class);
+
+            if (p != null)
+                intent.putExtra("p", p);
+
+            if (pa != null) {
+                intent.putExtra("paExist", true);
+                intent.putExtra("pa", pa);
+            } else {
+                intent.putExtra("paExist", false);
+            }
+
+            startActivity(intent);
+        }
+
+    }
 
     static class BtnViewPatientOnClick implements View.OnClickListener {
 
@@ -58,18 +104,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         }
 
     }
-
-
-    // log function used to trace life cycle of Activity
-    // Click 6:Android
-    // Click Longcat tab
-    // Click Filter, Name your filter whatever you like then copy "MedDroidMessages"
-    // Paste into LongTag(Regex)
-    // Click ok, then select the Filter name you created
-    private static final String TAG = "MedDroidMessages";
-
-
-    List<Patient> patients;
 
 
     @Override
@@ -122,6 +156,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         setupNotification();
 
         setBtnAddNewPatient();
+        setBtnStartAssessment();
+    }
+
+    private void setBtnStartAssessment() {
+        Button b = (Button) findViewById(R.id.btnStartAssess);
+        b.setOnClickListener(new BtnStartAssessmentOnClick(this, this.newPatientToBeAssesst, null));
     }
 
 
@@ -232,6 +272,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         for (Patient p : this.patients) {
             if (p.getFirstName().equals(firstName)) {
                 patient = p;
+                this.newPatientToBeAssesst = p;
                 break;
             }
         }
@@ -259,9 +300,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     }
 
     private void fillHomePatients() {
+        Log.i(TAG, "fillHomePatients");
+
         TableLayout tbl = (TableLayout) findViewById(R.id.home_table);
         TextView tvNoPatients = (TextView) findViewById(R.id.textViewNoPatient);
 
+        tbl.removeAllViews();
         List<PatientAssessment> patientAssessments = PatientAssessment.findAll();
 
         if (patientAssessments.isEmpty()) {
@@ -285,7 +329,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             tvIDR.setText(pa.getPatientFile().getHealthCardNumber());
             tvStatusR.setText(pa.getStatus());
 
-            b.setText("INFO");
+            b.setText("Start Assessment");
+            b.setOnClickListener(new BtnStartAssessmentOnClick(this, null, pa));
 
             trR.addView(tvIDR);
             trR.addView(tvStatusR);
@@ -399,6 +444,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         super.onResume();
         Log.i(TAG, "onResume");
 
+        fillHomePatients();
+        fillPatients();
+        fillPatientsSpanner();
+
         setupNotification();
     }
 
@@ -451,8 +500,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 //        Log.i("onActivityResult", String.valueOf(resultCode));
 
 
-
         if (resultCode != 0) {
+            fillHomePatients();
             fillPatients();
             fillPatientsSpanner();
             changeTapTo(resultCode);
