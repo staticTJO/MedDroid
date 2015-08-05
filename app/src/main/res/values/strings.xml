@@ -10,5 +10,7 @@
     <string name="Doctor_patient_Home_info">Info</string>
     <string name="title_activity_notification">Notification</string>
     <string name="title_activity_add_patient">AddPatientActivity</string>
+    <string name="title_activity_reports">ReportsActivity</string>
+    <string name="title_activity_view_report">ViewReportActivity</string>
 
 </resources>

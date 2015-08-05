@@ -56,6 +56,25 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     PatientAssessment patientToBeAssesst = null;
 
 
+
+    class BtnViewReportsOnClick implements View.OnClickListener {
+
+        Patient p = null;
+
+
+        public BtnViewReportsOnClick(Patient p) {
+            this.p = p;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, ReportsActivity.class);
+            intent.putExtra("p", p);
+            startActivity(intent);
+        }
+
+    }
+
     class BtnStartAssessmentOnClick implements View.OnClickListener {
 
         Patient p = null;
@@ -157,6 +176,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         setBtnAddNewPatient();
         setBtnStartAssessment();
+    }
+
+    private void setBtnViewReport() {
+        Button b = (Button) findViewById(R.id.btnViewReports);
+        b.setOnClickListener(new BtnViewReportsOnClick(this.newPatientToBeAssesst));
+
     }
 
     private void setBtnStartAssessment() {
@@ -268,6 +293,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         TextView patientId = (TextView) findViewById(R.id.textPatientId);
         TextView patientIL = (TextView) findViewById(R.id.textPatientInfoLeft);
         TextView patientIR = (TextView) findViewById(R.id.textPatientInfoRight);
+        Button b = (Button) findViewById(R.id.btnViewReports);
+
 
         for (Patient p : this.patients) {
             if (p.getFirstName().equals(firstName)) {
@@ -277,8 +304,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             }
         }
 
-        if (patient == null)
+        if (patient == null) {
+            b.setVisibility(View.INVISIBLE);
             return;
+        }
+
+        b.setVisibility(View.VISIBLE);
 
         patientId.setText("Patient# " + patient.getHealthCardNumber());
 
@@ -292,7 +323,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         patientIR.append("Phone: " + patient.getPhoneNumber() + '\n');
         patientIR.append("Address: " + patient.getAddress() + '\n');
 
-
+        setBtnViewReport();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
