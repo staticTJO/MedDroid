@@ -22,7 +22,7 @@ public class AddPatientActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient);
 
-        Button cancel = (Button) findViewById(R.id.btnCacnel);
+        Button cancel = (Button) findViewById(R.id.btnCancel);
         Button add = (Button) findViewById(R.id.btnAdd);
 
 

@@ -4,20 +4,6 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Respiratory"
-        android:id="@+id/textView28" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.03"></LinearLayout>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -33,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Oral Mucosa:"
-                android:id="@+id/textView29"
+                android:id="@+id/RespiratoryOralMucosa"
                 android:layout_row="0"
                 android:layout_column="0" />
 
@@ -41,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Intact"
-                android:id="@+id/checkBox4"
+                android:id="@+id/RespiratoryOralMucosaIntact"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:checked="false" />
@@ -50,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Other"
-                android:id="@+id/checkBox5"
+                android:id="@+id/RespiratoryOralMucosa"
                 android:layout_row="0"
                 android:layout_column="2"
                 android:checked="false" />

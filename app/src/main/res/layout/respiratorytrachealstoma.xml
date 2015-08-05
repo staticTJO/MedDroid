@@ -4,32 +4,19 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Respiratory"
-        android:id="@+id/textView32" />
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.02"></LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_weight="0.04">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Tracheal stoma:"
-            android:id="@+id/textView33" />
+            android:text="Tracheal Stoma"
+            android:id="@+id/RespiratoryTrachealStoma" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,28 +24,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.02"></LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_weight="0.14"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Describe:"
-            android:id="@+id/textView34" />
+            android:id="@+id/RespiratoryTrachealStomaDescribe"
+            android:layout_weight="0.00" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText5"
+            android:layout_weight="0.78" />
     </LinearLayout>
 
-    <EditText
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText16"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.02" />
+        android:layout_gravity="center_horizontal">
+
+    </LinearLayout>
+
 </LinearLayout>

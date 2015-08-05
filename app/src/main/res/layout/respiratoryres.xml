@@ -4,50 +4,55 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Respiratory"
-        android:id="@+id/textView37" />
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.04"></LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.14"
+        android:layout_weight="0.02"
         android:weightSum="1">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Respirations:"
-                android:id="@+id/textView38" />
+                android:id="@+id/RespiratoryRespirations" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="124dp"
+                android:layout_height="87dp"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.69"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
         </LinearLayout>
 
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="393dp"
+            android:layout_height="wrap_content">
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ventilated"
-                android:id="@+id/checkBox14"
+                android:text="Clear"
+                android:id="@+id/RespiratoryRespirationsClear"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:checked="false" />
@@ -55,8 +60,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="N.I.V"
-                android:id="@+id/checkBox15"
+                android:text="Decreased"
+                android:id="@+id/RespiratoryRespirationsDecreased"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:checked="false" />
@@ -64,8 +69,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Non-ventilated"
-                android:id="@+id/checkBox16"
+                android:text="Wheezes"
+                android:id="@+id/RespiratoryRespirationsWheezes"
                 android:layout_row="0"
                 android:layout_column="2"
                 android:checked="false" />
@@ -73,8 +78,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Easy/Regular"
-                android:id="@+id/checkBox17"
+                android:text="Fine Creps"
+                android:id="@+id/RespiratoryRespirationsFineCreps"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:checked="false" />
@@ -82,8 +87,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deep"
-                android:id="@+id/checkBox18"
+                android:text="Absent Breath"
+                android:id="@+id/RespiratoryRespirationsAbsentBreath"
                 android:layout_row="1"
                 android:layout_column="1"
                 android:checked="false" />
@@ -91,8 +96,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shallow"
-                android:id="@+id/checkBox19"
+                android:text="Bronchial"
+                android:id="@+id/RespiratoryRespirationsBronchial"
                 android:layout_row="1"
                 android:layout_column="2"
                 android:checked="false" />
@@ -100,8 +105,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Laboured"
-                android:id="@+id/checkBox20"
+                android:text="Inspiratory"
+                android:id="@+id/RespiratoryRespirationsInspiratory"
                 android:layout_row="2"
                 android:layout_column="0"
                 android:checked="false" />
@@ -109,20 +114,43 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Intercostal use"
-                android:id="@+id/checkBox21"
+                android:text="Expiratory"
+                android:id="@+id/RespiratoryRespirationsExpiratory"
                 android:layout_row="2"
                 android:layout_column="1"
                 android:checked="false" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Other*"
-                android:id="@+id/checkBox22"
-                android:layout_row="2"
-                android:layout_column="2"
-                android:checked="false" />
+
         </GridLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.03"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Other:"
+            android:id="@+id/RespiratoryRespirationsOther"
+            android:layout_weight="0.03" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.32">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText4"
+                android:layout_weight="21.08" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

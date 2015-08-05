@@ -4,102 +4,85 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Respiratory"
-        android:id="@+id/textView35" />
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.05"></LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07"
+        android:layout_width="414dp"
+        android:layout_height="45dp"
         android:weightSum="1">
+
+        <TextView
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cough:"
+            android:id="@+id/RespiratoryCough" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Simulated by suctioning"
+            android:id="@+id/RespiratoryCoughSimulatedBySuctioning"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:checked="false"
+            android:layout_weight="0.08" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spontaneous"
+            android:id="@+id/RespiratoryCoughSpontaneous"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:checked="false" />
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="109dp"
-            android:layout_height="74dp"
-            android:layout_weight="0.02">
+            android:layout_width="87dp"
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Cough:"
-                android:id="@+id/textView36" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="609dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content">
+
         </LinearLayout>
 
         <GridLayout
-            android:layout_width="417dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.78">
+            android:layout_width="371dp"
+            android:layout_height="wrap_content">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Spontaneous"
-                android:id="@+id/checkBox8"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stimulated by suctioning"
-                android:id="@+id/checkBox9"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Strong"
-                android:id="@+id/checkBox11"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Moderate"
-                android:id="@+id/checkBox12"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="121dp"
-                android:layout_height="wrap_content"
-                android:text="Weak"
-                android:id="@+id/checkBox10"
-                android:layout_row="1"
-                android:layout_column="2"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Absent"
-                android:id="@+id/checkBox13"
-                android:layout_row="1"
-                android:layout_column="3"
-                android:checked="false" />
 
         </GridLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="461dp"
+        android:layout_height="90dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Notes:"
+            android:id="@+id/RespiratoryCoughNotes"
+            android:layout_weight="0.14" />
+
+        <EditText
+            android:layout_width="257dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText3" />
+    </LinearLayout>
+
 </LinearLayout>

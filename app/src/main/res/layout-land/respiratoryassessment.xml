@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <include
+                android:layout_width="959dp"
+                android:layout_height="wrap_content"
+                layout="@layout/respiratoryairway"
+                 />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="113dp"
+        android:weightSum="1">
+
+        <include
+            android:layout_width="419dp"
+            android:layout_height="wrap_content"
+            layout="@layout/respiratorycough" />
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/respiratorylip" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.08"></LinearLayout>
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/respiratoryoralmucosa" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.07">
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/respiratorychestexp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.16"
+        android:weightSum="1">
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/respiratoryres" />
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="106dp"
+            layout="@layout/respiratorytrachealstoma"
+            android:layout_weight="0.74" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="106dp"
+            layout="@layout/respiratorytrechea"
+            android:layout_weight="0.75" />
+    </LinearLayout>
+
+</LinearLayout>

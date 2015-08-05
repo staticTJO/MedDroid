@@ -29,9 +29,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Airway:"
-                    android:id="@+id/textView20"
+                    android:id="@+id/RespiratoryAirway"
                     android:layout_row="1"
                     android:layout_column="0" />
 
@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Maintains Own"
-                    android:id="@+id/checkBox"
+                    android:id="@+id/RespiratoryAirwayMaintainsOwn"
                     android:layout_row="1"
                     android:layout_column="1"
                     android:checked="false" />
@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BiPAP/CPAP"
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/RespiratoryAirwayBIPAPCPAP"
                     android:layout_row="1"
                     android:layout_column="2"
                     android:checked="false" />
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ETT:"
-                android:id="@+id/checkBox3"
+                android:id="@+id/RespiratoryETT"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:checked="false" />
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="  Size"
-                android:id="@+id/textView22"
+                android:id="@+id/RespiratorySize"
                 android:layout_row="0"
                 android:layout_column="2" />
 
@@ -103,8 +103,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Length at teeth/gums"
-                android:id="@+id/textView23"
+                android:text="Length at teeth"
+                android:id="@+id/RespiratoryLengthAtTeeth"
                 android:layout_row="0"
                 android:layout_column="4" />
 
@@ -118,7 +118,7 @@
                 android:layout_column="5" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="53dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="cm"
@@ -130,10 +130,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="   Cuff Pressure"
-                android:id="@+id/textView25"
+                android:text="Length at gums"
+                android:id="@+id/RespiratoryLengthAtGums"
                 android:layout_row="0"
                 android:layout_column="7" />
+
+            <EditText
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:layout_row="0"
+                android:layout_column="8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="   Cuff Pressure"
+                android:id="@+id/RespiratoryCuffPressure"
+                android:layout_row="0"
+                android:layout_column="10" />
+
+            <TextView
+                android:layout_width="53dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="cm"
+                android:id="@+id/textView22"
+                android:layout_row="0"
+                android:layout_column="9" />
 
             <EditText
                 android:layout_width="63dp"
@@ -142,7 +169,7 @@
                 android:ems="10"
                 android:id="@+id/editText14"
                 android:layout_row="0"
-                android:layout_column="8" />
+                android:layout_column="11" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,7 +178,7 @@
                 android:text="cm/H2O"
                 android:id="@+id/textView26"
                 android:layout_row="0"
-                android:layout_column="9" />
+                android:layout_column="12" />
 
         </GridLayout>
     </LinearLayout>
@@ -168,14 +195,14 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.14"></LinearLayout>
+            android:layout_weight="0.08"></LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Respiratory Size"
-            android:id="@+id/textView27" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Tracheostomy Size"
+            android:id="@+id/RespiratoryTracheostomySize" />
 
         <EditText
             android:layout_width="82dp"
