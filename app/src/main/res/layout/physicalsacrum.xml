@@ -4,20 +4,6 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Physical"
-        android:id="@+id/textView91" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.02"></LinearLayout>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -36,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Sacrum:"
-                android:id="@+id/textView92" />
+                android:id="@+id/PhysicalSacrum" />
         </LinearLayout>
 
         <GridLayout
@@ -46,8 +32,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="intact"
-                android:id="@+id/checkBox83"
+                android:text="Intact"
+                android:id="@+id/PhysicalSacremIntact"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:checked="false" />
@@ -55,8 +41,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="marked"
-                android:id="@+id/checkBox84"
+                android:text="Marked"
+                android:id="@+id/PhysicalSacremMarked"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:checked="false" />
@@ -64,8 +50,8 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="broken"
-                android:id="@+id/checkBox85"
+                android:text="Broken"
+                android:id="@+id/PhysicalSacremBroken"
                 android:layout_row="0"
                 android:layout_column="2"
                 android:checked="false" />
