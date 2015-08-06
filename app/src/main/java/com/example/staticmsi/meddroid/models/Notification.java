@@ -1,8 +1,11 @@
 package com.example.staticmsi.meddroid.models;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -214,7 +217,6 @@ public class Notification extends AbstractJsonModel {
                 jsonObject.put("toDoctor", new JSONObject(toDoctor.toJson(true)));
 
 
-
             if (addVersion)
                 jsonObject.put("version", this.version);
 
@@ -236,11 +238,59 @@ public class Notification extends AbstractJsonModel {
     public static List<Notification> findAll() {
 
         List<AbstractJsonModel> abstractJsonModels = new Notification().superFindAll();
-        List<Notification> Notifications = new ArrayList<Notification>();
+        List<Notification> notifications = new ArrayList<Notification>();
 
         for (AbstractJsonModel jm : abstractJsonModels)
-            Notifications.add((Notification) jm);
+            notifications.add((Notification) jm);
 
-        return Notifications;
+        return notifications;
     }
+
+
+    public static List<Notification> findByToDoctorAndIsRead(Long id) {
+        List<AbstractJsonModel> abstractJsonModels =
+                new Notification().superFindCustom("?find=ByToDoctorAndIsRead&toDoctor=" + id);
+        List<Notification> notifications = new ArrayList<Notification>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            notifications.add((Notification) jm);
+
+        return notifications;
+    }
+
+
+    public static List<Notification> findByToNurseAndIsRead(Long id) {
+        List<AbstractJsonModel> abstractJsonModels =
+                new Notification().superFindCustom("?find=ByToNurseAndIsRead&toNurse=" + id);
+        List<Notification> notifications = new ArrayList<Notification>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            notifications.add((Notification) jm);
+
+        return notifications;
+    }
+
+    public static List<Notification> findByDateAndTimeBetweenAndToDoctor(Date startDate, Date endDate, Long id) {
+
+        String stDate = new SimpleDateFormat("MMMM+d,+yyyy").format(startDate);
+        String enDate = new SimpleDateFormat("MMMM+d,+yyyy").format(endDate);
+
+        Log.i("Json", stDate);
+        Log.i("Json", enDate);
+
+        String query = "?find=ByDateAndTimeBetweenAndToDoctor&" +
+                "minDateAndTime=" + stDate + '&' +
+                "maxDateAndTime=" + enDate + '&' +
+                "toDoctor=" + id;
+
+        List<AbstractJsonModel> abstractJsonModels =
+                new Notification().superFindCustom(query);
+        List<Notification> notifications = new ArrayList<Notification>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            notifications.add((Notification) jm);
+
+        return notifications;
+    }
+
 }

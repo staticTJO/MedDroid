@@ -34,6 +34,7 @@ import com.example.staticmsi.meddroid.models.PatientAssessment;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.R.attr.tag;
@@ -54,7 +55,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     List<Patient> patients;
     Patient newPatientToBeAssesst = null;
     PatientAssessment patientToBeAssesst = null;
-
+    private long NurseMockId = 1L;
 
 
     class BtnViewReportsOnClick implements View.OnClickListener {
@@ -241,7 +242,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     private void updateCountNotification() {
         TextView counter = (TextView) findViewById(R.id.counterNotification);
         int counts = 0;
-        List<Notification> notifications = Notification.findAll();
+
+        List<Notification> notifications =
+                Notification.findByDateAndTimeBetweenAndToDoctor(new Date(), new Date(), NurseMockId);
 
         // find toNurse or toDoctor
         // find unread yet

@@ -238,4 +238,29 @@ public class ReportEntry extends AbstractJsonModel {
 
         return reportEntrys;
     }
+
+
+    public static List<ReportEntry> findByReport(Long id) {
+        List<AbstractJsonModel> abstractJsonModels =
+                new ReportEntry().superFindCustom("?find=ByReport&report=" + id);
+        List<ReportEntry> reportEntries = new ArrayList<ReportEntry>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            reportEntries.add((ReportEntry) jm);
+
+        return reportEntries;
+    }
+
+
+    public static List<ReportEntry> findByNurse(Long id) {
+        List<AbstractJsonModel> abstractJsonModels =
+                new ReportEntry().superFindCustom("?find=ByNurse&nurse=" + id);
+        List<ReportEntry> reportEntries = new ArrayList<ReportEntry>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            reportEntries.add((ReportEntry) jm);
+
+        return reportEntries;
+    }
+
 }

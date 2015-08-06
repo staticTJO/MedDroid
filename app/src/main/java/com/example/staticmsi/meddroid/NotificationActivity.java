@@ -12,10 +12,13 @@ import android.widget.TextView;
 
 import com.example.staticmsi.meddroid.models.Notification;
 
+import java.util.Date;
 import java.util.List;
 
 
 public class NotificationActivity extends Activity {
+
+    private Long NurseMockId = 1L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,8 @@ public class NotificationActivity extends Activity {
     void setupNotification() {
         TextView counter = (TextView) findViewById(R.id.counterNotification);
         int counts = 0;
-        List<Notification> notifications = Notification.findAll();
+        List<Notification> notifications =
+                Notification.findByDateAndTimeBetweenAndToDoctor(new Date(), new Date(), NurseMockId);
 
         // find toNurse or toDoctor
         // find unread yet
@@ -51,7 +55,8 @@ public class NotificationActivity extends Activity {
 
     private void fillNotifications() {
         TableLayout t = (TableLayout) findViewById(R.id.tblNotifications);
-        List<Notification> notifications = Notification.findAll();
+        List<Notification> notifications =
+                Notification.findByDateAndTimeBetweenAndToDoctor(new Date(), new Date(), NurseMockId);
 
         for (Notification n : notifications) {
             TableRow tr = new TableRow(this);

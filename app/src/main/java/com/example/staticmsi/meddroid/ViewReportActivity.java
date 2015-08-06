@@ -33,47 +33,45 @@ public class ViewReportActivity extends AppCompatActivity {
 
     private void fillData() {
         prID = (Long) getIntent().getExtras().getSerializable("prID");
-        List<ReportEntry> res = ReportEntry.findAll();
+        List<ReportEntry> res = ReportEntry.findByReport(prID);
         TableLayout t = (TableLayout) findViewById(R.id.tblEntries);
 
         for (ReportEntry re : res) {
-            if (re.getReport().getId().compareTo(prID) == 0) {
-                TableRow tr = new TableRow(this);
-                TableRow trOther = new TableRow(this);
 
-                TextView tv_bodyTemperature = new TextView(this);
-                TextView tv_heartRate = new TextView(this);
-                TextView tv_respitory = new TextView(this);
-                TextView tv_bloodPressureSystolic = new TextView(this);
-                TextView tv_bloodPressureDiastolic = new TextView(this);
-                TextView tv_painLevel = new TextView(this);
-                TextView tv_other = new TextView(this);
+            TableRow tr = new TableRow(this);
+            TableRow trOther = new TableRow(this);
+
+            TextView tv_bodyTemperature = new TextView(this);
+            TextView tv_heartRate = new TextView(this);
+            TextView tv_respitory = new TextView(this);
+            TextView tv_bloodPressureSystolic = new TextView(this);
+            TextView tv_bloodPressureDiastolic = new TextView(this);
+            TextView tv_painLevel = new TextView(this);
+            TextView tv_other = new TextView(this);
 
 
-                tv_bodyTemperature.setText(String.valueOf(re.getBodyTemperature()));
-                tv_heartRate.setText(String.valueOf(re.getHeartRate()));
-                tv_respitory.setText(String.valueOf(re.getRespitory()));
-                tv_bloodPressureSystolic.setText(String.valueOf(re.getBloodPressureSystolic()));
-                tv_bloodPressureDiastolic.setText(String.valueOf(re.getBloodPressureDiastolic()));
-                tv_painLevel.setText(String.valueOf(re.getPainLevel()));
-                tv_other.setText(re.getOther());
+            tv_bodyTemperature.setText(String.valueOf(re.getBodyTemperature()));
+            tv_heartRate.setText(String.valueOf(re.getHeartRate()));
+            tv_respitory.setText(String.valueOf(re.getRespitory()));
+            tv_bloodPressureSystolic.setText(String.valueOf(re.getBloodPressureSystolic()));
+            tv_bloodPressureDiastolic.setText(String.valueOf(re.getBloodPressureDiastolic()));
+            tv_painLevel.setText(String.valueOf(re.getPainLevel()));
+            tv_other.setText(re.getOther());
 
-                tr.addView(tv_bodyTemperature);
-                tr.addView(tv_heartRate);
-                tr.addView(tv_respitory);
-                tr.addView(tv_bloodPressureSystolic);
-                tr.addView(tv_bloodPressureDiastolic);
-                tr.addView(tv_painLevel);
+            tr.addView(tv_bodyTemperature);
+            tr.addView(tv_heartRate);
+            tr.addView(tv_respitory);
+            tr.addView(tv_bloodPressureSystolic);
+            tr.addView(tv_bloodPressureDiastolic);
+            tr.addView(tv_painLevel);
 
-                trOther.addView(tv_other);
+            trOther.addView(tv_other);
 
-                t.addView(tr);
-                t.addView(trOther);
+            t.addView(tr);
+            t.addView(trOther);
 
-                reportEntries.add(re);
-            }
+            reportEntries.add(re);
         }
-
     }
 
     @Override
