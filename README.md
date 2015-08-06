@@ -1,2 +1,7 @@
 # MedDroid
-Layouts done. Need someone to go into the layouts and setup the ID etc.
+Respritory Activity Finished, Input data for Size, Lengths, cuff pressure etc must not be empty string.
+The Values when saved are not being saved for the patient. Further investigatation must be done.
+
+Next Step Is I need people to start creating the assment actvites for the other sections. Use RespActivity as an example.
+
+
