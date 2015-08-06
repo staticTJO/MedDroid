@@ -75,7 +75,7 @@ public class PatientReport extends AbstractJsonModel {
 
     @Override
     protected String getPath() {
-        return "/patientreports/";
+        return "/patientreports";
     }
 
 
@@ -156,6 +156,18 @@ public class PatientReport extends AbstractJsonModel {
     public static List<PatientReport> findAll() {
 
         List<AbstractJsonModel> abstractJsonModels = new PatientReport().superFindAll();
+        List<PatientReport> patientReports = new ArrayList<PatientReport>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            patientReports.add((PatientReport) jm);
+
+        return patientReports;
+    }
+
+
+    public static List<PatientReport> findByPatientFile(Long id) {
+        List<AbstractJsonModel> abstractJsonModels =
+                new PatientReport().superFindCustom("?find=ByPatientFile&patientFile=" + id);
         List<PatientReport> patientReports = new ArrayList<PatientReport>();
 
         for (AbstractJsonModel jm : abstractJsonModels)

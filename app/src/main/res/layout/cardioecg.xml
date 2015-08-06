@@ -21,7 +21,7 @@
         <GridLayout
             android:layout_width="786dp"
             android:layout_height="193dp"
-            android:id="@+id/"
+            android:id="@+id/ffff"
             android:layout_weight="0.45">
 
             <TextView

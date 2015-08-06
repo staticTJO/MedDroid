@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             layout="@layout/cardioodema"
-            android:id="@+id/"
+            android:id="@+id/ffff"
             android:layout_weight="0.08" />
     </LinearLayout>
 

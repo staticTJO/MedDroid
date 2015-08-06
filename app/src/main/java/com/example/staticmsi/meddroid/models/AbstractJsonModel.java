@@ -1,5 +1,7 @@
 package com.example.staticmsi.meddroid.models;
 
+import android.util.Log;
+
 import com.example.staticmsi.meddroid.JsonHelper;
 
 import org.json.JSONArray;
@@ -27,7 +29,7 @@ public abstract class AbstractJsonModel {
     }
 
     public AbstractJsonModel superFindById(Long id) {
-        String jsonResponse = JsonHelper.GET(getPath() + id);
+        String jsonResponse = JsonHelper.GET(getPath() + '/' + id);
 
         try {
             return fromJson(new JSONObject(jsonResponse));
@@ -66,7 +68,7 @@ public abstract class AbstractJsonModel {
      update / edit
      */
     public void update() {
-        String jsonResponse = JsonHelper.PUT(getPath() + getModelId(), toJson(true));
+        String jsonResponse = JsonHelper.PUT(getPath() + '/' + getModelId(), toJson(true));
     }
 
 
@@ -80,10 +82,42 @@ public abstract class AbstractJsonModel {
     /*
     delete a record from database
      */
-    public void delete()
-    {
-        String jsonResponse = JsonHelper.DELETE(getPath() + getModelId());
+    public void delete() {
+        String jsonResponse = JsonHelper.DELETE(getPath() + '/' + getModelId());
     }
 
+
+    /*
+    this function to allow children to eat ice cream. jk to allow them to call custom finder calls
+    TODO: I put todo here just to get your attention to change the above comment
+     */
+    public List<AbstractJsonModel> superFindCustom(String query) {
+
+        Log.i("Json", getPath()+ query);
+
+        String jsonResponse = JsonHelper.GET(getPath() + query);
+
+        Log.i("Json", jsonResponse);
+
+
+        List<AbstractJsonModel> jmList = new ArrayList<AbstractJsonModel>();
+
+
+        try {
+            JSONArray jsonArray = new JSONArray(jsonResponse);
+
+
+            for (int i = 0; i < jsonArray.length(); i++)
+                jmList.add(fromJson(jsonArray.getJSONObject(i)));
+
+
+            return jmList;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 }

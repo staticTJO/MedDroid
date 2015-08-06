@@ -59,17 +59,17 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     class BtnViewReportsOnClick implements View.OnClickListener {
 
-        Patient p = null;
+        Long pId = null;
 
 
-        public BtnViewReportsOnClick(Patient p) {
-            this.p = p;
+        public BtnViewReportsOnClick(Long pId) {
+            this.pId = pId;
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, ReportsActivity.class);
-            intent.putExtra("p", p);
+            intent.putExtra("pId", pId);
             startActivity(intent);
         }
 
@@ -77,26 +77,26 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     class BtnStartAssessmentOnClick implements View.OnClickListener {
 
-        Patient p = null;
-        PatientAssessment pa = null;
+        Long pId = null;
+        Long paId = null;
         MainActivity ma;
 
-        public BtnStartAssessmentOnClick(MainActivity ma, Patient p, PatientAssessment pa) {
+        public BtnStartAssessmentOnClick(MainActivity ma, Long pId, Long paId) {
             this.ma = ma;
-            this.p = p;
-            this.pa = pa;
+            this.pId = pId;
+            this.paId = paId;
         }
 
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, NeuroActivity.class);
 
-            if (p != null)
-                intent.putExtra("p", p);
+            if (pId != null)
+                intent.putExtra("pId", pId);
 
-            if (pa != null) {
+            if (paId != null) {
                 intent.putExtra("paExist", true);
-                intent.putExtra("pa", pa);
+                intent.putExtra("paId", paId);
             } else {
                 intent.putExtra("paExist", false);
             }
@@ -180,13 +180,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     private void setBtnViewReport() {
         Button b = (Button) findViewById(R.id.btnViewReports);
-        b.setOnClickListener(new BtnViewReportsOnClick(this.newPatientToBeAssesst));
+        b.setOnClickListener(new BtnViewReportsOnClick(this.newPatientToBeAssesst.getId()));
 
     }
 
     private void setBtnStartAssessment() {
         Button b = (Button) findViewById(R.id.btnStartAssess);
-        b.setOnClickListener(new BtnStartAssessmentOnClick(this, this.newPatientToBeAssesst, null));
+
+        if (this.newPatientToBeAssesst != null)
+            b.setOnClickListener(new BtnStartAssessmentOnClick(this, this.newPatientToBeAssesst.getId(), null));
     }
 
 
@@ -361,7 +363,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             tvStatusR.setText(pa.getStatus());
 
             b.setText("Start Assessment");
-            b.setOnClickListener(new BtnStartAssessmentOnClick(this, null, pa));
+            b.setOnClickListener(new BtnStartAssessmentOnClick(this, null, pa.getId()));
 
             trR.addView(tvIDR);
             trR.addView(tvStatusR);

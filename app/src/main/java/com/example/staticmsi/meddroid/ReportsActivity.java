@@ -21,16 +21,15 @@ import java.util.List;
 public class ReportsActivity extends AppCompatActivity {
 
     String TAG = "ReportsActivity";
-    Patient p = null;
+    Long pId = null;
     List<PatientReport> patientReports = new ArrayList<PatientReport>();
-
 
 
     class BtnViewOnClick implements View.OnClickListener {
 
         Long prID = null;
 
-        public BtnViewOnClick(Long prID ) {
+        public BtnViewOnClick(Long prID) {
             this.prID = prID;
         }
 
@@ -52,8 +51,8 @@ public class ReportsActivity extends AppCompatActivity {
     }
 
     private void fillData() {
-        p = (Patient) getIntent().getExtras().getSerializable("p");
-        List<PatientReport> prs = PatientReport.findAll();
+        pId = getIntent().getExtras().getLong("pId");
+        List<PatientReport> prs = PatientReport.findByPatientFile(pId);
         TableLayout t = (TableLayout) findViewById(R.id.tblReports);
 
         t.removeAllViews();
@@ -64,23 +63,23 @@ public class ReportsActivity extends AppCompatActivity {
 
 //            Log.i(TAG, pr.toJson());
 
-            if (pr.getPatientFile().getId().compareTo(p.getId()) == 0) {
-                TableRow tr = new TableRow(this);
-                TextView tvReportName = new TextView(this);
-                Button btnView = new Button(this);
 
-                tvReportName.setText(pr.getReportName());
-                btnView.setText("VIEW");
-                btnView.setOnClickListener(new BtnViewOnClick(pr.getId()));
+            TableRow tr = new TableRow(this);
+            TextView tvReportName = new TextView(this);
+            Button btnView = new Button(this);
 
-                patientReports.add(pr);
+            tvReportName.setText(pr.getReportName());
+            btnView.setText("VIEW");
+            btnView.setOnClickListener(new BtnViewOnClick(pr.getId()));
 
-                tr.addView(tvReportName);
-                tr.addView(btnView);
+            patientReports.add(pr);
 
-                t.addView(tr);
+            tr.addView(tvReportName);
+            tr.addView(btnView);
+
+            t.addView(tr);
 //                Log.i(TAG, pr.toJson());
-            }
+
         }
 
 

@@ -29,10 +29,12 @@ import java.io.UnsupportedEncodingException;
 public class JsonHelper {
 
 
-//    private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
-    private static String domain = "http://69.11.16.153/mypatients";
+    private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
+//    private static String domain = "http://69.11.16.153/mypatients";
 
     public static String GET(String path) {
+
+
         Requesting rq = new Requesting();
         rq.execute("get", domain + path);
 
@@ -201,9 +203,16 @@ public class JsonHelper {
 
                 // create HttpClient
                 HttpClient httpclient = new DefaultHttpClient();
+                HttpGet get = new HttpGet(url);
+
+                get.addHeader("Accept", "application/json");
+                get.addHeader("Content-type", "application/json");
 
                 // make GET request to the given URL
-                HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
+                HttpResponse httpResponse = httpclient.execute(get);
+
+
+                Log.i("Json2", url);
 
                 // receive response as inputStream
                 inputStream = httpResponse.getEntity().getContent();

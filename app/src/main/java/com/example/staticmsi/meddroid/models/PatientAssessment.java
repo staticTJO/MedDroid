@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by hamadalmarri on 2015-07-26.
  */
-public class PatientAssessment extends AbstractJsonModel implements Serializable {
+public class PatientAssessment extends AbstractJsonModel {
 
     private Long id = null;
 
