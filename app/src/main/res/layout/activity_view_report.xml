@@ -7,11 +7,27 @@
     tools:context="com.example.staticmsi.meddroid.ViewReportActivity">
 
 
-    <TableLayout
-        android:id="@+id/tblEntries"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"></TableLayout>
+        android:weightSum="1">
+
+        <TableLayout
+            android:id="@+id/tblEntries"
+            android:layout_width="match_parent"
+            android:layout_height="392dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="0.81"></TableLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Entry"
+            android:id="@+id/btnAddEntry" />
+    </LinearLayout>
+
+
 </RelativeLayout>

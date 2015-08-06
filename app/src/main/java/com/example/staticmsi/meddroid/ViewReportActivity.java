@@ -1,9 +1,12 @@
 package com.example.staticmsi.meddroid;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -23,16 +26,38 @@ public class ViewReportActivity extends AppCompatActivity {
     List<ReportEntry> reportEntries = new ArrayList<ReportEntry>();
 
 
+    class BtnAddEntryOnClick implements View.OnClickListener {
+
+        Long prID = null;
+
+        public BtnAddEntryOnClick(Long prID) {
+            this.prID = prID;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(ViewReportActivity.this, NewEntryActivity.class);
+            intent.putExtra("prID", prID);
+            startActivity(intent);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_report);
 
         fillData();
+        setupBtnAddEntry();
+    }
+
+    private void setupBtnAddEntry() {
+        Button b = (Button) findViewById(R.id.btnAddEntry);
+        b.setOnClickListener(new BtnAddEntryOnClick(this.prID));
     }
 
     private void fillData() {
-        prID = (Long) getIntent().getExtras().getSerializable("prID");
+        prID = getIntent().getExtras().getLong("prID");
         List<ReportEntry> res = ReportEntry.findByReport(prID);
         TableLayout t = (TableLayout) findViewById(R.id.tblEntries);
 
