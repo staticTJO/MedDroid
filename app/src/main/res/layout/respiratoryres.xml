@@ -136,7 +136,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Other:"
-            android:id="@+id/RespiratoryRespirationsOther"
             android:layout_weight="0.03" />
 
         <LinearLayout
@@ -148,7 +147,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText4"
+                android:id="@+id/RespiratoryRespirationsOther"
                 android:layout_weight="21.08" />
         </LinearLayout>
     </LinearLayout>

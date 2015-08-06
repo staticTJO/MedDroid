@@ -19,7 +19,6 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Oral Mucosa:"
-                android:id="@+id/RespiratoryOralMucosa"
                 android:layout_row="0"
                 android:layout_column="0" />
 
@@ -36,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Other"
-                android:id="@+id/RespiratoryOralMucosa"
+                android:id="@+id/RespiratoryOralMucosaOther"
                 android:layout_row="0"
                 android:layout_column="2"
                 android:checked="false" />

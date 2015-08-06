@@ -76,13 +76,12 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Notes:"
-            android:id="@+id/RespiratoryCoughNotes"
             android:layout_weight="0.14" />
 
         <EditText
             android:layout_width="257dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3" />
+            android:id="@+id/RespiratoryCoughNotes" />
     </LinearLayout>
 
 </LinearLayout>

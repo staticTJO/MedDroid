@@ -20,8 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Chest Expansions:"
-                android:id="@+id/RespiratoryChestExpansion" />
+                android:text="Chest Expansions:" />
         </LinearLayout>
 
         <GridLayout
@@ -32,7 +31,7 @@
             <EditText
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText2"
+                android:id="@+id/RespiratoryChestExpansion"
                 android:layout_row="0"
                 android:layout_column="0" />
         </GridLayout>

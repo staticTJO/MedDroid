@@ -88,14 +88,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="  Size"
-                android:id="@+id/RespiratorySize"
                 android:layout_row="0"
                 android:layout_column="2" />
 
             <EditText
                 android:layout_width="59dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText12"
+                android:inputType="numberDecimal"
+                android:id="@+id/RespiratorySize"
                 android:layout_row="0"
                 android:layout_column="3" />
 
@@ -104,7 +104,6 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Length at teeth"
-                android:id="@+id/RespiratoryLengthAtTeeth"
                 android:layout_row="0"
                 android:layout_column="4" />
 
@@ -113,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:id="@+id/editText13"
+                android:id="@+id/RespiratoryLengthAtTeeth"
                 android:layout_row="0"
                 android:layout_column="5" />
 
@@ -131,7 +130,6 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Length at gums"
-                android:id="@+id/RespiratoryLengthAtGums"
                 android:layout_row="0"
                 android:layout_column="7" />
 
@@ -140,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/RespiratoryLengthAtGums"
                 android:layout_row="0"
                 android:layout_column="8" />
 
@@ -149,7 +147,6 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="   Cuff Pressure"
-                android:id="@+id/RespiratoryCuffPressure"
                 android:layout_row="0"
                 android:layout_column="10" />
 
@@ -167,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:id="@+id/editText14"
+                android:id="@+id/RespiratoryCuffPressure"
                 android:layout_row="0"
                 android:layout_column="11" />
 
@@ -201,15 +198,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Tracheostomy Size"
-            android:id="@+id/RespiratoryTracheostomySize" />
+            android:text="Tracheostomy Size"/>
 
         <EditText
             android:layout_width="82dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/editText15"
+            android:id="@+id/RespiratoryTracheostomySize"
             android:layout_weight="0.03" />
 
     </LinearLayout>
