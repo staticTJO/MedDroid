@@ -1,155 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Cardio ECG" />
+        android:text="Cardio ECG"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <GridLayout
+            android:id="@+id/ffff"
             android:layout_width="786dp"
             android:layout_height="193dp"
-            android:id="@+id/ffff"
             android:layout_weight="0.45">
 
             <TextView
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="0"
+                android:layout_row="0"
                 android:text="Lead:"
-                android:layout_row="0"
-                android:layout_column="0" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="0"
+                android:layout_row="1"
                 android:text="Rate:"
-                android:layout_row="1"
-                android:layout_column="0" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/CardioECGRate"
-                android:layout_row="1"
-                android:layout_column="1" />
+                android:layout_width="257dp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="3"
+                android:layout_row="1"
                 android:text="ST:"
-                android:layout_row="1"
-                android:layout_column="3" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/CardioECGST"
-                android:layout_row="1"
-                android:layout_column="4" />
+                android:layout_width="257dp"
+                android:layout_height="wrap_content"
+                android:layout_column="4"
+                android:layout_row="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="0"
+                android:layout_row="2"
                 android:text="PR:"
-                android:layout_row="2"
-                android:layout_column="0" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/CardioECGPR"
-                android:layout_row="2"
-                android:layout_column="1" />
+                android:layout_width="257dp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="3"
+                android:layout_row="2"
                 android:text="Wave:"
-                android:layout_row="2"
-                android:layout_column="3" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
+                android:id="@+id/CardioECGWave"
                 android:layout_width="257dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/CardioECGWave"
-                android:layout_row="2"
-                android:layout_column="4" />
+                android:layout_column="4"
+                android:layout_row="2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="0"
+                android:layout_row="3"
                 android:text="QRS:"
-                android:layout_row="3"
-                android:layout_column="0" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/CardioECGQRS"
-                android:layout_row="3"
-                android:layout_column="1" />
-
-            <EditText
                 android:layout_width="257dp"
                 android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="3" />
+
+            <EditText
                 android:id="@+id/CardioECGLead"
-                android:layout_row="0"
-                android:layout_column="1" />
+                android:layout_width="257dp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="0" />
 
             <TextView
+                android:id="@+id/textView20"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView20"
-                android:layout_row="0"
-                android:layout_column="2" />
+                android:layout_column="2"
+                android:layout_row="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="QT:"
+                android:layout_column="3"
                 android:layout_row="0"
-                android:layout_column="3" />
+                android:text="QT:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
+                android:id="@+id/CardioECGQT"
                 android:layout_width="257dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/CardioECGQT"
-                android:layout_row="0"
-                android:layout_column="4" />
+                android:layout_column="4"
+                android:layout_row="0" />
 
             <TextView
+                android:id="@+id/CardioEcgInterpretation"
                 android:layout_width="137dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Interpretation:"
-                android:id="@+id/CardioECGInterpretation"
+                android:layout_column="3"
                 android:layout_row="3"
-                android:layout_column="3" />
+                android:text="Interpretation:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
+                android:id="@+id/CardioECGInterpretation"
                 android:layout_width="257dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText17"
-                android:layout_row="3"
-                android:layout_column="4" />
+                android:layout_column="4"
+                android:layout_row="3" />
 
         </GridLayout>
     </LinearLayout>
