@@ -224,8 +224,12 @@ public class ReportEntry extends AbstractJsonModel {
             if (nurse != null)
                 jsonObject.put("nurse", new JSONObject(nurse.toJson(true)));
 
-            if (notification != null)
-                jsonObject.put("notification", new JSONObject(notification.toJson(false)));
+            if (notification != null) {
+                if (addVersion)
+                    jsonObject.put("notification", new JSONObject(notification.toJson(true)));
+                else
+                    jsonObject.put("notification", new JSONObject(notification.toJson(false)));
+            }
 
 
             if (addVersion)
