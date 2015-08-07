@@ -25,6 +25,7 @@ public class Notification extends AbstractJsonModel {
     private Nurse toNurse;
     private Doctor toDoctor;
     private boolean isRead;
+//    private ReportEntry entry;
     private Long version = 0L;
 
 
@@ -99,6 +100,14 @@ public class Notification extends AbstractJsonModel {
     public void setIsRead(boolean isRead) {
         this.isRead = isRead;
     }
+
+//    public ReportEntry getEntry() {
+//        return entry;
+//    }
+//
+//    public void setEntry(ReportEntry entry) {
+//        this.entry = entry;
+//    }
 
     @Override
     public String toString() {

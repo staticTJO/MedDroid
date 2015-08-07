@@ -21,7 +21,7 @@ public class GastroActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gastro_assesment);
+        setContentView(R.layout.gastro_assessment);
 
         p = (Patient) getIntent().getExtras().getSerializable("p");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");

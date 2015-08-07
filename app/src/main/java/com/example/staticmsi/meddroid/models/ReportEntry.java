@@ -1,5 +1,7 @@
 package com.example.staticmsi.meddroid.models;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,6 +23,7 @@ public class ReportEntry extends AbstractJsonModel {
     private Nurse nurse;
     private int painLevel;
     private String other;
+    private Notification notification;
     private Long version = 0L;
 
     public Long getId() {
@@ -104,6 +107,14 @@ public class ReportEntry extends AbstractJsonModel {
     }
 
 
+    public Notification getNotification() {
+        return notification;
+    }
+
+    public void setNotification(Notification notification) {
+        this.notification = notification;
+    }
+
     @Override
     public String toString() {
         String idTemp;
@@ -125,6 +136,7 @@ public class ReportEntry extends AbstractJsonModel {
                 ", nurse=" + nurse +
                 ", painLevel=" + painLevel +
                 ", other='" + other + '\'' +
+                ", notification='" + notification.toString() + "'" +
                 ", version=" + version +
                 '}';
     }
@@ -171,6 +183,9 @@ public class ReportEntry extends AbstractJsonModel {
             if (jsonObject.has("nurse"))
                 re.nurse = Nurse.fromJson(jsonObject.getString("nurse"));
 
+            if (jsonObject.has("notification") && !jsonObject.isNull("notification"))
+                re.notification = Notification.fromJson(jsonObject.getString("notification"));
+
             re.painLevel = jsonObject.getInt("painLevel");
             re.other = jsonObject.getString("other");
 
@@ -209,9 +224,15 @@ public class ReportEntry extends AbstractJsonModel {
             if (nurse != null)
                 jsonObject.put("nurse", new JSONObject(nurse.toJson(true)));
 
+            if (notification != null)
+                jsonObject.put("notification", new JSONObject(notification.toJson(false)));
+
 
             if (addVersion)
                 jsonObject.put("version", this.version);
+
+
+            Log.i("RE", jsonObject.toString());
 
             return jsonObject.toString();
 
