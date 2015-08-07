@@ -25,11 +25,16 @@ public class NeuroActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.neuro_assesment);
 
-        p = (Patient) getIntent().getExtras().getSerializable("p");
+
+
+
+        Long pID = getIntent().getExtras().getLong("pID");
+        this.p = (Patient.findById(pID));
+        Long paID = getIntent().getExtras().getLong("paID");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
         if (paExist) {
-            this.pa = (PatientAssessment) getIntent().getExtras().getSerializable("pa");
+            this.pa = (PatientAssessment.findById(paID));
         }
 
         start();
@@ -54,7 +59,7 @@ public class NeuroActivity extends Activity {
         EditText etPuplisR = (EditText) findViewById(R.id.etPuplisR);
         EditText etGagRef = (EditText) findViewById(R.id.etGagRef);
 
-//        EditText etMotor = (EditText) findViewById(R.id.etMotor);
+  //      EditText etMotor = (EditText) findViewById(R.id.etMotor);
         EditText etReactionL = (EditText) findViewById(R.id.etReactionL);
         EditText etReactionR = (EditText) findViewById(R.id.etReactionR);
         EditText etRestraints = (EditText) findViewById(R.id.etRestraints);
