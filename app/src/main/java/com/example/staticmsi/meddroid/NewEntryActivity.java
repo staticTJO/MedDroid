@@ -4,6 +4,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class NewEntryActivity extends ActionBarActivity {
@@ -16,6 +24,52 @@ public class NewEntryActivity extends ActionBarActivity {
         setContentView(R.layout.activity_new_entry);
 
         setPrId();
+        setupCbNotification();
+        setupBtnAdd();
+    }
+
+    private void setupCbNotification() {
+        CheckBox cbNotification = (CheckBox) findViewById(R.id.cbNotification);
+
+        cbNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                RadioButton rbNormal = (RadioButton) findViewById(R.id.rbNormal);
+                RadioButton rbUrgent = (RadioButton) findViewById(R.id.rbUrgent);
+
+                if (isChecked) {
+                    rbNormal.setEnabled(true);
+                    rbUrgent.setEnabled(true);
+                } else {
+                    rbNormal.setEnabled(false);
+                    rbUrgent.setEnabled(false);
+                }
+             }
+        });
+    }
+
+    private void setupBtnAdd() {
+        Button b = (Button) findViewById(R.id.btnAddTheNewReportEntry);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText etBodyTemp = (EditText) findViewById(R.id.etBodyTemp);
+                EditText etHeartRate = (EditText) findViewById(R.id.etHeartRate);
+                EditText etRes = (EditText) findViewById(R.id.etRes);
+                EditText etBPS = (EditText) findViewById(R.id.etBPS);
+                EditText etBPD = (EditText) findViewById(R.id.etBPD);
+                EditText etPainLevel = (EditText) findViewById(R.id.etPainLevel);
+                EditText etOther = (EditText) findViewById(R.id.etOther);
+                CheckBox cbNotification = (CheckBox) findViewById(R.id.cbNotification);
+                RadioButton rbNormal = (RadioButton) findViewById(R.id.rbNormal);
+                RadioButton rbUrgent = (RadioButton) findViewById(R.id.rbUrgent);
+
+
+                Toast t = Toast.makeText(NewEntryActivity.this, "new entry is added", Toast.LENGTH_LONG);
+                t.show();
+            }
+        });
     }
 
     private void setPrId() {
