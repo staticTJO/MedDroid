@@ -85,6 +85,8 @@ public class NewEntryActivity extends ActionBarActivity {
 
             Toast t = Toast.makeText(NewEntryActivity.this, "new entry is added", Toast.LENGTH_LONG);
             t.show();
+
+            finish();
         }
     }
 
