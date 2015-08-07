@@ -116,7 +116,6 @@ public class RespActivity extends Activity {
 
 
 
-
     }
 
     private void setEventListeners() {
