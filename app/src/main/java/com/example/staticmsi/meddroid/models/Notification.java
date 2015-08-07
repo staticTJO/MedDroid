@@ -283,6 +283,8 @@ public class Notification extends AbstractJsonModel {
                 "maxDateAndTime=" + enDate + '&' +
                 "toDoctor=" + id;
 
+//        Log.i("Json", query);
+
         List<AbstractJsonModel> abstractJsonModels =
                 new Notification().superFindCustom(query);
         List<Notification> notifications = new ArrayList<Notification>();
