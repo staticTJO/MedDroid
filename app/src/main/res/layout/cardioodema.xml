@@ -1,97 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="103dp"
-            android:layout_height="53dp">
+            android:layout_height="53dp"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/CardioOedema"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Oedema:"
-                android:id="@+id/CardioOedema"
+                android:layout_column="0"
                 android:layout_row="0"
-                android:layout_column="0" />
+                android:text="Oedema:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.02">
+            android:layout_weight="0.02"
+            android:orientation="vertical">
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
+            android:orientation="horizontal"
             android:weightSum="1">
 
             <CheckBox
+                android:id="@+id/CardioOedemaGeneralized"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Generalized"
-                android:id="@+id/CardioOedemaGeneralized"
-                android:checked="false" />
+                android:checked="false"
+                android:text="Generalized" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.41"></LinearLayout>
+                android:layout_weight="0.41"
+                android:orientation="vertical"></LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"></LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.13"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <TextView
+            android:id="@+id/CardioOedemaLocalizedto"
             android:layout_width="wrap_content"
             android:layout_height="41dp"
-            android:textAppearance="?android:attr/textAppearance"
+            android:layout_weight="0.02"
             android:text="Localized To:"
-            android:id="@+id/CardioOedemaLocalizedTo"
-            android:layout_weight="0.02" />
+            android:textAppearance="?android:attr/textAppearance" />
 
         <EditText
+            android:id="@+id/CardioOedemaLocalizedTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
+            android:layout_weight="0.02"
             android:ems="10"
-            android:id="@+id/editText18"
-            android:layout_weight="0.02" />
+            android:inputType="textMultiLine" />
     </LinearLayout>
 
 </LinearLayout>
