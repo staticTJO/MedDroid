@@ -64,8 +64,7 @@ public class GastroActivity extends Activity{
             public void onClick(View v) {
 
 
-
-                Intent intent = new Intent(GastroActivity.this, NeuroActivity.class);
+                Intent intent = new Intent(GastroActivity.this, GenitoryActivity.class);
                 startActivity(intent);
             }
         });
