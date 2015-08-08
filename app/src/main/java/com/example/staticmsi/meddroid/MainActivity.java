@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -56,7 +57,19 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     Patient newPatientToBeAssesst = null;
     PatientAssessment patientToBeAssesst = null;
     private long NurseMockId = 2L;
+    Handler handler = new Handler();
 
+
+
+    class TimerForUpdate implements Runnable {
+
+
+        @Override
+        public void run() {
+            refresh();
+            handler.postDelayed(this, 10000);
+        }
+    };
 
     class BtnViewReportsOnClick implements View.OnClickListener {
 
@@ -177,6 +190,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         setBtnAddNewPatient();
         setBtnStartAssessment();
+
+        setupTimerForRefresh();
+    }
+
+    private void setupTimerForRefresh() {
+        TimerForUpdate timerForUpdate = new TimerForUpdate();
+        handler.postDelayed(timerForUpdate, 10000);
     }
 
     private void setBtnViewReport() {
@@ -432,6 +452,17 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         fillPatientsSpanner();
 
         setupNotification();
+    }
+
+
+    public void refresh() {
+        fillHomePatients();
+        fillPatients();
+        fillPatientsSpanner();
+
+        setupNotification();
+
+        Log.i("TIMER", "TIMER");
     }
 
 
