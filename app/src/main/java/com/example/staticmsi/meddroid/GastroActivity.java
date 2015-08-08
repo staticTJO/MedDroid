@@ -47,11 +47,11 @@ public class GastroActivity extends Activity{
 
     }
     private void setEventListeners() {
-        Button btnToResp = (Button) findViewById(R.id.btnToResp);
-        Button btnCancel = (Button) findViewById(R.id.btnCancel);
-        Button btnSaveExit = (Button) findViewById(R.id.btnSaveExit);
+        Button btnToGeni = (Button) findViewById(R.id.btnToGeni);
+        Button btnCancelGastro = (Button) findViewById(R.id.btnCancelGastro);
+        Button btnSaveExitGastro = (Button) findViewById(R.id.btnSaveExitGastro);
 
-        btnSaveExit.setOnClickListener(new View.OnClickListener() {
+        btnSaveExitGastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -59,7 +59,7 @@ public class GastroActivity extends Activity{
         });
 
 
-        btnToResp.setOnClickListener(new View.OnClickListener() {
+        btnToGeni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -69,7 +69,7 @@ public class GastroActivity extends Activity{
             }
         });
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnCancelGastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
