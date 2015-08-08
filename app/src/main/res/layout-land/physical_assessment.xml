@@ -45,7 +45,8 @@
         <include
             layout="@layout/physicalskin"
             android:layout_width="640dp"
-            android:layout_height="96dp" />
+            android:layout_height="96dp"
+            android:id="@+id/" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -75,10 +76,15 @@
             android:layout_weight="0.03"></LinearLayout>
 
         <include
-            android:layout_width="wrap_content"
+            android:layout_width="273dp"
             android:layout_height="match_parent"
-            layout="@layout/physicalheels"
-            android:layout_weight="0.24" />
+            layout="@layout/physicalheels" />
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/phyiscalelbow"
+            android:layout_weight="0.03" />
     </LinearLayout>
 
 </LinearLayout>

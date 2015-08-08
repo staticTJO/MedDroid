@@ -38,8 +38,9 @@ public class RespActivity extends Activity {
         if (paExist) {
             this.pa = (PatientAssessment.findById(paID));
         }
+
         start();
-//
+
         setEventListeners();
     }
 
@@ -66,9 +67,13 @@ public class RespActivity extends Activity {
         EditText RespiratoryTracheostomySize = (EditText) findViewById(R.id.RespiratoryTracheostomySize);
         EditText RespiratoryChestExpansion = (EditText) findViewById(R.id.RespiratoryChestExpansion);
 
+
+
         CheckBox RespiratoryCoughSimulatedBySuctioning =(CheckBox) findViewById(R.id.RespiratoryCoughSimulatedBySuctioning);
         CheckBox RespiratoryCoughSpontaneous = (CheckBox) findViewById(R.id.RespiratoryCoughSpontaneous);
         EditText RespiratoryCoughNotes = (EditText) findViewById(R.id.RespiratoryCoughNotes);
+
+
 
         CheckBox RespiratoryLipConditionIntact = (CheckBox) findViewById(R.id.RespiratoryLipConditionIntact);
         CheckBox RespiratoryLipConditionOther = (CheckBox) findViewById(R.id. RespiratoryLipConditionOther);
@@ -96,9 +101,11 @@ public class RespActivity extends Activity {
         RespiratoryCuffPressure.setText(Float.toString(pa.getRespiratory_CuffPressure()));
         RespiratoryTracheostomySize.setText(Float.toString(pa.getRespiratory_TracheostomySize()));
         RespiratoryChestExpansion.setText(pa.getRespiratory_ChestExpansion());
+
         RespiratoryCoughSimulatedBySuctioning.setChecked(pa.isRespiratory_Cough_SimulatedBySuctioning());
         RespiratoryCoughSpontaneous.setChecked(pa.isRespiratory_Cough_Spontaneous());
         RespiratoryCoughNotes.setText(pa.getRespiratory_Cough());
+
 
         RespiratoryLipConditionIntact.setChecked(pa.isRespiratory_LipCondition_intact());
         RespiratoryLipConditionOther.setChecked(pa.isRespiratory_LipCondition_other());
@@ -116,10 +123,10 @@ public class RespActivity extends Activity {
 
         RespiratoryRespirationsOther.setText(pa.getRespiratory_OtherDescription());
         RespiratoryTrachealStomaDescribe.setText(pa.getRespiratory_Trechea());
-
-
-
     }
+
+
+
 
     private void setEventListeners() {
         Button btnToCardio = (Button) findViewById(R.id.btntocardio);

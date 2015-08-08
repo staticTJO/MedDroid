@@ -508,6 +508,8 @@ public class PatientAssessment extends AbstractJsonModel {
         this.respiratory_LipCondition_other = respiratory_LipCondition_other;
     }
 
+
+
     public boolean isRespiratory_Cough_Spontaneous() {
         return respiratory_Cough_Spontaneous;
     }
@@ -515,6 +517,7 @@ public class PatientAssessment extends AbstractJsonModel {
     public void setRespiratory_Cough_Spontaneous(boolean respiratory_Cough_Spontaneous) {
         this.respiratory_Cough_Spontaneous = respiratory_Cough_Spontaneous;
     }
+
 
     public boolean isRespiratory_Cough_SimulatedBySuctioning() {
         return respiratory_Cough_SimulatedBySuctioning;
@@ -524,6 +527,7 @@ public class PatientAssessment extends AbstractJsonModel {
         this.respiratory_Cough_SimulatedBySuctioning = respiratory_Cough_SimulatedBySuctioning;
     }
 
+
     public String getRespiratory_Cough() {
         return respiratory_Cough;
     }
@@ -531,6 +535,13 @@ public class PatientAssessment extends AbstractJsonModel {
     public void setRespiratory_Cough(String respiratory_Cough) {
         this.respiratory_Cough = respiratory_Cough;
     }
+
+
+
+
+
+
+
 
     public String getRespiratory_Respirations() {
         return respiratory_Respirations;
@@ -1292,6 +1303,7 @@ public class PatientAssessment extends AbstractJsonModel {
         this.physical_SkinCondition = physical_SkinCondition;
     }
 
+
     public boolean isPhysical_Sacrum_Intact() {
         return physical_Sacrum_Intact;
     }
@@ -1364,6 +1376,9 @@ public class PatientAssessment extends AbstractJsonModel {
         this.physical_Heels_Broken_R = physical_Heels_Broken_R;
     }
 
+
+
+
     public boolean isPhysical_Elbows_Elbows_L() {
         return physical_Elbows_Elbows_L;
     }
@@ -1379,6 +1394,8 @@ public class PatientAssessment extends AbstractJsonModel {
     public void setPhysical_Elbows_Elbows_R(boolean physical_Elbows_Elbows_R) {
         this.physical_Elbows_Elbows_R = physical_Elbows_Elbows_R;
     }
+
+
 
     public boolean isPhysical_Elbows_Marked_L() {
         return physical_Elbows_Marked_L;
@@ -1411,6 +1428,9 @@ public class PatientAssessment extends AbstractJsonModel {
     public void setPhysical_Elbows_Broken_R(boolean physical_Elbows_Broken_R) {
         this.physical_Elbows_Broken_R = physical_Elbows_Broken_R;
     }
+
+
+
 
     public boolean isPhysical_PatientToBePositioned_30_45_DegreesHeadUp() {
         return physical_PatientToBePositioned_30_45_DegreesHeadUp;

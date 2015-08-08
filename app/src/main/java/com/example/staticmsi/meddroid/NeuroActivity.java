@@ -26,8 +26,6 @@ public class NeuroActivity extends Activity {
         setContentView(R.layout.neuro_assesment);
 
 
-
-
         Long pID = getIntent().getExtras().getLong("pID");
         this.p = (Patient.findById(pID));
         Long paID = getIntent().getExtras().getLong("paID");
@@ -54,6 +52,7 @@ public class NeuroActivity extends Activity {
     }
 
     private void fillFields() {
+
         EditText etVisionEye = (EditText) findViewById(R.id.etVisionEye);
         EditText etPuplisL = (EditText) findViewById(R.id.etPuplisL);
         EditText etPuplisR = (EditText) findViewById(R.id.etPuplisR);

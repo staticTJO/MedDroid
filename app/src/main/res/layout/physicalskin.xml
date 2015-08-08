@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:ems="10"
-            android:id="@+id/editText46"
+            android:id="@+id/etPhysicalSkinConditionDescribe"
             android:layout_weight="1" />
     </LinearLayout>
 </LinearLayout>
