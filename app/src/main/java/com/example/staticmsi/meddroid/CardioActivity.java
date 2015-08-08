@@ -104,11 +104,11 @@ public class CardioActivity extends Activity{
 
     }
     private void setEventListeners() {
-        Button btnToResp = (Button) findViewById(R.id.btnToResp);
-        Button btnCancel = (Button) findViewById(R.id.btnCancel);
-        Button btnSaveExit = (Button) findViewById(R.id.btnSaveExit);
+        Button btnToGastro = (Button) findViewById(R.id.btnToGastro);
+        Button btnCancelCardio = (Button) findViewById(R.id.btnCancelCardio);
+        Button btnSaveExitCardio = (Button) findViewById(R.id.btnSaveExitCardio);
 
-        btnSaveExit.setOnClickListener(new View.OnClickListener() {
+        btnSaveExitCardio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -167,7 +167,7 @@ public class CardioActivity extends Activity{
         });
 
 
-        btnToResp.setOnClickListener(new View.OnClickListener() {
+        btnToGastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -226,7 +226,7 @@ public class CardioActivity extends Activity{
             }
         });
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnCancelCardio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
