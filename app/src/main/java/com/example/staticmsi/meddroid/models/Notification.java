@@ -188,6 +188,9 @@ public class Notification extends AbstractJsonModel {
             if (jsonObject.has("version"))
                 n.version = jsonObject.getLong("version");
 
+
+            Log.i("Notification", jsonObject.toString());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

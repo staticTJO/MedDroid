@@ -25,7 +25,7 @@ import java.util.Date;
 public class NewEntryActivity extends ActionBarActivity {
 
     Long prID = null;
-    Nurse n = Nurse.findById(1L);
+    Nurse n = Nurse.findById(2L);
 
 
     class BtnAddOnClickListener implements View.OnClickListener {
@@ -65,8 +65,11 @@ public class NewEntryActivity extends ActionBarActivity {
 
             if (cbNotification.isChecked()) {
                 Notification noti = new Notification();
+
+                noti.setByDoctor(Doctor.findById(1L));
+                noti.setToNurse(Nurse.findById(1L));
                 noti.setByNurse(this.n);
-                noti.setToDoctor(Doctor.findById(1L));
+                noti.setToDoctor(Doctor.findById(2L));
                 noti.setDateAndTime(new Date());
 
                 if (rbUrgent.isChecked())
@@ -85,6 +88,8 @@ public class NewEntryActivity extends ActionBarActivity {
 
             Toast t = Toast.makeText(NewEntryActivity.this, "new entry is added", Toast.LENGTH_LONG);
             t.show();
+
+            finish();
         }
     }
 

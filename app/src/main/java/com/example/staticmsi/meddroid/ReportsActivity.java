@@ -22,8 +22,25 @@ public class ReportsActivity extends AppCompatActivity {
 
     String TAG = "ReportsActivity";
     Long pId = null;
-    List<PatientReport> patientReports = new ArrayList<PatientReport>();
+    List<PatientReport> patientReports;
 
+
+    class BtnAddReportOnClick implements View.OnClickListener {
+
+        Long pId = null;
+
+
+        public BtnAddReportOnClick(Long pId) {
+            this.pId = pId;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(ReportsActivity.this, AddReportActivity.class);
+            intent.putExtra("pId", pId);
+            startActivity(intent);
+        }
+    }
 
     class BtnViewOnClick implements View.OnClickListener {
 
@@ -48,12 +65,19 @@ public class ReportsActivity extends AppCompatActivity {
 
 
         fillData();
+        setupBtnAddNewReport();
+    }
+
+    private void setupBtnAddNewReport() {
+        Button b = (Button) findViewById(R.id.btnAddNewReport);
+        b.setOnClickListener(new BtnAddReportOnClick(this.pId));
     }
 
     private void fillData() {
         pId = getIntent().getExtras().getLong("pId");
         List<PatientReport> prs = PatientReport.findByPatientFile(pId);
         TableLayout t = (TableLayout) findViewById(R.id.tblReports);
+        this.patientReports = new ArrayList<PatientReport>();
 
         t.removeAllViews();
 
@@ -83,6 +107,13 @@ public class ReportsActivity extends AppCompatActivity {
         }
 
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fillData();
     }
 
     @Override

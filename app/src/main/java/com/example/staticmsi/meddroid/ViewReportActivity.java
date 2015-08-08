@@ -23,7 +23,7 @@ public class ViewReportActivity extends AppCompatActivity {
 
 
     Long prID = null;
-    List<ReportEntry> reportEntries = new ArrayList<ReportEntry>();
+    List<ReportEntry> reportEntries;
 
 
     class BtnAddEntryOnClick implements View.OnClickListener {
@@ -60,6 +60,9 @@ public class ViewReportActivity extends AppCompatActivity {
         prID = getIntent().getExtras().getLong("prID");
         List<ReportEntry> res = ReportEntry.findByReport(prID);
         TableLayout t = (TableLayout) findViewById(R.id.tblEntries);
+        reportEntries = new ArrayList<ReportEntry>();
+
+        t.removeAllViews();
 
         for (ReportEntry re : res) {
 
@@ -97,6 +100,15 @@ public class ViewReportActivity extends AppCompatActivity {
 
             reportEntries.add(re);
         }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        fillData();
+        setupBtnAddEntry();
     }
 
     @Override
