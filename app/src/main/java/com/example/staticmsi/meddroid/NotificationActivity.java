@@ -18,7 +18,7 @@ import java.util.List;
 
 public class NotificationActivity extends Activity {
 
-    private Long NurseMockId = 1L;
+    private Long NurseMockId = 2L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

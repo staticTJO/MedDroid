@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     List<Patient> patients;
     Patient newPatientToBeAssesst = null;
     PatientAssessment patientToBeAssesst = null;
-    private long NurseMockId = 1L;
+    private long NurseMockId = 2L;
 
 
     class BtnViewReportsOnClick implements View.OnClickListener {
