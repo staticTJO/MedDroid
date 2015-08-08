@@ -140,29 +140,7 @@ public class PhysicalActivity extends Activity{
                 CheckBox PhysicalElbowsBrokenL =(CheckBox) findViewById(R.id.PhysicalElbowsBrokenL);
                 CheckBox PhysicalElbowsBrokenR =(CheckBox) findViewById(R.id.PhysicalElbowsBrokenR);
 
-             // skin
-                etPhysicalSkinConditionDescribe.setText(pa.getPhysical_SkinCondition());
 
-             // sacrum
-                PhysicalSacremIntact.setChecked(pa.isPhysical_Sacrum_Intact());
-                PhysicalSacremMarked.setChecked(pa.isPhysical_Sacrum_Marked());
-                PhysicalSacremBroken.setChecked(pa.isPhysical_Sacrum_broken());
-
-             // heels
-                PhysicalHeelsIntactL.setChecked(pa.isPhysical_Heels_Intact_L());
-                PhysicalHeelsIntactR.setChecked(pa.isPhysical_Heels_Intact_R());
-                PhysicalHeelsMarkedL.setChecked(pa.isPhysical_Heels_Marked_L());
-                PhysicalHeelsMarkedR.setChecked(pa.isPhysical_Heels_Marked_R());
-                PhysicalHeelsBrokenL.setChecked(pa.isPhysical_Heels_Broken_L());
-                PhysicalHeelsBrokenR.setChecked(pa.isPhysical_Heels_Broken_R());
-
-             // elbows
-                PhysicalElbowsIntactL.setChecked(pa.isPhysical_Elbows_Elbows_L());
-                PhysicalElbowsIntactR.setChecked(pa.isPhysical_Elbows_Elbows_R());
-                PhysicalElbowsMarkedL.setChecked(pa.isPhysical_Elbows_Marked_L());
-                PhysicalElbowsMarkedR.setChecked(pa.isPhysical_Elbows_Marked_R());
-                PhysicalElbowsBrokenL.setChecked(pa.isPhysical_Elbows_Broken_L());
-                PhysicalElbowsBrokenR.setChecked(pa.isPhysical_Elbows_Broken_R());
 
              // skin
                 pa.setPhysical_SkinCondition(etPhysicalSkinConditionDescribe.getText().toString());
@@ -227,29 +205,7 @@ public class PhysicalActivity extends Activity{
                 CheckBox PhysicalElbowsBrokenL = (CheckBox) findViewById(R.id.PhysicalElbowsBrokenL);
                 CheckBox PhysicalElbowsBrokenR = (CheckBox) findViewById(R.id.PhysicalElbowsBrokenR);
 
-             // skin
-                etPhysicalSkinConditionDescribe.setText(pa.getPhysical_SkinCondition());
 
-             // sacrum
-                PhysicalSacremIntact.setChecked(pa.isPhysical_Sacrum_Intact());
-                PhysicalSacremMarked.setChecked(pa.isPhysical_Sacrum_Marked());
-                PhysicalSacremBroken.setChecked(pa.isPhysical_Sacrum_broken());
-
-             // heels
-                PhysicalHeelsIntactL.setChecked(pa.isPhysical_Heels_Intact_L());
-                PhysicalHeelsIntactR.setChecked(pa.isPhysical_Heels_Intact_R());
-                PhysicalHeelsMarkedL.setChecked(pa.isPhysical_Heels_Marked_L());
-                PhysicalHeelsMarkedR.setChecked(pa.isPhysical_Heels_Marked_R());
-                PhysicalHeelsBrokenL.setChecked(pa.isPhysical_Heels_Broken_L());
-                PhysicalHeelsBrokenR.setChecked(pa.isPhysical_Heels_Broken_R());
-
-             // elbows
-                PhysicalElbowsIntactL.setChecked(pa.isPhysical_Elbows_Elbows_L());
-                PhysicalElbowsIntactR.setChecked(pa.isPhysical_Elbows_Elbows_R());
-                PhysicalElbowsMarkedL.setChecked(pa.isPhysical_Elbows_Marked_L());
-                PhysicalElbowsMarkedR.setChecked(pa.isPhysical_Elbows_Marked_R());
-                PhysicalElbowsBrokenL.setChecked(pa.isPhysical_Elbows_Broken_L());
-                PhysicalElbowsBrokenR.setChecked(pa.isPhysical_Elbows_Broken_R());
 
              // skin
                 pa.setPhysical_SkinCondition(etPhysicalSkinConditionDescribe.getText().toString());
