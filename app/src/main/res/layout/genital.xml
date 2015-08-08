@@ -61,7 +61,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText42" />
+                android:id="@+id/GenitourinaryCatheterTypeText"
+                android:inputType="text"/>
         </LinearLayout>
 
         <LinearLayout
@@ -73,8 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Size:"
-                android:id="@+id/GenitourinaryCatheterSize" />
+                android:text="Size:" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +86,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText43" />
+                android:id="@+id/GenitourinaryCatheterSize"
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,8 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Urine (description):"
-                android:id="@+id/GenitourinaryUrine" />
+                android:text="Urine (description):"/>
         </LinearLayout>
 
         <LinearLayout
@@ -111,7 +111,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText44" />
+                android:id="@+id/GenitourinaryUrineDesc"
+                android:inputType="text"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -128,14 +129,15 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.06">
+            android:layout_weight="0.13">
 
-            <TextView
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Urethral/vaginal discharge:"
-                android:id="@+id/GenitourinaryDischarge" />
+                android:id="@+id/GenitourinaryIsDischarge"
+                android:checked="false"
+                android:layout_gravity="right"
+                android:text="Discharge" />
         </LinearLayout>
 
         <LinearLayout
@@ -148,7 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Menstruating"
-                android:id="@+id/GenitourinaryMenstruating"
+                android:id="@+id/IsMentrating"
                 android:checked="false" />
         </LinearLayout>
 
@@ -161,16 +163,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Describe:"
-                android:id="@+id/GenitourinaryMenstruatingDescribe" />
+                android:text="Describe:"/>
 
         </LinearLayout>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText45"
-            android:layout_weight="0.76" />
+            android:layout_weight="0.76"
+            android:id="@+id/GenitourinaryMenstruatingDescribe"
+            android:inputType="text" />
 
     </LinearLayout>
 </LinearLayout>
