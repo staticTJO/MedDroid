@@ -116,7 +116,6 @@ public class NeuroActivity extends Activity {
         EditText etPuplisL = (EditText) findViewById(R.id.etPuplisL);
         EditText etPuplisR = (EditText) findViewById(R.id.etPuplisR);
         EditText etGagRef = (EditText) findViewById(R.id.etGagRef);
-
   //      EditText etMotor = (EditText) findViewById(R.id.etMotor);
         EditText etReactionL = (EditText) findViewById(R.id.etReactionL);
         EditText etReactionR = (EditText) findViewById(R.id.etReactionR);
