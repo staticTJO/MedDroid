@@ -45,8 +45,7 @@
         <include
             layout="@layout/physicalskin"
             android:layout_width="640dp"
-            android:layout_height="96dp"
-            android:id="@+id/" />
+            android:layout_height="96dp" />
 
         <LinearLayout
             android:orientation="vertical"

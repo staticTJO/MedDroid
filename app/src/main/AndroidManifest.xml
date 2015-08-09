@@ -40,6 +40,10 @@
             android:label="RespActivity"
             android:noHistory="true" />
         <activity
+            android:name=".CardioActivity"
+            android:label="CardioActivity"
+            android:noHistory="true" />
+        <activity
             android:name=".ReportsActivity"
             android:label="@string/title_activity_reports" >
         </activity>
