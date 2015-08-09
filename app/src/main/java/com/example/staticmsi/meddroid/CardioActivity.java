@@ -38,6 +38,9 @@ public class CardioActivity extends Activity{
 
         setEventListeners();
     }
+
+
+
     private void start() {
         if (pa == null) {
             pa = new PatientAssessment();
@@ -97,12 +100,10 @@ public class CardioActivity extends Activity{
         cardioOedemaGeneralized.setChecked(pa.isCardio_Oedema_Generalised());
         cardioOedemaLocalizedTo.setText(pa.getCardio_Oedema_LocalisedTo());
 
-
-
-
-
-
     }
+
+
+
     private void setEventListeners() {
         Button btnToGastro = (Button) findViewById(R.id.btnToGastro);
         Button btnCancelCardio = (Button) findViewById(R.id.btnCancelCardio);
