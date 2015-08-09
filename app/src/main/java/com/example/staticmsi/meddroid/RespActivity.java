@@ -302,7 +302,7 @@ public class RespActivity extends Activity {
     }
 
     private void setButtonToCardio() {
-        Button b = (Button) findViewById(R.id.btnToResp);
+        Button b = (Button) findViewById(R.id.btntocardio);
 
         b.setOnClickListener(new BtnToCardioOnClick(this, this.pa.getId()));
     }
