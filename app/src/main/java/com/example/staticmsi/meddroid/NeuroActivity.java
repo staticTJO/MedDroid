@@ -26,8 +26,6 @@ public class NeuroActivity extends Activity {
         setContentView(R.layout.neuro_assesment);
 
 
-
-
         Long pID = getIntent().getExtras().getLong("pID");
         this.p = (Patient.findById(pID));
         Long paID = getIntent().getExtras().getLong("paID");
@@ -38,8 +36,67 @@ public class NeuroActivity extends Activity {
         }
 
         start();
-
+        setButtonToResp();
         setEventListeners();
+    }
+
+
+
+    class BtnToRespOnClick implements View.OnClickListener {
+
+        Long paId = null;
+        NeuroActivity na;
+
+        public BtnToRespOnClick(NeuroActivity na, Long paId) {
+            this.na = na;
+            this.paId = paId;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(NeuroActivity.this, RespActivity.class);
+
+            if (paId != null) {
+                intent.putExtra("paExist", true);
+                intent.putExtra("paId", paId);
+            } else {
+                intent.putExtra("paExist", false);
+            }
+
+
+            EditText etVisionEye = (EditText) findViewById(R.id.etVisionEye);
+            EditText etPuplisL = (EditText) findViewById(R.id.etPuplisL);
+            EditText etPuplisR = (EditText) findViewById(R.id.etPuplisR);
+            EditText etGagRef = (EditText) findViewById(R.id.etGagRef);
+
+            EditText etReactionL = (EditText) findViewById(R.id.etReactionL);
+            EditText etReactionR = (EditText) findViewById(R.id.etReactionR);
+            EditText etRestraints = (EditText) findViewById(R.id.etRestraints);
+
+            EditText etPainLevel = (EditText) findViewById(R.id.etPainLevel);
+            EditText etPainDesc = (EditText) findViewById(R.id.etPainDesc);
+
+            EditText etMentalDesc = (EditText) findViewById(R.id.etMentalDesc);
+
+
+            pa.setNeurological_Vision_Eye(etVisionEye.getText().toString());
+            pa.setNeurological_Vision_Pupils_L(etPuplisL.getText().toString());
+            pa.setNeurological_Vision_Pupils_R(etPuplisR.getText().toString());
+            pa.setNeurological_Verbal_GAG_Reflex(etGagRef.getText().toString());
+
+            pa.setNeurological_Motor_Reaction_L(etReactionL.getText().toString());
+            pa.setNeurological_Motor_Reaction_R(etReactionR.getText().toString());
+            pa.setNeurological_Motor_Restraints(etRestraints.getText().toString());
+
+            pa.setNeurological_Pain_Level(etPainLevel.getText().toString());
+            pa.setNeurological_Pain_Description(etPainDesc.getText().toString());
+
+            pa.setNeurological_Mental_Description(etMentalDesc.getText().toString());
+
+            pa.update();
+            startActivity(intent);
+        }
+
     }
 
 
@@ -54,11 +111,11 @@ public class NeuroActivity extends Activity {
     }
 
     private void fillFields() {
+
         EditText etVisionEye = (EditText) findViewById(R.id.etVisionEye);
         EditText etPuplisL = (EditText) findViewById(R.id.etPuplisL);
         EditText etPuplisR = (EditText) findViewById(R.id.etPuplisR);
         EditText etGagRef = (EditText) findViewById(R.id.etGagRef);
-
   //      EditText etMotor = (EditText) findViewById(R.id.etMotor);
         EditText etReactionL = (EditText) findViewById(R.id.etReactionL);
         EditText etReactionR = (EditText) findViewById(R.id.etReactionR);
@@ -88,7 +145,6 @@ public class NeuroActivity extends Activity {
     }
 
     private void setEventListeners() {
-        Button btnToResp = (Button) findViewById(R.id.btnToResp);
         Button btnCancel = (Button) findViewById(R.id.btnCancel);
         Button btnSaveExit = (Button) findViewById(R.id.btnSaveExit);
 
@@ -129,47 +185,6 @@ public class NeuroActivity extends Activity {
             }
         });
 
-
-        btnToResp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText etVisionEye = (EditText) findViewById(R.id.etVisionEye);
-                EditText etPuplisL = (EditText) findViewById(R.id.etPuplisL);
-                EditText etPuplisR = (EditText) findViewById(R.id.etPuplisR);
-                EditText etGagRef = (EditText) findViewById(R.id.etGagRef);
-
-                EditText etReactionL = (EditText) findViewById(R.id.etReactionL);
-                EditText etReactionR = (EditText) findViewById(R.id.etReactionR);
-                EditText etRestraints = (EditText) findViewById(R.id.etRestraints);
-
-                EditText etPainLevel = (EditText) findViewById(R.id.etPainLevel);
-                EditText etPainDesc = (EditText) findViewById(R.id.etPainDesc);
-
-                EditText etMentalDesc = (EditText) findViewById(R.id.etMentalDesc);
-
-
-                pa.setNeurological_Vision_Eye(etVisionEye.getText().toString());
-                pa.setNeurological_Vision_Pupils_L(etPuplisL.getText().toString());
-                pa.setNeurological_Vision_Pupils_R(etPuplisR.getText().toString());
-                pa.setNeurological_Verbal_GAG_Reflex(etGagRef.getText().toString());
-
-                pa.setNeurological_Motor_Reaction_L(etReactionL.getText().toString());
-                pa.setNeurological_Motor_Reaction_R(etReactionR.getText().toString());
-                pa.setNeurological_Motor_Restraints(etRestraints.getText().toString());
-
-                pa.setNeurological_Pain_Level(etPainLevel.getText().toString());
-                pa.setNeurological_Pain_Description(etPainDesc.getText().toString());
-
-                pa.setNeurological_Mental_Description(etMentalDesc.getText().toString());
-
-                pa.update();
-
-
-                Intent intent = new Intent(NeuroActivity.this, RespActivity.class);
-                startActivity(intent);
-            }
-        });
-
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,7 +192,13 @@ public class NeuroActivity extends Activity {
             }
         });
 
+
     }
 
+    private void setButtonToResp() {
+        Button b = (Button) findViewById(R.id.btnToResp);
+
+            b.setOnClickListener(new BtnToRespOnClick(this, this.pa.getId()));
+    }
 
 }

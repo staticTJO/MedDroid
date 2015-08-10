@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Absent"
-                android:id="@+id/checkBox53"
+                android:id="@+id/gastrobowelAbsent"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:checked="false" />
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Present"
-                android:id="@+id/checkBox54"
+                android:id="@+id/gastrobowelPresent"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:checked="false" />
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Normal"
-                android:id="@+id/checkBox55"
+                android:id="@+id/gastrobowelNormal"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:checked="false" />
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Increased"
-                android:id="@+id/checkBox56"
+                android:id="@+id/gastrobowelIncreased"
                 android:layout_row="1"
                 android:layout_column="1"
                 android:checked="false" />
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Decreased"
-                android:id="@+id/checkBox57"
+                android:id="@+id/gastrobowelDecreased"
                 android:layout_row="1"
                 android:layout_column="2"
                 android:checked="false" />

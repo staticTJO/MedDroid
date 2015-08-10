@@ -15,5 +15,5 @@
     <string name="title_activity_new_entry">NewEntryActivity</string>
     <string name="title_activity_cardio">CardioActivity</string>
     <string name="title_activity_test">TestActivity</string>
-
+    <string name="title_activity_add_report">AddReportActivity</string>
 </resources>

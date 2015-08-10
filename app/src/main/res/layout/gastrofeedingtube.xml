@@ -54,7 +54,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText28"
+                android:id="@+id/gastroFTType"
                 android:layout_weight="0.21" />
 
             <TextView
@@ -67,7 +67,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText29"
+                android:id="@+id/gastroFTInstitu"
                 android:layout_weight="0.39" />
 
             <TextView
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gastric"
-                    android:id="@+id/checkBox67"
+                    android:id="@+id/gastroFTGastric"
                     android:layout_row="0"
                     android:layout_column="0"
                     android:checked="false" />
@@ -113,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Duodenal"
-                    android:id="@+id/checkBox68"
+                    android:id="@+id/gastroFTDuodenal"
                     android:layout_row="0"
                     android:layout_column="1"
                     android:checked="false" />
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jejunal"
-                    android:id="@+id/checkBox69"
+                    android:id="@+id/gastroFTJejunal"
                     android:layout_row="0"
                     android:layout_column="2"
                     android:checked="false" />
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Intact"
-                android:id="@+id/checkBox70"
+                android:id="@+id/gastroFTintact"
                 android:checked="false" />
         </LinearLayout>
 
@@ -169,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Other*"
-            android:id="@+id/checkBox71"
+            android:id="@+id/gastroFTOther"
             android:checked="false"
             android:layout_weight="0.045" />
 
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Verified by:"
-                android:id="@+id/checkBox72"
+                android:id="@+id/gastroFTVerified"
                 android:checked="false" />
         </LinearLayout>
 
@@ -200,7 +200,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText30" />
+                android:id="@+id/gastroFTVerifiedDesc" />
         </LinearLayout>
 
     </LinearLayout>
@@ -233,7 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Administering Feeds"
-                    android:id="@+id/checkBox73"
+                    android:id="@+id/gastroFTAdminFeeds"
                     android:layout_row="0"
                     android:layout_column="0"
                     android:checked="false" />
@@ -242,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Clamped"
-                    android:id="@+id/checkBox74"
+                    android:id="@+id/gastroFTClamped"
                     android:layout_row="0"
                     android:layout_column="1"
                     android:checked="false" />
@@ -251,7 +251,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Aspirated q4h"
-                    android:id="@+id/checkBox75"
+                    android:id="@+id/gastroFTAspirated"
                     android:layout_row="0"
                     android:layout_column="2"
                     android:checked="false" />
@@ -260,7 +260,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Straight drainage"
-                    android:id="@+id/checkBox76"
+                    android:id="@+id/gastroFTStraightDrainage"
                     android:layout_row="0"
                     android:layout_column="3"
                     android:checked="false" />
@@ -291,7 +291,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText31"
+            android:id="@+id/gastroFTDescAspirate"
             android:layout_weight="0.54" />
     </LinearLayout>
 
@@ -313,13 +313,12 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Other* (description):"
-            android:id="@+id/textView70"
             android:layout_weight="0.035" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText32"
+            android:id="@+id/gastroFTOtherDesc"
             android:layout_weight="0.52" />
     </LinearLayout>
 

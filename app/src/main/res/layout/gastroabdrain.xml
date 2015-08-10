@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Type:"
-            android:id="@+id/checkBox79"
+            android:id="@+id/gastroabdrainType"
             android:checked="false" />
 
         <LinearLayout
@@ -55,14 +55,14 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText39" />
+                android:id="@+id/gastroabdrainTypeDesc" />
         </LinearLayout>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Location:"
-            android:id="@+id/checkBox80"
+            android:id="@+id/gastroabdrainLocation"
             android:layout_weight="0.05"
             android:checked="false" />
 
@@ -75,7 +75,7 @@
             <EditText
                 android:layout_width="234dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText40" />
+                android:id="@+id/gastroabdraindesc" />
         </LinearLayout>
     </LinearLayout>
 
@@ -106,7 +106,7 @@
             android:layout_height="match_parent"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/editText41"
+            android:id="@+id/DrainageDescribe"
             android:layout_weight="0.42" />
     </LinearLayout>
 
