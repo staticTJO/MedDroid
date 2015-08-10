@@ -14,7 +14,7 @@ import com.example.staticmsi.meddroid.models.PatientAssessment;
 /**
  * Created by Hammad Ali on 2015-08-06.
  */
-public class CardioActivity extends Activity{
+public class CardioActivity extends Activity {
     Patient p = null;
     PatientAssessment pa = null;
 
@@ -24,9 +24,6 @@ public class CardioActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cardio_assessment);
 
-
-        Long pID = getIntent().getExtras().getLong("pID");
-        this.p = (Patient.findById(pID));
         Long paID = getIntent().getExtras().getLong("paID");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
@@ -35,10 +32,82 @@ public class CardioActivity extends Activity{
         }
 
         start();
-
+        setToGastroButton();
         setEventListeners();
     }
 
+    class BtnToGastroOnClick implements View.OnClickListener {
+
+        Long paId = null;
+        CardioActivity ca;
+
+        public BtnToGastroOnClick(CardioActivity ca, Long paId) {
+            this.ca = ca;
+            this.paId = paId;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(CardioActivity.this, GastroActivity.class);
+
+            if (paId != null) {
+                intent.putExtra("paExist", true);
+                intent.putExtra("paId", paId);
+            } else {
+                intent.putExtra("paExist", false);
+            }
+            EditText cardioECGLead = (EditText) findViewById(R.id.CardioECGLead);
+            EditText cardioECGRate = (EditText) findViewById(R.id.CardioECGRate);
+            EditText cardioECGPR = (EditText) findViewById(R.id.CardioECGPR);
+            EditText cardioECGQRS = (EditText) findViewById(R.id.CardioECGQRS);
+            EditText cardioECGQT = (EditText) findViewById(R.id.CardioECGQT);
+            EditText cardioECGSTSegment = (EditText) findViewById(R.id.CardioECGST);
+            EditText cardioECGWave = (EditText) findViewById(R.id.CardioECGWave);
+            EditText cardioECGInterpretation = (EditText) findViewById(R.id.CardioECGInterpretation);
+            CheckBox cardioSkinPink = (CheckBox) findViewById(R.id.CardioSkinPink);
+            CheckBox cardioSkinPale = (CheckBox) findViewById(R.id.CardioSkinPale);
+            CheckBox cardioSkinJaundiced = (CheckBox) findViewById(R.id.CardioSkinJaundiced);
+            CheckBox cardioSkinFlushed = (CheckBox) findViewById(R.id.CardioSkinFlushed);
+            CheckBox cardioSkinMottled = (CheckBox) findViewById(R.id.CardioSkinMottled);
+            CheckBox cardioSkinCyanotic = (CheckBox) findViewById(R.id.CardioSkinCyanotic);
+            CheckBox cardioSkinDiaphoretic = (CheckBox) findViewById(R.id.CardioSkinDiaphoretic);
+            CheckBox cardioSkinCold = (CheckBox) findViewById(R.id.CardioSkinCold);
+            CheckBox cardioSkinCool = (CheckBox) findViewById(R.id.CardioSkinCool);
+            CheckBox cardioSkinHot = (CheckBox) findViewById(R.id.CardioSkinHot);
+            CheckBox cardioSkinWarm = (CheckBox) findViewById(R.id.CardioSkinWarm);
+            CheckBox cardioSkinDry = (CheckBox) findViewById(R.id.CardioSkinDry);
+            CheckBox cardioSkinMoist = (CheckBox) findViewById(R.id.CardioSkinMoist);
+            CheckBox cardioOedemaGeneralized = (CheckBox) findViewById(R.id.CardioOedemaGeneralized);
+            EditText cardioOedemaLocalizedTo = (EditText) findViewById(R.id.CardioOedemaLocalizedTo);
+
+            pa.setCardio_ECG_Lead(Integer.parseInt(cardioECGLead.getText().toString()));
+            pa.setCardio_ECG_Rate(Float.valueOf(cardioECGRate.getText().toString()));
+            pa.setCardio_ECG_PR(Float.valueOf(cardioECGPR.getText().toString()));
+            pa.setCardio_ECG_QRS(Integer.parseInt(cardioECGQRS.getText().toString()));
+            pa.setCardio_ECG_QT(Integer.parseInt(cardioECGQT.getText().toString()));
+            pa.setCardio_ECG_STSegment(Integer.parseInt(cardioECGSTSegment.getText().toString()));
+            pa.setCardio_ECG_Wave(Integer.parseInt(cardioECGWave.getText().toString()));
+            pa.setCardio_ECG_Interpretation(cardioECGInterpretation.getText().toString());
+            pa.setCardio_Skin_Pink(cardioSkinPink.isChecked());
+            pa.setCardio_Skin_Pale(cardioSkinPale.isChecked());
+            pa.setCardio_Skin_Jaundiced(cardioSkinJaundiced.isChecked());
+            pa.setCardio_Skin_Flushed(cardioSkinFlushed.isChecked());
+            pa.setCardio_Skin_Mottled(cardioSkinMottled.isChecked());
+            pa.setCardio_Skin_Cyanotic(cardioSkinCyanotic.isChecked());
+            pa.setCardio_Skin_Diaphoretic(cardioSkinDiaphoretic.isChecked());
+            pa.setCardio_Skin_Cold(cardioSkinCold.isChecked());
+            pa.setCardio_Skin_Cool(cardioSkinCool.isChecked());
+            pa.setCardio_Skin_Hot(cardioSkinHot.isChecked());
+            pa.setCardio_Skin_Warm(cardioSkinWarm.isChecked());
+            pa.setCardio_Skin_Dry(cardioSkinDry.isChecked());
+            pa.setCardio_Skin_Moist(cardioSkinMoist.isChecked());
+            pa.setCardio_Oedema_Generalised(cardioOedemaGeneralized.isChecked());
+            pa.setCardio_Oedema_LocalisedTo(cardioOedemaLocalizedTo.getText().toString());
+            pa.update();
+            startActivity(intent);
+        }
+
+    }
 
 
     private void start() {
@@ -50,6 +119,7 @@ public class CardioActivity extends Activity{
             fillFields();
         }
     }
+
     private void fillFields() {
         EditText cardioECGLead = (EditText) findViewById(R.id.CardioECGLead);
         EditText cardioECGRate = (EditText) findViewById(R.id.CardioECGRate);
@@ -103,9 +173,7 @@ public class CardioActivity extends Activity{
     }
 
 
-
     private void setEventListeners() {
-        Button btnToGastro = (Button) findViewById(R.id.btnToGastro);
         Button btnCancelCardio = (Button) findViewById(R.id.btnCancelCardio);
         Button btnSaveExitCardio = (Button) findViewById(R.id.btnSaveExitCardio);
 
@@ -168,65 +236,6 @@ public class CardioActivity extends Activity{
         });
 
 
-        btnToGastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                EditText cardioECGLead = (EditText) findViewById(R.id.CardioECGLead);
-                EditText cardioECGRate = (EditText) findViewById(R.id.CardioECGRate);
-                EditText cardioECGPR = (EditText) findViewById(R.id.CardioECGPR);
-                EditText cardioECGQRS = (EditText) findViewById(R.id.CardioECGQRS);
-                EditText cardioECGQT = (EditText) findViewById(R.id.CardioECGQT);
-                EditText cardioECGSTSegment = (EditText) findViewById(R.id.CardioECGST);
-                EditText cardioECGWave = (EditText) findViewById(R.id.CardioECGWave);
-                EditText cardioECGInterpretation = (EditText) findViewById(R.id.CardioECGInterpretation);
-                CheckBox cardioSkinPink = (CheckBox) findViewById(R.id.CardioSkinPink);
-                CheckBox cardioSkinPale = (CheckBox) findViewById(R.id.CardioSkinPale);
-                CheckBox cardioSkinJaundiced = (CheckBox) findViewById(R.id.CardioSkinJaundiced);
-                CheckBox cardioSkinFlushed = (CheckBox) findViewById(R.id.CardioSkinFlushed);
-                CheckBox cardioSkinMottled = (CheckBox) findViewById(R.id.CardioSkinMottled);
-                CheckBox cardioSkinCyanotic = (CheckBox) findViewById(R.id.CardioSkinCyanotic);
-                CheckBox cardioSkinDiaphoretic = (CheckBox) findViewById(R.id.CardioSkinDiaphoretic);
-                CheckBox cardioSkinCold = (CheckBox) findViewById(R.id.CardioSkinCold);
-                CheckBox cardioSkinCool = (CheckBox) findViewById(R.id.CardioSkinCool);
-                CheckBox cardioSkinHot = (CheckBox) findViewById(R.id.CardioSkinHot);
-                CheckBox cardioSkinWarm = (CheckBox) findViewById(R.id.CardioSkinWarm);
-                CheckBox cardioSkinDry = (CheckBox) findViewById(R.id.CardioSkinDry);
-                CheckBox cardioSkinMoist = (CheckBox) findViewById(R.id.CardioSkinMoist);
-                CheckBox cardioOedemaGeneralized = (CheckBox) findViewById(R.id.CardioOedemaGeneralized);
-                EditText cardioOedemaLocalizedTo = (EditText) findViewById(R.id.CardioOedemaLocalizedTo);
-
-                pa.setCardio_ECG_Lead(Integer.parseInt(cardioECGLead.getText().toString()));
-                pa.setCardio_ECG_Rate(Float.valueOf(cardioECGRate.getText().toString()));
-                pa.setCardio_ECG_PR(Float.valueOf(cardioECGPR.getText().toString()));
-                pa.setCardio_ECG_QRS(Integer.parseInt(cardioECGQRS.getText().toString()));
-                pa.setCardio_ECG_QT(Integer.parseInt(cardioECGQT.getText().toString()));
-                pa.setCardio_ECG_STSegment(Integer.parseInt(cardioECGSTSegment.getText().toString()));
-                pa.setCardio_ECG_Wave(Integer.parseInt(cardioECGWave.getText().toString()));
-                pa.setCardio_ECG_Interpretation(cardioECGInterpretation.getText().toString());
-                pa.setCardio_Skin_Pink(cardioSkinPink.isChecked());
-                pa.setCardio_Skin_Pale(cardioSkinPale.isChecked());
-                pa.setCardio_Skin_Jaundiced(cardioSkinJaundiced.isChecked());
-                pa.setCardio_Skin_Flushed(cardioSkinFlushed.isChecked());
-                pa.setCardio_Skin_Mottled(cardioSkinMottled.isChecked());
-                pa.setCardio_Skin_Cyanotic(cardioSkinCyanotic.isChecked());
-                pa.setCardio_Skin_Diaphoretic(cardioSkinDiaphoretic.isChecked());
-                pa.setCardio_Skin_Cold(cardioSkinCold.isChecked());
-                pa.setCardio_Skin_Cool(cardioSkinCool.isChecked());
-                pa.setCardio_Skin_Hot(cardioSkinHot.isChecked());
-                pa.setCardio_Skin_Warm(cardioSkinWarm.isChecked());
-                pa.setCardio_Skin_Dry(cardioSkinDry.isChecked());
-                pa.setCardio_Skin_Moist(cardioSkinMoist.isChecked());
-                pa.setCardio_Oedema_Generalised(cardioOedemaGeneralized.isChecked());
-                pa.setCardio_Oedema_LocalisedTo(cardioOedemaLocalizedTo.getText().toString());
-                pa.update();
-
-                Intent intent = new Intent(CardioActivity.this, GastroActivity.class);
-                startActivity(intent);
-            }
-        });
-
         btnCancelCardio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,5 +243,12 @@ public class CardioActivity extends Activity{
             }
         });
 
+    }
+
+    private void setToGastroButton(){
+
+        Button b = (Button) findViewById(R.id.btnToGastro);
+
+        b.setOnClickListener(new BtnToGastroOnClick(this, this.pa.getId()));
     }
 }

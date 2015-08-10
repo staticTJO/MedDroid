@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NBM"
-                android:id="@+id/checkBox58"
+                android:id="@+id/gastroDietNBM"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:checked="false" />
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CF"
-                android:id="@+id/checkBox59"
+                android:id="@+id/gastroDietCF"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:checked="false" />
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FF"
-                android:id="@+id/checkBox60"
+                android:id="@+id/gastroDietFF"
                 android:layout_row="0"
                 android:layout_column="2"
                 android:checked="false" />
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Diet"
-                android:id="@+id/checkBox61"
+                android:id="@+id/gastroDietD"
                 android:layout_row="0"
                 android:layout_column="3"
                 android:checked="false" />
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Diabetic"
-                android:id="@+id/checkBox62"
+                android:id="@+id/gastroDietDiabetic"
                 android:layout_row="0"
                 android:layout_column="4"
                 android:checked="false" />
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cardiac"
-                android:id="@+id/checkBox63"
+                android:id="@+id/gastroDietCardiac"
                 android:layout_row="0"
                 android:layout_column="5"
                 android:checked="false" />
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tube feeds"
-                android:id="@+id/checkBox64"
+                android:id="@+id/gastroDietTubeFeeds"
                 android:layout_row="0"
                 android:layout_column="6"
                 android:checked="false" />
@@ -125,20 +125,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Special Consistency:"
-            android:id="@+id/checkBox65"
+            android:id="@+id/gastrodietSpecialC"
             android:checked="false" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText27"
+            android:id="@+id/gastroSpecialDesc"
             android:layout_weight="0.364" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Other*"
-            android:id="@+id/checkBox66"
+            android:id="@+id/gastrodietother"
             android:layout_weight="0.19"
             android:checked="false" />
     </LinearLayout>

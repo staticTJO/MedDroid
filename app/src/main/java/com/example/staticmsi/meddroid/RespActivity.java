@@ -103,11 +103,11 @@ public class RespActivity extends Activity {
             pa.setRespiratory_Airway_BIPAP_CPAP(BiPAPCPAP.isChecked());
             pa.setRespiratory_ETT(RespiratoryETT.isChecked());
             // Really.. java.. thank god for conversion functions
-            pa.setRespiratory_Size(Float.valueOf(RespiratorySize.getText().toString()));
-            pa.setRespiratory_LengthAtGums(Float.valueOf(RespiratoryLengthAtGums.getText().toString())); // error here converting string to float. Is breaking the activity.
-            pa.setRespiratory_LengthAtTeeth(Float.valueOf(RespiratoryLengthAtTeeth.getText().toString()));
-            pa.setRespiratory_CuffPressure(Float.valueOf(RespiratoryCuffPressure.getText().toString()));
-            pa.setRespiratory_TracheostomySize(Float.valueOf(RespiratoryTracheostomySize.getText().toString()));
+//            pa.setRespiratory_Size(Float.valueOf(RespiratorySize.getText().toString()));
+//            pa.setRespiratory_LengthAtGums(Float.valueOf(RespiratoryLengthAtGums.getText().toString())); // error here converting string to float. Is breaking the activity.
+//            pa.setRespiratory_LengthAtTeeth(Float.valueOf(RespiratoryLengthAtTeeth.getText().toString()));
+//            pa.setRespiratory_CuffPressure(Float.valueOf(RespiratoryCuffPressure.getText().toString()));
+//            pa.setRespiratory_TracheostomySize(Float.valueOf(RespiratoryTracheostomySize.getText().toString()));
             pa.setRespiratory_ChestExpansion(RespiratoryChestExpansion.getText().toString());
             pa.setRespiratory_Cough_SimulatedBySuctioning(RespiratoryCoughSimulatedBySuctioning.isChecked());
             pa.setRespiratory_Cough_Spontaneous(RespiratoryCoughSpontaneous.isChecked());
@@ -260,11 +260,11 @@ public class RespActivity extends Activity {
                 pa.setRespiratory_Airway_BIPAP_CPAP(BiPAPCPAP.isChecked());
                 pa.setRespiratory_ETT(RespiratoryETT.isChecked());
                 // Really.. java.. thank god for conversion functions
-                pa.setRespiratory_Size(Float.valueOf(RespiratorySize.getText().toString()));
-                pa.setRespiratory_LengthAtGums(Float.valueOf(RespiratoryLengthAtGums.getText().toString())); // error here converting string to float. Is breaking the activity.
-                pa.setRespiratory_LengthAtTeeth(Float.valueOf(RespiratoryLengthAtTeeth.getText().toString()));
-                pa.setRespiratory_CuffPressure(Float.valueOf(RespiratoryCuffPressure.getText().toString()));
-                pa.setRespiratory_TracheostomySize(Float.valueOf(RespiratoryTracheostomySize.getText().toString()));
+//                pa.setRespiratory_Size(Float.valueOf(RespiratorySize.getText().toString()));
+//                pa.setRespiratory_LengthAtGums(Float.valueOf(RespiratoryLengthAtGums.getText().toString())); // error here converting string to float. Is breaking the activity.
+//                pa.setRespiratory_LengthAtTeeth(Float.valueOf(RespiratoryLengthAtTeeth.getText().toString()));
+//                pa.setRespiratory_CuffPressure(Float.valueOf(RespiratoryCuffPressure.getText().toString()));
+//                pa.setRespiratory_TracheostomySize(Float.valueOf(RespiratoryTracheostomySize.getText().toString()));
                 pa.setRespiratory_ChestExpansion(RespiratoryChestExpansion.getText().toString());
                 pa.setRespiratory_Cough_SimulatedBySuctioning(RespiratoryCoughSimulatedBySuctioning.isChecked());
                 pa.setRespiratory_Cough_Spontaneous(RespiratoryCoughSpontaneous.isChecked());

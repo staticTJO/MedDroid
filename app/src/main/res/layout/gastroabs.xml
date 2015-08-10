@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Soft"
-                android:id="@+id/checkBox45"
+                android:id="@+id/gastroabsSoft"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:checked="false" />
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Firm"
-                android:id="@+id/checkBox46"
+                android:id="@+id/gastroabsFirm"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:checked="false" />
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Flat"
-                android:id="@+id/checkBox47"
+                android:id="@+id/gastroabsFlat"
                 android:layout_row="0"
                 android:layout_column="2"
                 android:checked="false" />
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rounded"
-                android:id="@+id/checkBox48"
+                android:id="@+id/gastroabsRounded"
                 android:layout_row="0"
                 android:layout_column="3"
                 android:checked="false" />
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Obese"
-                android:id="@+id/checkBox49"
+                android:id="@+id/gastroabsObese"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:checked="false" />
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Distended"
-                android:id="@+id/checkBox50"
+                android:id="@+id/gastroabsDistended"
                 android:layout_row="1"
                 android:layout_column="1"
                 android:checked="false" />
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Guarding"
-                android:id="@+id/checkBox51"
+                android:id="@+id/gastroabsGuarding"
                 android:layout_row="1"
                 android:layout_column="2"
                 android:checked="false" />
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rebound Tenderness"
-                android:id="@+id/checkBox52"
+                android:id="@+id/gastroabsRebound"
                 android:layout_row="1"
                 android:layout_column="3"
                 android:checked="false" />
