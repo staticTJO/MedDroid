@@ -2,35 +2,55 @@ package com.example.staticmsi.meddroid;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.webkit.CookieManager;
 
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.CookiePolicy;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hamadalmarri on 2015-07-22.
  */
 public class JsonHelper {
 
+    static String TAG = "JsonHelper";
 
 //    private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
     private static String domain = "http://69.11.16.153/mypatients";
+
+    private static String loginPath = "/resources/j_spring_security_check";
+
+    static BasicCookieStore cookieStore = null;
 
     public static String GET(String path) {
 
@@ -60,6 +80,13 @@ public class JsonHelper {
     public static String POST(String path, String json) {
         Requesting rq = new Requesting();
         rq.execute("post", domain + path, json);
+
+        return rq.result;
+    }
+
+    public static String LOGIN_POST(String username, String password) {
+        Requesting rq = new Requesting();
+        rq.execute("loginPost", domain + loginPath, username, password);
 
         return rq.result;
     }
@@ -99,6 +126,8 @@ public class JsonHelper {
                     return PUT(urls[1], urls[2]);
                 else if (urls[0].equals("post"))
                     return POST(urls[1], urls[2]);
+                else if (urls[0].equals("loginPost"))
+                    return LOGIN_POST(urls[1], urls[2], urls[3]);
                 else if (urls[0].equals("delete"))
                     return DELETE(urls[1]);
             }
@@ -108,9 +137,13 @@ public class JsonHelper {
         }
 
         public static String DELETE(String url) {
-            HttpClient httpClient = new DefaultHttpClient();
+            DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpContext localContext = new BasicHttpContext();
             HttpDelete delete = new HttpDelete(url);
+
+
+            if (cookieStore != null)
+                httpClient.setCookieStore(cookieStore);
 
             delete.addHeader("Accept", "application/json");
 
@@ -129,10 +162,15 @@ public class JsonHelper {
 
 
         public static String POST(String url, String json) {
-            HttpClient httpClient = new DefaultHttpClient();
+            DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpContext localContext = new BasicHttpContext();
             HttpPost post = new HttpPost(url);
             StringEntity se = null;
+
+
+
+            if (cookieStore != null)
+                httpClient.setCookieStore(cookieStore);
 
             try {
                 se = new StringEntity(json);
@@ -161,11 +199,64 @@ public class JsonHelper {
         }
 
 
+        public static String LOGIN_POST(String url, String username, String password) {
+
+//            Log.i(TAG, url);
+//            Log.i(TAG, username);
+//            Log.i(TAG, password);
+
+
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpContext localContext = new BasicHttpContext();
+            HttpPost post = new HttpPost(url);
+            cookieStore = new BasicCookieStore();
+
+            post.addHeader("Accept", "application/html");
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            params.add(new BasicNameValuePair("j_username", username));
+            params.add(new BasicNameValuePair("j_password", password));
+
+            try {
+                post.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+
+            try {
+                HttpResponse response = httpClient.execute(post, localContext);
+                HttpEntity entity = response.getEntity();
+
+
+                List<Cookie> cookies = httpClient.getCookieStore().getCookies();
+                for (Cookie cookie : cookies) {
+                    Log.i(TAG, cookie.toString());
+                    cookieStore.addCookie(cookie);
+                }
+
+
+            } catch (Exception e) {
+                return e.getLocalizedMessage();
+            }
+
+            result = "done";
+
+            lock = false;
+            return result;
+        }
+
+
         public static String PUT(String url, String json) {
-            HttpClient httpClient = new DefaultHttpClient();
+            DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpContext localContext = new BasicHttpContext();
             HttpPut put = new HttpPut(url);
             StringEntity se = null;
+
+
+            if (cookieStore != null)
+                httpClient.setCookieStore(cookieStore);
 
             try {
                 se = new StringEntity(json);
@@ -202,8 +293,11 @@ public class JsonHelper {
             try {
 
                 // create HttpClient
-                HttpClient httpclient = new DefaultHttpClient();
+                DefaultHttpClient httpclient = new DefaultHttpClient();
                 HttpGet get = new HttpGet(url);
+
+                if (cookieStore != null)
+                    httpclient.setCookieStore(cookieStore);
 
                 get.addHeader("Accept", "application/json");
                 get.addHeader("Content-type", "application/json");

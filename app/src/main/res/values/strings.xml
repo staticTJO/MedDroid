@@ -14,5 +14,6 @@
     <string name="title_activity_view_report">ViewReportActivity</string>
     <string name="title_activity_new_entry">NewEntryActivity</string>
     <string name="title_activity_cardio">CardioActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>
