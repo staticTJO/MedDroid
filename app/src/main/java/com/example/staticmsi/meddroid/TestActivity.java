@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.staticmsi.meddroid.models.Doctor;
+import com.example.staticmsi.meddroid.models.Nurse;
 import com.example.staticmsi.meddroid.models.Patient;
 
 import java.net.CookieHandler;
@@ -24,9 +26,9 @@ public class TestActivity extends ActionBarActivity {
 
         TextView tv = (TextView) findViewById(R.id.testResult);
 
-        JsonHelper.LOGIN_POST("admin", "$pring@dmin");
+        JsonHelper.LOGIN_POST("admin", "123");
 
-        tv.setText(Patient.findById(1L).toString());
+        tv.setText(Doctor.findByLoginUsername("jim").toString());
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override

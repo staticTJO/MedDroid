@@ -2,13 +2,12 @@ package com.example.staticmsi.meddroid;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.webkit.CookieManager;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
@@ -25,18 +24,16 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.CookiePolicy;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by hamadalmarri on 2015-07-22.
@@ -45,12 +42,13 @@ public class JsonHelper {
 
     static String TAG = "JsonHelper";
 
-//    private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
+    //    private static String domain = "http://10.0.2.2:8080/MyPatients_Spring";
     private static String domain = "http://69.11.16.153/mypatients";
 
     private static String loginPath = "/resources/j_spring_security_check";
 
     static BasicCookieStore cookieStore = null;
+
 
     public static String GET(String path) {
 
@@ -98,10 +96,26 @@ public class JsonHelper {
         return rq.result;
     }
 
+    public static boolean ASSERT_LOGIN() {
+        Requesting rq = new Requesting();
+        rq.execute("assertLogin");
+
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } while (rq.lock);
+
+        return rq.isLoggedIn;
+    }
+
     private static class Requesting extends AsyncTask<String, Void, String> {
 
         public static String result = null;
         public static boolean lock = false;
+        public static boolean isLoggedIn = false;
 
         @Override
         protected String doInBackground(String... urls) {
@@ -130,6 +144,10 @@ public class JsonHelper {
                     return LOGIN_POST(urls[1], urls[2], urls[3]);
                 else if (urls[0].equals("delete"))
                     return DELETE(urls[1]);
+                else if (urls[0].equals("assertLogin")) {
+                    assertLogin();
+                    return "";
+                }
             }
 
 
@@ -166,7 +184,6 @@ public class JsonHelper {
             HttpContext localContext = new BasicHttpContext();
             HttpPost post = new HttpPost(url);
             StringEntity se = null;
-
 
 
             if (cookieStore != null)
@@ -305,8 +322,7 @@ public class JsonHelper {
                 // make GET request to the given URL
                 HttpResponse httpResponse = httpclient.execute(get);
 
-
-                Log.i("Json2", url);
+//                Log.i("Json2", url);
 
                 // receive response as inputStream
                 inputStream = httpResponse.getEntity().getContent();
@@ -325,6 +341,40 @@ public class JsonHelper {
 
             lock = false;
             return result;
+        }
+
+        private static boolean assertLogin() {
+            try {
+                DefaultHttpClient httpclient = new DefaultHttpClient();
+                HttpGet get = new HttpGet(domain + "/patients");
+
+                if (cookieStore != null)
+                    httpclient.setCookieStore(cookieStore);
+
+                get.addHeader("Accept", "application/json");
+                get.addHeader("Content-type", "application/json");
+
+                // make GET request to the given URL
+                HttpResponse httpResponse = httpclient.execute(get);
+
+                String contentType = httpResponse.getHeaders("Content-Type")[0].getValue();
+                if (contentType.equals("text/html;charset=UTF-8")) {
+                    lock = false;
+
+                    isLoggedIn = false;
+                    return false;
+                }
+
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            lock = false;
+
+            isLoggedIn = true;
+            return true;
         }
 
         private static String convertInputStreamToString(InputStream inputStream) throws IOException {

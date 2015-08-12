@@ -1,6 +1,7 @@
 package com.example.staticmsi.meddroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,13 +13,30 @@ import android.widget.TextView;
 
 import com.example.staticmsi.meddroid.models.Notification;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 
 public class NotificationActivity extends Activity {
 
-    private Long NurseMockId = 2L;
+
+    class BtnViewOnClickListener implements View.OnClickListener {
+
+
+        Long prID = null;
+
+        public BtnViewOnClickListener(Long prID) {
+            this.prID = prID;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(NotificationActivity.this, ViewReportActivity.class);
+            intent.putExtra("prID", prID);
+            startActivity(intent);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +48,21 @@ public class NotificationActivity extends Activity {
     }
 
     void setupNotification() {
+        Calendar calendar = Calendar.getInstance();
+        Date min, max;
         TextView counter = (TextView) findViewById(R.id.counterNotification);
         int counts = 0;
+
+
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        min = calendar.getTime();
+
+        calendar.add(Calendar.DAY_OF_MONTH, 2);
+        max = calendar.getTime();
+
+
         List<Notification> notifications =
-                Notification.findByDateAndTimeBetweenAndToDoctor(new Date(), new Date(), NurseMockId);
+                Notification.findByDateAndTimeBetweenAndToDoctor(min, max, MainActivity.getUserId());
 
         // find toNurse or toDoctor
         // find unread yet
@@ -54,9 +83,18 @@ public class NotificationActivity extends Activity {
     }
 
     private void fillNotifications() {
+
+        Calendar calendar = Calendar.getInstance();
+        Date min, max;
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        min = calendar.getTime();
+
+        calendar.add(Calendar.DAY_OF_MONTH, 2);
+        max = calendar.getTime();
+
         TableLayout t = (TableLayout) findViewById(R.id.tblNotifications);
         List<Notification> notifications =
-                Notification.findByDateAndTimeBetweenAndToDoctor(new Date(), new Date(), NurseMockId);
+                Notification.findByDateAndTimeBetweenAndToDoctor(min, max, MainActivity.getUserId());
 
         for (Notification n : notifications) {
             TableRow tr = new TableRow(this);
@@ -71,6 +109,7 @@ public class NotificationActivity extends Activity {
 
             tvDesc.setText(n.getText());
             btnView.setText("view");
+            btnView.setOnClickListener(new BtnViewOnClickListener(n.getEntry().getReport().getId()));
 
             tr.addView(btnStatus);
             tr.addView(tvDesc);

@@ -2,9 +2,12 @@ package com.example.staticmsi.meddroid;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -28,13 +31,16 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.staticmsi.meddroid.models.Doctor;
 import com.example.staticmsi.meddroid.models.Notification;
+import com.example.staticmsi.meddroid.models.Nurse;
 import com.example.staticmsi.meddroid.models.Patient;
 import com.example.staticmsi.meddroid.models.PatientAssessment;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -52,24 +58,85 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     // Click ok, then select the Filter name you created
     private static final String TAG = "MedDroidMessages";
 
+    static boolean active = false;
 
     List<Patient> patients;
     Patient newPatientToBeAssesst = null;
     PatientAssessment patientToBeAssesst = null;
-    private long NurseMockId = 2L;
+
+    //    private long NurseMockId = 2L;
+    private static Long UserId = null;
+    public static String Username = null;
+    public static boolean isDoctor = false;
+
     Handler handler = new Handler();
 
 
+    private boolean assertNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        boolean isAvailable = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+
+        if (!isAvailable) {
+            Toast t = Toast.makeText(MainActivity.this, "Network is not available", Toast.LENGTH_LONG);
+            t.show();
+        }
+        return isAvailable;
+    }
+
+    public boolean assertLogin() {
+        if (Username == null || Username.isEmpty() || !JsonHelper.ASSERT_LOGIN()) {
+            Log.i("ASSERTLOGIN", "not logged in");
+
+            if (Username != null)
+                Log.i("ASSERTLOGIN", Username);
+
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public static Long getUserId() {
+
+        Log.i("login", Username);
+        Log.i("login", String.valueOf(isDoctor));
+
+        if (UserId == null) {
+            if (isDoctor) {
+                UserId = Doctor.findByLoginUsername(Username).get(0).getId();
+            } else {
+                UserId = Nurse.findByLoginUsername(Username).get(0).getId();
+            }
+        }
+
+        return UserId;
+    }
 
     class TimerForUpdate implements Runnable {
 
 
         @Override
         public void run() {
-            refresh();
+            if (Username == null || Username.isEmpty())
+                return;
+
+
+            if (active) {
+                if (assertLogin())
+                    refresh();
+            }
+
             handler.postDelayed(this, 10000);
         }
-    };
+    }
+
+    ;
 
     class BtnViewReportsOnClick implements View.OnClickListener {
 
@@ -143,8 +210,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //RelativeLayout NurseLayout = new RelativeLayout(this);
 
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            Log.i(TAG, "FINISHING");
+            finish();
+            return;
+        }
 
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -182,11 +253,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         tabHost.addTab(spec4);
 
 
-        fillHomePatients();
-        fillPatients();
-        fillPatientsSpanner();
+        assertLogin();
 
-        setupNotification();
+//        fillHomePatients();
+//        fillPatients();
+//        fillPatientsSpanner();
+//
+//        setupNotification();
 
         setBtnAddNewPatient();
         setBtnStartAssessment();
@@ -260,11 +333,19 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     }
 
     private void updateCountNotification() {
+        Calendar calendar = Calendar.getInstance();
         TextView counter = (TextView) findViewById(R.id.counterNotification);
         int counts = 0;
+        Date min, max;
+
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        min = calendar.getTime();
+
+        calendar.add(Calendar.DAY_OF_MONTH, 2);
+        max = calendar.getTime();
 
         List<Notification> notifications =
-                Notification.findByDateAndTimeBetweenAndToDoctor(new Date(), new Date(), NurseMockId);
+                Notification.findByDateAndTimeBetweenAndToDoctor(min, max, getUserId());
 
         // find toNurse or toDoctor
         // find unread yet
@@ -439,6 +520,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart");
+        active = true;
     }
 
 
@@ -447,19 +529,19 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         super.onResume();
         Log.i(TAG, "onResume");
 
-        fillHomePatients();
-        fillPatients();
-        fillPatientsSpanner();
+        active = true;
 
-        setupNotification();
+        if (assertLogin())
+            refresh();
+
     }
 
 
     public void refresh() {
+
         fillHomePatients();
         fillPatients();
         fillPatientsSpanner();
-
         setupNotification();
 
         Log.i("TIMER", "TIMER");
@@ -470,6 +552,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onPause() {
         super.onPause();
         Log.i(TAG, "onPause");
+        active = false;
     }
 
 
@@ -477,6 +560,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop");
+        active = false;
     }
 
 
@@ -484,6 +568,14 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     protected void onRestart() {
         super.onRestart();
         Log.i(TAG, "onRestart");
+
+        active = true;
+
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            Log.i(TAG, "FINISHING");
+            finish();
+            return;
+        }
     }
 
 

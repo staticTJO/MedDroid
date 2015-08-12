@@ -18,10 +18,7 @@ public class Nurse extends AbstractJsonModel {
     private String lastName;
     private String age;
 
-//    private List<ReportEntry> entries = new ArrayList<ReportEntry>();
-//    private List<PatientReport> reports = new ArrayList<PatientReport>();
-//    private List<Notification> createdNotifications = new ArrayList<Notification>();
-//    private List<Notification> receivedNotifications = new ArrayList<Notification>();
+
     private Long version = 0L;
 
 
@@ -61,37 +58,6 @@ public class Nurse extends AbstractJsonModel {
         this.age = age;
     }
 
-//    public List<ReportEntry> getEntries() {
-//        return entries;
-//    }
-//
-//    public void setEntries(List<ReportEntry> entries) {
-//        this.entries = entries;
-//    }
-//
-//    public List<PatientReport> getReports() {
-//        return reports;
-//    }
-//
-//    public void setReports(List<PatientReport> reports) {
-//        this.reports = reports;
-//    }
-//
-//    public List<Notification> getCreatedNotifications() {
-//        return createdNotifications;
-//    }
-//
-//    public void setCreatedNotifications(List<Notification> createdNotifications) {
-//        this.createdNotifications = createdNotifications;
-//    }
-//
-//    public List<Notification> getReceivedNotifications() {
-//        return receivedNotifications;
-//    }
-//
-//    public void setReceivedNotifications(List<Notification> receivedNotifications) {
-//        this.receivedNotifications = receivedNotifications;
-//    }
 
     public Long getVersion() {
         return version;
@@ -128,7 +94,7 @@ public class Nurse extends AbstractJsonModel {
 
     @Override
     protected String getPath() {
-        return "/nurses/";
+        return "/nurses";
     }
 
 
@@ -146,7 +112,6 @@ public class Nurse extends AbstractJsonModel {
     @Override
     public AbstractJsonModel fromJson(JSONObject jsonObject) {
         Nurse nr = new Nurse();
-//        JSONArray list;
 
         try {
             if (jsonObject.has("id"))
@@ -158,37 +123,6 @@ public class Nurse extends AbstractJsonModel {
             nr.lastName = jsonObject.getString("lastName");
             nr.age = jsonObject.getString("age");
 
-//            list = jsonObject.getJSONArray("entries");
-//            if (list != null) {
-//                for (int i = 0; i < list.length(); i++) {
-//                    JSONObject elem = list.getJSONObject(i);
-//                    nr.entries.add(ReportEntry.fromJson(elem.toString()));
-//                }
-//            }
-
-//            list = jsonObject.getJSONArray("reports");
-//            if (list != null) {
-//                for (int i = 0; i < list.length(); i++) {
-//                    JSONObject elem = list.getJSONObject(i);
-//                    nr.reports.add(PatientReport.fromJson(elem.toString()));
-//                }
-//            }
-
-//            list = jsonObject.getJSONArray("createdNotifications");
-//            if (list != null) {
-//                for (int i = 0; i < list.length(); i++) {
-//                    JSONObject elem = list.getJSONObject(i);
-//                    nr.createdNotifications.add(Notification.fromJson(elem.toString()));
-//                }
-//            }
-
-//            list = jsonObject.getJSONArray("receivedNotifications");
-//            if (list != null) {
-//                for (int i = 0; i < list.length(); i++) {
-//                    JSONObject elem = list.getJSONObject(i);
-//                    nr.receivedNotifications.add(Notification.fromJson(elem.toString()));
-//                }
-//            }
 
             if (jsonObject.has("version"))
                 nr.version = jsonObject.getLong("version");
@@ -203,10 +137,6 @@ public class Nurse extends AbstractJsonModel {
     @Override
     public String toJson(boolean addVersion) {
         JSONObject jsonObject = new JSONObject();
-//        JSONArray entriesJsonArray = new JSONArray();
-//        JSONArray reportsJsonArray = new JSONArray();
-//        JSONArray createdNotificationsJsonArray = new JSONArray();
-//        JSONArray receivedNotificationsJsonArray = new JSONArray();
 
         try {
 
@@ -219,29 +149,6 @@ public class Nurse extends AbstractJsonModel {
             jsonObject.put("lastName", this.lastName);
             jsonObject.put("age", this.age);
 
-
-
-//            for (ReportEntry re : entries) {
-//                entriesJsonArray.put(re.toJson(true));
-//            }
-//
-//            for (PatientReport pr : reports) {
-//                reportsJsonArray.put(pr.toJson(true));
-//            }
-//
-//            for (Notification n : createdNotifications) {
-//                createdNotificationsJsonArray.put(n.toJson(true));
-//            }
-//
-//            for (Notification n : receivedNotifications) {
-//                receivedNotificationsJsonArray.put(n.toJson(true));
-//            }
-//
-//
-//            jsonObject.put("entries", entriesJsonArray);
-//            jsonObject.put("reports", reportsJsonArray);
-//            jsonObject.put("createdNotifications", createdNotificationsJsonArray);
-//            jsonObject.put("receivedNotifications", receivedNotificationsJsonArray);
 
 
             if (addVersion)
@@ -272,5 +179,18 @@ public class Nurse extends AbstractJsonModel {
 
         return nurses;
     }
+
+
+    public static List<Nurse> findByLoginUsername(String username) {
+        List<AbstractJsonModel> abstractJsonModels =
+                new Nurse().superFindCustom("?find=ByLogUsernameEquals&logUsername=" + username);
+        List<Nurse> nurses = new ArrayList<Nurse>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            nurses.add((Nurse) jm);
+
+        return nurses;
+    }
+
 
 }

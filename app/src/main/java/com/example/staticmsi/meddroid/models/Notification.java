@@ -25,7 +25,7 @@ public class Notification extends AbstractJsonModel {
     private Nurse toNurse;
     private Doctor toDoctor;
     private boolean isRead;
-//    private ReportEntry entry;
+    private ReportEntry entry;
     private Long version = 0L;
 
 
@@ -101,13 +101,13 @@ public class Notification extends AbstractJsonModel {
         this.isRead = isRead;
     }
 
-//    public ReportEntry getEntry() {
-//        return entry;
-//    }
-//
-//    public void setEntry(ReportEntry entry) {
-//        this.entry = entry;
-//    }
+    public ReportEntry getEntry() {
+        return entry;
+    }
+
+    public void setEntry(ReportEntry entry) {
+        this.entry = entry;
+    }
 
     @Override
     public String toString() {
@@ -128,6 +128,7 @@ public class Notification extends AbstractJsonModel {
                 ", toNurse=" + toNurse +
                 ", toDoctor=" + toDoctor +
                 ", isRead=" + isRead +
+                ", entry=" + entry +
                 ", version=" + version +
                 '}';
     }
@@ -158,6 +159,8 @@ public class Notification extends AbstractJsonModel {
     public AbstractJsonModel fromJson(JSONObject jsonObject) {
         Notification n = new Notification();
 
+        Log.i("notification", jsonObject.toString());
+
         try {
             if (jsonObject.has("id"))
                 n.id = jsonObject.getLong("id");
@@ -183,6 +186,10 @@ public class Notification extends AbstractJsonModel {
 
             if (jsonObject.has("toDoctor") && !jsonObject.isNull("toDoctor"))
                 n.toDoctor = Doctor.fromJson(jsonObject.getString("toDoctor"));
+
+
+            if (jsonObject.has("entry") && !jsonObject.isNull("entry"))
+                n.entry = ReportEntry.fromJson(jsonObject.getString("entry"));
 
 
             if (jsonObject.has("version"))
@@ -227,6 +234,9 @@ public class Notification extends AbstractJsonModel {
 
             if (toDoctor != null)
                 jsonObject.put("toDoctor", new JSONObject(toDoctor.toJson(true)));
+
+            if (entry != null)
+                jsonObject.put("entry", new JSONObject(entry.toJson(true)));
 
 
             if (addVersion)

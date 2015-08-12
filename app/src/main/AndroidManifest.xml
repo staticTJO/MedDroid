@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.staticmsi.meddroid">
+    package="com.example.staticmsi.meddroid" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,10 +9,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,12 +28,7 @@
         <activity
             android:name=".NeuroActivity"
             android:label="NeuroActivity"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:noHistory="true" >
         </activity>
         <activity
             android:name=".RespActivity"
@@ -45,28 +40,35 @@
             android:noHistory="true" />
         <activity
             android:name=".ReportsActivity"
-            android:label="@string/title_activity_reports"></activity>
+            android:label="@string/title_activity_reports" />
         <activity
             android:name=".ViewReportActivity"
-            android:label="@string/title_activity_view_report"></activity>
+            android:label="@string/title_activity_view_report" />
         <activity
             android:name=".NewEntryActivity"
-            android:label="@string/title_activity_new_entry"></activity>
+            android:label="@string/title_activity_new_entry" />
         <activity
             android:name=".TestActivity"
-            android:label="@string/title_activity_test">
+            android:label="@string/title_activity_test" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddReportActivity"
-            android:label="@string/title_activity_add_report"></activity>
+            android:label="@string/title_activity_add_report" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:noHistory="true">
+        </activity>
 
-
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

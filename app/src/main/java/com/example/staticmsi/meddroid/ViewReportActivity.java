@@ -53,6 +53,12 @@ public class ViewReportActivity extends AppCompatActivity {
 
     private void setupBtnAddEntry() {
         Button b = (Button) findViewById(R.id.btnAddEntry);
+
+        if (MainActivity.isDoctor) {
+            b.setVisibility(View.INVISIBLE);
+            return;
+        }
+
         b.setOnClickListener(new BtnAddEntryOnClick(this.prID));
     }
 

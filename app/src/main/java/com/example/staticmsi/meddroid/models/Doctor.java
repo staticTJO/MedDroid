@@ -1,5 +1,7 @@
 package com.example.staticmsi.meddroid.models;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,7 +77,7 @@ public class Doctor extends AbstractJsonModel {
 
     @Override
     protected String getPath() {
-        return "/doctors/";
+        return "/doctors";
     }
 
 
@@ -92,6 +94,7 @@ public class Doctor extends AbstractJsonModel {
 
     @Override
     public AbstractJsonModel fromJson(JSONObject jsonObject) {
+
         Doctor dr = new Doctor();
 
         try {
@@ -154,5 +157,16 @@ public class Doctor extends AbstractJsonModel {
         return doctors;
     }
 
+
+    public static List<Doctor> findByLoginUsername(String username) {
+        List<AbstractJsonModel> abstractJsonModels =
+                new Doctor().superFindCustom("?find=ByLogUsernameEquals&logUsername=" + username);
+        List<Doctor> doctors = new ArrayList<Doctor>();
+
+        for (AbstractJsonModel jm : abstractJsonModels)
+            doctors.add((Doctor) jm);
+
+        return doctors;
+    }
 
 }
