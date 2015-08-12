@@ -7,79 +7,191 @@
     <!--Tab Content Goes Here-->
 
 
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:text="Welcome to MedDroid. This is the Patient Info tab!"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="640dp"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:gravity="top|center_vertical">
 
-
-        <TableRow>
-            <Spinner
-                android:id="@+id/patients_spinner"
-                android:layout_weight="0.5"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/textPatientId"
-                android:layout_weight="0.5"
-                android:gravity="right"
-                android:layout_span="2"/>
-        </TableRow>
+                android:layout_gravity="center_horizontal">
 
-        <TableRow
-            android:layout_marginTop="20dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Patient List"
+                    android:id="@+id/textView34"
+                    android:layout_weight="0.04"
+                    android:textSize="35dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="613dp"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/textPatientInfoLeft"
-                android:layout_weight="0.5"
-                android:gravity="left"
-                android:textSize="16dp"
-                />
+                android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/patients_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:longClickable="false"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/textPatientInfoRight"
-                android:layout_weight="0.5"
-                android:gravity="left"
-                android:textSize="16dp"
-                android:paddingLeft="20dp"
-                android:layout_span="2" />
-        </TableRow>
+                android:layout_gravity="center_horizontal">
 
-        <TableRow>
-            <TextView android:layout_span="1" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Reports"
+                    android:id="@+id/btnViewReports"
+                    android:layout_column="0"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/btnStartAssess"
+                    android:layout_toEndOf="@+id/btnStartAssess" />
 
-            <Button android:text="Start Assessment"
-                android:id="@+id/btnStartAssess" />
+                <Button
+                    android:text="Start Assessment"
+                    android:id="@+id/btnStartAssess"
+                    android:layout_column="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
 
-            <Button android:text="Modify" />
+        </LinearLayout>
 
-        </TableRow>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="640dp"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:weightSum="1">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View Reports"
-                android:id="@+id/btnViewReports" />
-        </TableRow>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/linearLayout">
 
-    </TableLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Patient Info"
+                        android:id="@+id/textView37"
+                        android:textSize="35dp"
+                        />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/linearLayout"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/linearLayout2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text=""
+                        android:id="@+id/textPatientId"
+                        android:layout_weight="0.5"
+                        android:gravity="left"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/linearLayout2"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.50">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text=""
+                                android:id="@+id/textPatientInfoLeft"
+                                android:layout_weight="0.5"
+                                android:gravity="left"
+                                android:textSize="18dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.50"
+                        android:weightSum="1">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="0.19">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/textPatientInfoRight"
+                                android:layout_weight="0.5"
+                                android:gravity="left"
+                                android:textSize="18dp"
+                                android:paddingLeft="20dp"
+                                android:layout_column="2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>

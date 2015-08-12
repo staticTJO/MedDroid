@@ -97,7 +97,8 @@
                 android:id="@+id/RespiratorySize"
                 android:layout_row="0"
                 android:layout_column="3"
-                android:inputType="text" />
+                android:inputType="text"
+                android:singleLine="true" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,7 +115,8 @@
                 android:id="@+id/RespiratoryLengthAtTeeth"
                 android:layout_row="0"
                 android:layout_column="5"
-                android:inputType="text" />
+                android:inputType="text"
+                android:singleLine="true" />
 
             <TextView
                 android:layout_width="53dp"
@@ -207,7 +209,8 @@
             android:ems="10"
             android:id="@+id/RespiratoryTracheostomySize"
             android:layout_weight="0.03"
-            android:autoText="false" />
+            android:autoText="false"
+            android:singleLine="true" />
 
     </LinearLayout>
 
