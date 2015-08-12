@@ -62,13 +62,14 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     List<Patient> patients;
     Patient newPatientToBeAssesst = null;
-    PatientAssessment patientToBeAssesst = null;
+//    PatientAssessment patientToBeAssesst = null;
 
     //    private long NurseMockId = 2L;
     private static Long UserId = null;
     public static String Username = null;
     public static boolean isDoctor = false;
 
+    private int sleepTime = 5000;
     Handler handler = new Handler();
 
 
@@ -123,16 +124,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         @Override
         public void run() {
-            if (Username == null || Username.isEmpty())
-                return;
 
+            Log.i("TIMER", "TIMER");
 
             if (active) {
                 if (assertLogin())
                     refresh();
             }
 
-            handler.postDelayed(this, 10000);
+            handler.postDelayed(this, sleepTime);
         }
     }
 
@@ -253,7 +253,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         tabHost.addTab(spec4);
 
 
-        assertLogin();
+//        assertLogin();
 
 //        fillHomePatients();
 //        fillPatients();
@@ -261,15 +261,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 //
 //        setupNotification();
 
-        setBtnAddNewPatient();
-        setBtnStartAssessment();
-
-        setupTimerForRefresh();
     }
 
     private void setupTimerForRefresh() {
         TimerForUpdate timerForUpdate = new TimerForUpdate();
-        handler.postDelayed(timerForUpdate, 10000);
+        handler.postDelayed(timerForUpdate, sleepTime);
     }
 
     private void setBtnViewReport() {
@@ -450,6 +446,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             return;
         }
 
+        tbl.setVisibility(View.VISIBLE);
         tvNoPatients.setVisibility(View.INVISIBLE);
 
 
@@ -531,9 +528,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         active = true;
 
-        if (assertLogin())
+        if (assertLogin()) {
             refresh();
-
+            setBtnAddNewPatient();
+            setBtnStartAssessment();
+            setupTimerForRefresh();
+        }
     }
 
 
@@ -543,8 +543,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         fillPatients();
         fillPatientsSpanner();
         setupNotification();
-
-        Log.i("TIMER", "TIMER");
     }
 
 

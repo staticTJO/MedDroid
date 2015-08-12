@@ -14,30 +14,30 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private Long id = null;
 
-    private String status; // pending, done
+    private String status = new String(); // pending, done
 
     // Neurological
-    private String neurological_Vision_Eye;
+    private String neurological_Vision_Eye = new String();
 
-    private String neurological_Vision_Pupils_L;
+    private String neurological_Vision_Pupils_L = new String();
 
-    private String neurological_Vision_Pupils_R;
+    private String neurological_Vision_Pupils_R = new String();
 
-    private String neurological_Verbal_Speech;
+    private String neurological_Verbal_Speech = new String();
 
-    private String neurological_Verbal_GAG_Reflex; // present, absent
+    private String neurological_Verbal_GAG_Reflex = new String(); // present, absent
 
-    private String neurological_Motor_Reaction_L;
+    private String neurological_Motor_Reaction_L = new String();
 
-    private String neurological_Motor_Reaction_R;
+    private String neurological_Motor_Reaction_R = new String();
 
-    private String neurological_Motor_Restraints; // upper, lower
+    private String neurological_Motor_Restraints = new String(); // upper, lower
 
-    private String neurological_Pain_Level;
+    private String neurological_Pain_Level = new String();
 
-    private String neurological_Pain_Description;
+    private String neurological_Pain_Description = new String();
 
-    private String neurological_Mental_Description;
+    private String neurological_Mental_Description = new String();
 
     // Respiratory
     private boolean respiratory_Airway_Maintains_Own;
@@ -68,16 +68,16 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private boolean respiratory_Cough_SimulatedBySuctioning;
 
-    private String respiratory_Cough; // Strong, Moderate, Week, Absent
+    private String respiratory_Cough = new String(); // Strong, Moderate, Week, Absent
 
-    private String respiratory_Respirations; // Ventilated, N.I.V, Non-ventilated, Easy/Regular, Deep, Shallow, Laboured,
+    private String respiratory_Respirations = new String(); // Ventilated, N.I.V, Non-ventilated, Easy/Regular, Deep, Shallow, Laboured,
 
     // Intercostal use, Other
-    private String respiratory_ChestExpansion; // Symetrical, Asymetrical, Paradoxical, Tracheal tug
+    private String respiratory_ChestExpansion = new String(); // Symetrical, Asymetrical, Paradoxical, Tracheal tug
 
-    private String respiratory_Trechea; // Midline, Deviated left, Deviated right
+    private String respiratory_Trechea = new String(); // Midline, Deviated left, Deviated right
 
-    private String respiratory_OtherDescription;
+    private String respiratory_OtherDescription = new String();
 
     private boolean respiratory_Clear;
 
@@ -110,7 +110,7 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private int cardio_ECG_Wave;
 
-    private String cardio_ECG_Interpretation;
+    private String cardio_ECG_Interpretation = new String();
 
     private boolean cardio_Skin_Pink;
 
@@ -140,7 +140,7 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private boolean cardio_Oedema_Generalised;
 
-    private String cardio_Oedema_LocalisedTo;
+    private String cardio_Oedema_LocalisedTo = new String();
 
     // Gastro
     private boolean gastro_Adomen_Soft;
@@ -159,7 +159,7 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private boolean gastro_Adomen_ReboundTenderness;
 
-    private String gastro_BowlSounds; // Absent, Present, Normal, Increased, Decreased
+    private String gastro_BowlSounds = new String(); // Absent, Present, Normal, Increased, Decreased
 
     private boolean gastro_BowlSounds_Abs;
 
@@ -189,12 +189,12 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private boolean gastro_Diet_Special_Con;
 
-    private String gastro_Diet_Speical_String;
+    private String gastro_Diet_Speical_String = new String();
 
     // NBM, CF, FF, Diet, Diabetic, Cardiac, Tube feeds, Special Consistency, Other
-    private String gastro_FeedingTube_Type;
+    private String gastro_FeedingTube_Type = new String();
 
-    private String gastro_FeedingTube_insituTo;
+    private String gastro_FeedingTube_insituTo = new String();
 
     private boolean gastro_FeedingTube_Gastric;
 
@@ -208,7 +208,7 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private boolean isgastro_FeedingTube_Verified;
 
-    private String gastro_PlacementVerifiedBy;
+    private String gastro_PlacementVerifiedBy = new String();
 
     private boolean gastro_AdministeringFeeds;
 
@@ -218,9 +218,9 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private boolean gastro_StraightDrainage;
 
-    private String gastro_DescriptionOfAspirate;
+    private String gastro_DescriptionOfAspirate = new String();
 
-    private String gastro_OtherDescription;
+    private String gastro_OtherDescription = new String();
 
     private int gastro_LeastBM1;
 
@@ -228,43 +228,43 @@ public class PatientAssessment extends AbstractJsonModel {
 
     private boolean gastro_PriorToAdmission;
 
-    private String gastro_StoolColour;
+    private String gastro_StoolColour = new String();
 
-    private String gastro_Stoolcharacteristic;
+    private String gastro_Stoolcharacteristic = new String();
 
     private boolean isgastor_Ostomy_Type;
 
-    private String gastro_Ostomy_Type;
+    private String gastro_Ostomy_Type = new String();
 
-    private String gastro_AbdominalDrain_Type;
+    private String gastro_AbdominalDrain_Type = new String();
 
     private boolean isgastro_AbdominalDrain_Type;
 
-    private String gastro_AppearanceOfStoma;
+    private String gastro_AppearanceOfStoma = new String();
 
-    private String gastro_Location;
+    private String gastro_Location = new String();
 
-    private String gastro_DrainageDescribe;
+    private String gastro_DrainageDescribe = new String();
 
     // Genitourinary
     private boolean IsGenitourinary_Catheter_Type;
 
-    private String Genitourinary_Catheter_Type;
+    private String Genitourinary_Catheter_Type = new String();
 
     private float Genitourinary_Catheter_Size;
 
     private boolean IsGenitourinary_Discharge;
 
-    private String Genitourinary_Catheter_UrineDescribe;
+    private String Genitourinary_Catheter_UrineDescribe = new String();
 
     private boolean Genitourinary_Catheter_Discharge;
 
-    private String Genitourinary_Catheter_Describe;
+    private String Genitourinary_Catheter_Describe = new String();
 
     private boolean Genitourinary_Catheter_Menstruating;
 
     // Physical
-    private String physical_SkinCondition;
+    private String physical_SkinCondition = new String();
 
     private boolean physical_Sacrum_Intact;
 

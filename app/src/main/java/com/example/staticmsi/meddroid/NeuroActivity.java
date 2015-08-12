@@ -3,6 +3,7 @@ package com.example.staticmsi.meddroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +28,12 @@ public class NeuroActivity extends Activity {
 
 
         Long pID = getIntent().getExtras().getLong("pID");
-        this.p = (Patient.findById(pID));
-        Long paID = getIntent().getExtras().getLong("paID");
+        if (!pID.equals(0L))
+            this.p = (Patient.findById(pID));
+
+        Long paID = getIntent().getExtras().getLong("paId");
+
+
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
         if (paExist) {
@@ -111,7 +116,6 @@ public class NeuroActivity extends Activity {
     }
 
     private void fillFields() {
-
         EditText etVisionEye = (EditText) findViewById(R.id.etVisionEye);
         EditText etPuplisL = (EditText) findViewById(R.id.etPuplisL);
         EditText etPuplisR = (EditText) findViewById(R.id.etPuplisR);

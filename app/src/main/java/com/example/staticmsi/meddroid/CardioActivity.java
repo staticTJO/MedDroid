@@ -104,6 +104,8 @@ public class CardioActivity extends Activity {
             pa.setCardio_Oedema_Generalised(cardioOedemaGeneralized.isChecked());
             pa.setCardio_Oedema_LocalisedTo(cardioOedemaLocalizedTo.getText().toString());
             pa.update();
+
+
             startActivity(intent);
         }
 
