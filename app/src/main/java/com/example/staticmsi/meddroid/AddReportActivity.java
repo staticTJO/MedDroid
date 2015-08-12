@@ -31,7 +31,7 @@ public class AddReportActivity extends AppCompatActivity {
         public void onClick(View v) {
             EditText etReportName = (EditText) findViewById(R.id.etReportName);
             PatientReport pr = new PatientReport();
-            Nurse n = Nurse.findById(1L);
+            Nurse n = Nurse.findById(MainActivity.getUserId());
             Patient p = Patient.findById(this.pId);
 
             pr.setCreatedBy(n);

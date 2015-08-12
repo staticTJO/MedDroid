@@ -93,11 +93,11 @@ public abstract class AbstractJsonModel {
      */
     public List<AbstractJsonModel> superFindCustom(String query) {
 
-        Log.i("Json", getPath()+ query);
+//        Log.i("Json", getPath()+ query);
 
         String jsonResponse = JsonHelper.GET(getPath() + query);
 
-        Log.i("Json", jsonResponse);
+//        Log.i("doctorjson", jsonResponse);
 
 
         List<AbstractJsonModel> jmList = new ArrayList<AbstractJsonModel>();
