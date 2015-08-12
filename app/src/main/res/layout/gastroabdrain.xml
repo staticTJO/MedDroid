@@ -44,7 +44,8 @@
             android:layout_height="wrap_content"
             android:text="Type:"
             android:id="@+id/gastroabdrainType"
-            android:checked="false" />
+            android:checked="false"
+            android:singleLine="true" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -64,7 +65,8 @@
             android:text="Location:"
             android:id="@+id/gastroabdrainLocation"
             android:layout_weight="0.05"
-            android:checked="false" />
+            android:checked="false"
+            android:singleLine="true" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -75,7 +77,8 @@
             <EditText
                 android:layout_width="234dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/gastroabdraindesc" />
+                android:id="@+id/gastroabdraindesc"
+                android:singleLine="true" />
         </LinearLayout>
     </LinearLayout>
 

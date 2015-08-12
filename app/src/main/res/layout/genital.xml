@@ -62,7 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/GenitourinaryCatheterTypeText"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,7 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/GenitourinaryCatheterSize"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -172,7 +174,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.76"
             android:id="@+id/GenitourinaryMenstruatingDescribe"
-            android:inputType="text" />
+            android:inputType="text"
+            android:singleLine="true" />
 
     </LinearLayout>
 </LinearLayout>

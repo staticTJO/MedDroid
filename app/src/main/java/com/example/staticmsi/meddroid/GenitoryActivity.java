@@ -32,9 +32,10 @@ public class GenitoryActivity extends Activity{
         }
 
         start();
-
+        setBtnToPhysical();
         setEventListeners();
     }
+
     private void start() {
         if (pa == null) {
             pa = new PatientAssessment();
@@ -44,6 +45,7 @@ public class GenitoryActivity extends Activity{
             fillFields();
         }
     }
+
     private void fillFields() {
 
         CheckBox catheterType = (CheckBox) findViewById(R.id.GenitourinaryCatheterType);
@@ -61,12 +63,13 @@ public class GenitoryActivity extends Activity{
         catheterIsMentruating.setChecked(pa.isGenitourinary_Catheter_Menstruating());
 
     }
-    private void setEventListeners() {
-        Button btnToResp = (Button) findViewById(R.id.btnToResp);
-        Button btnCancel = (Button) findViewById(R.id.btnCancel);
-        Button btnSaveExit = (Button) findViewById(R.id.btnSaveExit);
 
-        btnSaveExit.setOnClickListener(new View.OnClickListener() {
+    private void setEventListeners() {
+
+        Button btnCancelGeni = (Button) findViewById(R.id.btnCancelGeni);
+        Button bntSaveExitGeni = (Button) findViewById(R.id.bntSaveExitGeni);
+
+        bntSaveExitGeni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -90,31 +93,7 @@ public class GenitoryActivity extends Activity{
         });
 
 
-        btnToResp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                CheckBox catheterType = (CheckBox) findViewById(R.id.GenitourinaryCatheterType);
-                EditText catheterTypeDescribe = (EditText) findViewById(R.id.GenitourinaryCatheterTypeText);
-                EditText catheterSize = (EditText) findViewById(R.id.GenitourinaryCatheterSize);
-                CheckBox catheterDischarge = (CheckBox) findViewById(R.id.GenitourinaryIsDischarge);
-                EditText catheterUrineDescribe = (EditText) findViewById(R.id.GenitourinaryUrineDesc);
-                CheckBox catheterIsMentruating = (CheckBox) findViewById(R.id.IsMentrating);
-
-                pa.setIsGenitourinary_Catheter_Type(catheterType.isChecked());
-                pa.setGenitourinary_Catheter_Type(catheterTypeDescribe.getText().toString());
-                pa.setGenitourinary_Catheter_Size(Float.valueOf(catheterSize.getText().toString()));
-                pa.setIsGenitourinary_Discharge(catheterDischarge.isChecked());
-                pa.setGenitourinary_Catheter_UrineDescribe(catheterUrineDescribe.getText().toString());
-                pa.setIsGenitourinary_Catheter_Type(catheterIsMentruating.isChecked());
-                pa.update();
-
-                Intent intent = new Intent(GenitoryActivity.this, PhysicalActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnCancelGeni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -122,5 +101,56 @@ public class GenitoryActivity extends Activity{
         });
 
     }
+
+    private void setBtnToPhysical() {
+
+        Button b = (Button) findViewById(R.id.btnToPhysical);
+
+        b.setOnClickListener(new BtnToPhysicalOnClick(this, this.pa.getId()));
+    }
+
+    class BtnToPhysicalOnClick implements View.OnClickListener {
+
+        Long paId = null;
+        GenitoryActivity ge;
+
+        public BtnToPhysicalOnClick(GenitoryActivity ge, Long paId) {
+            this.ge = ge;
+            this.paId = paId;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(GenitoryActivity.this, PhysicalActivity.class);
+
+            if (paId != null) {
+                intent.putExtra("paExist", true);
+                intent.putExtra("paId", paId);
+            } else {
+                intent.putExtra("paExist", false);
+            }
+
+            CheckBox catheterType = (CheckBox) findViewById(R.id.GenitourinaryCatheterType);
+            EditText catheterTypeDescribe = (EditText) findViewById(R.id.GenitourinaryCatheterTypeText);
+            EditText catheterSize = (EditText) findViewById(R.id.GenitourinaryCatheterSize);
+            CheckBox catheterDischarge = (CheckBox) findViewById(R.id.GenitourinaryIsDischarge);
+            EditText catheterUrineDescribe = (EditText) findViewById(R.id.GenitourinaryUrineDesc);
+            CheckBox catheterIsMentruating = (CheckBox) findViewById(R.id.IsMentrating);
+
+            pa.setIsGenitourinary_Catheter_Type(catheterType.isChecked());
+            pa.setGenitourinary_Catheter_Type(catheterTypeDescribe.getText().toString());
+            pa.setGenitourinary_Catheter_Size(Float.valueOf(catheterSize.getText().toString()));
+            pa.setIsGenitourinary_Discharge(catheterDischarge.isChecked());
+            pa.setGenitourinary_Catheter_UrineDescribe(catheterUrineDescribe.getText().toString());
+            pa.setIsGenitourinary_Catheter_Type(catheterIsMentruating.isChecked());
+
+
+            pa.update();
+            startActivity(intent);
+
+        }
+
+    }
+
 }
 

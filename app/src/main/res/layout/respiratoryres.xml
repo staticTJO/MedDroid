@@ -148,7 +148,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/RespiratoryRespirationsOther"
-                android:layout_weight="21.08" />
+                android:layout_weight="21.08"
+                android:singleLine="true" />
         </LinearLayout>
     </LinearLayout>
 

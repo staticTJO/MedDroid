@@ -132,7 +132,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/gastroSpecialDesc"
-            android:layout_weight="0.364" />
+            android:layout_weight="0.364"
+            android:singleLine="true" />
 
         <CheckBox
             android:layout_width="wrap_content"

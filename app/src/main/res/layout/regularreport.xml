@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/editText47" />
+            android:id="@+id/editText47"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +60,8 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editText48"
-            android:layout_weight="0.23" />
+            android:layout_weight="0.23"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,7 +82,8 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText49" />
+            android:id="@+id/editText49"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -101,7 +104,8 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText50" />
+            android:id="@+id/editText50"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -122,7 +126,8 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText51" />
+            android:id="@+id/editText51"
+            android:singleLine="true" />
 
     </LinearLayout>
 
@@ -146,6 +151,7 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/editText52"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:singleLine="true" />
     </LinearLayout>
 </LinearLayout>
