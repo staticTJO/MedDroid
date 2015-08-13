@@ -15,8 +15,9 @@ import com.example.staticmsi.meddroid.models.PatientAssessment;
  * Created by Hammad Ali on 2015-08-06.
  */
 public class GastroActivity extends Activity {
-    Patient p = null;
+
     PatientAssessment pa = null;
+    Long paId = null;
 
 
     @Override
@@ -24,11 +25,11 @@ public class GastroActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gastro_assessment);
 
-        p = (Patient) getIntent().getExtras().getSerializable("p");
+        Long paID = getIntent().getExtras().getLong("paId");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
         if (paExist) {
-            this.pa = (PatientAssessment) getIntent().getExtras().getSerializable("pa");
+            this.pa = (PatientAssessment.findById(paID));
         }
 
         start();
@@ -167,13 +168,14 @@ public class GastroActivity extends Activity {
     }
 
     private void start() {
-        if (pa == null) {
-            pa = new PatientAssessment();
-            pa.setPatientFile(p);
-            return;
-        } else {
-            fillFields();
-        }
+//        if (pa == null) {
+//            pa = new PatientAssessment();
+//            pa.setPatientFile(p);
+//            return;
+//        } else {
+//            fillFields();
+//        }
+        fillFields();
     }
 
     private void fillFields() {
@@ -277,8 +279,8 @@ public class GastroActivity extends Activity {
         gastrostomyType.setChecked(pa.isgastor_Ostomy_Type());
         gastrostomyTypeDesc.setText(pa.getGastro_Ostomy_Type());
         gastrostomyStomaDesc.setText(pa.getGastro_AppearanceOfStoma());
-        gastrostoolLastBM.setText(pa.getGastro_LeastBM1());
-        gastrostoolLastBMPt2.setText(pa.getGastro_LeastBM2());
+        gastrostoolLastBM.setText(String.valueOf(pa.getGastro_LeastBM1()));
+        gastrostoolLastBMPt2.setText(String.valueOf(pa.getGastro_LeastBM2()));
         gastrostoolpriortoAdmission.setChecked(pa.isGastro_PriorToAdmission());
         gastrostoolColor.setText(pa.getGastro_StoolColour());
         gastrostoolchar.setText(pa.getGastro_Stoolcharacteristic());
@@ -410,7 +412,7 @@ public class GastroActivity extends Activity {
 
     private void setBtnToGen() {
 
-        Button b = (Button) findViewById(R.id.btnToGastro);
+        Button b = (Button) findViewById(R.id.btnToGenitionary);
 
         b.setOnClickListener(new BtnToGenOnClick(this, this.pa.getId()));
     }

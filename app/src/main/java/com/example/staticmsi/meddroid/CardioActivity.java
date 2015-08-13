@@ -24,7 +24,7 @@ public class CardioActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cardio_assessment);
 
-        Long paID = getIntent().getExtras().getLong("paID");
+        Long paID = getIntent().getExtras().getLong("paId");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
         if (paExist) {
@@ -148,13 +148,13 @@ public class CardioActivity extends Activity {
         EditText cardioOedemaLocalizedTo = (EditText) findViewById(R.id.CardioOedemaLocalizedTo);
 
 
-        cardioECGLead.setText(pa.getCardio_ECG_Lead());
+        cardioECGLead.setText(String.valueOf(pa.getCardio_ECG_Lead()));
         cardioECGRate.setText(Float.toString(pa.getCardio_ECG_Rate()));
         cardioECGPR.setText(Float.toString(pa.getCardio_ECG_PR()));
-        cardioECGQRS.setText(pa.getCardio_ECG_QRS());
-        cardioECGQT.setText(pa.getCardio_ECG_QT());
-        cardioECGSTSegment.setText(pa.getCardio_ECG_STSegment());
-        cardioECGWave.setText(pa.getCardio_ECG_Wave());
+        cardioECGQRS.setText(String.valueOf(pa.getCardio_ECG_QRS()));
+        cardioECGQT.setText(String.valueOf(pa.getCardio_ECG_QT()));
+        cardioECGSTSegment.setText(String.valueOf(pa.getCardio_ECG_STSegment()));
+        cardioECGWave.setText(String.valueOf(pa.getCardio_ECG_Wave()));
         cardioECGInterpretation.setText(pa.getCardio_ECG_Interpretation());
         cardioSkinPink.setChecked(pa.isCardio_Skin_Pink());
         cardioSkinPale.setChecked(pa.isCardio_Skin_Pale());

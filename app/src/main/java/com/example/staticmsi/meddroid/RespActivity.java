@@ -32,7 +32,7 @@ public class RespActivity extends Activity {
 
         Long pID = getIntent().getExtras().getLong("pID");
         this.p = (Patient.findById(pID));
-        Long paID = getIntent().getExtras().getLong("paID");
+        Long paID = getIntent().getExtras().getLong("paId");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
         if (paExist) {

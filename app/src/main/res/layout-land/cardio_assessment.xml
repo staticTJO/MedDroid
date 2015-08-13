@@ -5,110 +5,118 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.04"
-        android:orientation="horizontal"></LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.04"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:id="@+id/scrollView4" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.02"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/Cardio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cardiovascular"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.04"
+                android:orientation="horizontal"></LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.04"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="230dp"
-            android:layout_weight="0.84"
-            android:orientation="horizontal"
-            android:weightSum="1">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.02"
+                    android:orientation="vertical"></LinearLayout>
 
-            <include
-                layout="@layout/cardioecg"
+                <TextView
+                    android:id="@+id/Cardio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cardiovascular"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:layout_weight="0.84"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <include
+                        layout="@layout/cardioecg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="278dp"
+                        android:layout_weight="2.31" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="29dp"
+                    android:layout_height="224dp"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/ffff"
+                    layout="@layout/cardioodema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.08" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.17"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/caridoskin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="278dp"
-                android:layout_weight="2.31" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancelCardio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="Cancel" />
+
+
+                <Button
+                    android:id="@+id/btnSaveExitCardio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save and Exit" />
+
+                <Button
+                    android:id="@+id/btnToGastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Next To Gastro" />
+
+            </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="29dp"
-            android:layout_height="224dp"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
-        <include
-            android:id="@+id/ffff"
-            layout="@layout/cardioodema"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.08" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.17"
-        android:orientation="horizontal">
-
-        <include
-            layout="@layout/caridoskin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="1028dp"
-        android:layout_height="355dp"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-            android:id="@+id/btnCancelCardio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:text="Cancel" />
-
-        <Button
-            android:id="@+id/btnToGastro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/btnCancelCardio"
-            android:layout_toEndOf="@+id/btnCancelCardio"
-            android:layout_toRightOf="@+id/btnCancelCardio"
-            android:text="Next To Gastro" />
-
-        <Button
-            android:id="@+id/btnSaveExitCardio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/btnToGastro"
-            android:layout_toRightOf="@+id/btnToGastro"
-            android:text="Save and Exit" />
-    </RelativeLayout>
+    </ScrollView>
 </LinearLayout>
