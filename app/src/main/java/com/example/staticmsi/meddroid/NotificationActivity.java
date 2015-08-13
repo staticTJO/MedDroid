@@ -43,6 +43,9 @@ public class NotificationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
+        if (!MainActivity.isDoctor)
+            return;
+
         setupNotification();
         fillNotifications();
     }
@@ -98,22 +101,24 @@ public class NotificationActivity extends Activity {
 
         for (Notification n : notifications) {
             TableRow tr = new TableRow(this);
-            Button btnStatus = new Button(this);
+            Button btnMark = new Button(this);
             TextView tvDesc = new TextView(this);
             Button btnView = new Button(this);
 
+            tvDesc.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+
             if (!n.isRead()) {
-                btnStatus = setAsReadButton(n.getId());
+                btnMark = setAsReadButton(n.getId());
             } else
-                btnStatus.setVisibility(View.INVISIBLE);
+                btnMark.setVisibility(View.INVISIBLE);
 
             tvDesc.setText(n.getText());
             btnView.setText("view");
             btnView.setOnClickListener(new BtnViewOnClickListener(n.getEntry().getReport().getId()));
 
-            tr.addView(btnStatus);
             tr.addView(tvDesc);
             tr.addView(btnView);
+            tr.addView(btnMark);
 
             t.addView(tr);
         }

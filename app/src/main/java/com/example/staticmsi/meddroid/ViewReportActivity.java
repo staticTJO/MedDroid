@@ -3,6 +3,7 @@ package com.example.staticmsi.meddroid;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,8 +48,8 @@ public class ViewReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_report);
 
-        fillData();
-        setupBtnAddEntry();
+//        fillData();
+//        setupBtnAddEntry();
     }
 
     private void setupBtnAddEntry() {
@@ -68,12 +69,20 @@ public class ViewReportActivity extends AppCompatActivity {
         TableLayout t = (TableLayout) findViewById(R.id.tblEntries);
         reportEntries = new ArrayList<ReportEntry>();
 
+        TableRow trHeader = new TableRow(this);
+
+        trHeader = (TableRow) t.findViewById(R.id.tblHeader);
+
         t.removeAllViews();
+
+        t.addView(trHeader);
 
         for (ReportEntry re : res) {
 
+            Log.i("entries", "entries");
+
             TableRow tr = new TableRow(this);
-            TableRow trOther = new TableRow(this);
+//            TableRow trOther = new TableRow(this);
 
             TextView tv_bodyTemperature = new TextView(this);
             TextView tv_heartRate = new TextView(this);
@@ -83,6 +92,13 @@ public class ViewReportActivity extends AppCompatActivity {
             TextView tv_painLevel = new TextView(this);
             TextView tv_other = new TextView(this);
 
+            tv_bodyTemperature.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+            tv_heartRate.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+            tv_respitory.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+            tv_bloodPressureSystolic.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+            tv_bloodPressureDiastolic.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+            tv_painLevel.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+            tv_other.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
 
             tv_bodyTemperature.setText(String.valueOf(re.getBodyTemperature()));
             tv_heartRate.setText(String.valueOf(re.getHeartRate()));
@@ -98,11 +114,9 @@ public class ViewReportActivity extends AppCompatActivity {
             tr.addView(tv_bloodPressureSystolic);
             tr.addView(tv_bloodPressureDiastolic);
             tr.addView(tv_painLevel);
-
-            trOther.addView(tv_other);
+            tr.addView(tv_other);
 
             t.addView(tr);
-            t.addView(trOther);
 
             reportEntries.add(re);
         }

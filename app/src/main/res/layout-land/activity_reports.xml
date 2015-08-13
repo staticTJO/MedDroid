@@ -8,6 +8,16 @@
     tools:context="com.example.staticmsi.meddroid.ReportsActivity"
     android:weightSum="1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Reports"
+        android:id="@+id/textView40"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="50dp"
+        android:textSize="30dp" />
+
     <TableLayout
         android:id="@+id/tblReports"
         android:layout_width="match_parent"

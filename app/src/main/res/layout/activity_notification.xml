@@ -3,44 +3,91 @@
     android:layout_height="match_parent"
     tools:context="com.example.staticmsi.meddroid.NotificationActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@android:color/black"
-        android:gravity="right"
-        android:orientation="horizontal">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView7" >
 
-        <ImageButton
-            android:id="@+id/btnNotification"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_action_event_note" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/counterNotification"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignRight="@id/btnNotification"
-            android:layout_alignTop="@id/btnNotification"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="3dp"
-            android:text="+99"
-            android:gravity="center"
-            android:textSize="12dp"
-            android:textColor="@android:color/white"
-            android:background="@drawable/shape_notification" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/black"
+                android:gravity="right"
+                android:orientation="horizontal">
 
-    </RelativeLayout>
+                <ImageButton
+                    android:id="@+id/btnNotification"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_action_event_note" />
 
-    <TableLayout
-        android:id="@+id/tblNotifications"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        >
+                <TextView
+                    android:id="@+id/counterNotification"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignRight="@id/btnNotification"
+                    android:layout_alignTop="@id/btnNotification"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="3dp"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/shape_notification" />
 
-    </TableLayout>
+            </RelativeLayout>
+
+            <TableLayout
+                android:id="@+id/tblNotifications"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:minHeight="600dp"
+                android:stretchColumns="0,1,2"
+                android:focusableInTouchMode="true"
+                >
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tblHeader"
+                    android:background="@color/wallet_holo_blue_light">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Notification Text"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="0"
+                        android:id="@+id/textView42" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_column="1"
+                        android:text="View" />
+
+                    <TextView
+                        android:id="@+id/textView41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mark"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_column="2" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

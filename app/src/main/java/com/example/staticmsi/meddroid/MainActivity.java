@@ -315,6 +315,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     }
 
     private void setupNotification() {
+
+        if (!isDoctor)
+            return;
+
         ImageButton notifBtn = (ImageButton) findViewById(R.id.btnNotification);
 
         updateCountNotification();
@@ -437,8 +441,19 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         TableLayout tbl = (TableLayout) findViewById(R.id.home_table);
         TextView tvNoPatients = (TextView) findViewById(R.id.textViewNoPatient);
+        TextView tvWelcome = (TextView) findViewById(R.id.tvWelcome);
+        TableRow tr = (TableRow) tbl.findViewById(R.id.tblHeader);
+
+        if (isDoctor)
+            tvWelcome.setText("Welcome Doctor: ");
+        else
+            tvWelcome.setText("Welcome Nurse: ");
+
+        tvWelcome.append(Character.toUpperCase(Username.charAt(0)) + Username.substring(1));
 
         tbl.removeAllViews();
+        tbl.addView(tr);
+
         List<PatientAssessment> patientAssessments = PatientAssessment.findAll();
 
         if (patientAssessments.isEmpty()) {
@@ -448,6 +463,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         tbl.setVisibility(View.VISIBLE);
         tvNoPatients.setVisibility(View.INVISIBLE);
+
+
+
 
 
         for (PatientAssessment pa : patientAssessments) {
@@ -530,6 +548,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         if (assertLogin()) {
             refresh();
+            fillPatientsSpanner();
             setBtnAddNewPatient();
             setBtnStartAssessment();
             setupTimerForRefresh();
@@ -541,7 +560,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         fillHomePatients();
         fillPatients();
-        fillPatientsSpanner();
         setupNotification();
     }
 

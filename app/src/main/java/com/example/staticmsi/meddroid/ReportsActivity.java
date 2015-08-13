@@ -92,6 +92,8 @@ public class ReportsActivity extends AppCompatActivity {
             TextView tvReportName = new TextView(this);
             Button btnView = new Button(this);
 
+            tvReportName.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large);
+
             tvReportName.setText(pr.getReportName());
             btnView.setText("VIEW");
             btnView.setOnClickListener(new BtnViewOnClick(pr.getId()));
