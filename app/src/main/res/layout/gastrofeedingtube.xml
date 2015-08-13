@@ -1,328 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gastrointestinal"
-        android:id="@+id/textView63" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.02"></LinearLayout>
-
-    <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:weightSum="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="145dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView64"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Feeding Tube:"
-                android:id="@+id/textView64" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:orientation="horizontal"
             android:weightSum="1">
 
             <TextView
+                android:id="@+id/textView65"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Type:"
-                android:id="@+id/textView65" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
+                android:id="@+id/gastroFTType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/gastroFTType"
                 android:layout_weight="0.21" />
 
             <TextView
+                android:id="@+id/textView66"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Insitu to:"
-                android:id="@+id/textView66" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
+                android:id="@+id/gastroFTInstitu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/gastroFTInstitu"
                 android:layout_weight="0.39" />
 
             <TextView
+                android:id="@+id/textView67"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="(L/R nare, mouth etc.)"
-                android:id="@+id/textView67" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="144dp"
-            android:layout_height="match_parent"></LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gastric"
                     android:id="@+id/gastroFTGastric"
-                    android:layout_row="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_column="0"
-                    android:checked="false" />
+                    android:layout_row="0"
+                    android:checked="false"
+                    android:text="Gastric" />
 
                 <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Duodenal"
                     android:id="@+id/gastroFTDuodenal"
-                    android:layout_row="0"
-                    android:layout_column="1"
-                    android:checked="false" />
-
-                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jejunal"
-                    android:id="@+id/gastroFTJejunal"
+                    android:layout_column="1"
                     android:layout_row="0"
+                    android:checked="false"
+                    android:text="Duodenal" />
+
+                <CheckBox
+                    android:id="@+id/gastroFTJejunal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_column="2"
-                    android:checked="false" />
+                    android:layout_row="0"
+                    android:checked="false"
+                    android:text="Jejunal" />
             </GridLayout>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="793dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
         android:weightSum="1">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="129dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.034">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Insertion site:"
-                android:id="@+id/textView68" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
+        <TextView
+            android:id="@+id/textView68"
             android:layout_width="wrap_content"
-            android:layout_height="47dp"
-            android:layout_weight="0.016">
+            android:layout_height="wrap_content"
+            android:text="Insertion site:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Intact"
-                android:id="@+id/gastroFTintact"
-                android:checked="false" />
-        </LinearLayout>
 
         <CheckBox
+            android:id="@+id/gastroFTintact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Other*"
-            android:id="@+id/gastroFTOther"
             android:checked="false"
-            android:layout_weight="0.045" />
+            android:text="Intact" />
 
-        <LinearLayout
-            android:orientation="vertical"
+        <CheckBox
+            android:id="@+id/gastroFTOther"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Other*" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Verified by:"
-                android:id="@+id/gastroFTVerified"
-                android:checked="false" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
+        <CheckBox
+            android:id="@+id/gastroFTVerified"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"></LinearLayout>
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Verified by:" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.60">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/gastroFTVerifiedDesc"
-                android:singleLine="true" />
-        </LinearLayout>
+        <EditText
+            android:id="@+id/gastroFTVerifiedDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.04"
+        android:orientation="horizontal"
         android:weightSum="1">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <CheckBox
+            android:id="@+id/gastroFTAdminFeeds"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.49"></LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:checked="false"
+            android:text="Administering Feeds" />
 
-        <LinearLayout
-            android:orientation="vertical"
+        <CheckBox
+            android:id="@+id/gastroFTClamped"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.19">
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:checked="false"
+            android:text="Clamped" />
 
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <CheckBox
+            android:id="@+id/gastroFTAspirated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:checked="false"
+            android:text="Aspirated q4h" />
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Administering Feeds"
-                    android:id="@+id/gastroFTAdminFeeds"
-                    android:layout_row="0"
-                    android:layout_column="0"
-                    android:checked="false" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clamped"
-                    android:id="@+id/gastroFTClamped"
-                    android:layout_row="0"
-                    android:layout_column="1"
-                    android:checked="false" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Aspirated q4h"
-                    android:id="@+id/gastroFTAspirated"
-                    android:layout_row="0"
-                    android:layout_column="2"
-                    android:checked="false" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Straight drainage"
-                    android:id="@+id/gastroFTStraightDrainage"
-                    android:layout_row="0"
-                    android:layout_column="3"
-                    android:checked="false" />
-            </GridLayout>
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <CheckBox
+            android:id="@+id/gastroFTStraightDrainage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:checked="false"
+            android:text="Straight drainage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.15"></LinearLayout>
+            android:layout_weight="0.15"
+            android:orientation="vertical"></LinearLayout>
 
         <TextView
+            android:id="@+id/textView69"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Description of aspirate:"
-            android:id="@+id/textView69" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
+            android:id="@+id/gastroFTDescAspirate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/gastroFTDescAspirate"
-            android:layout_weight="0.54"
-            android:singleLine="true" />
+            android:layout_weight="0.54" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:weightSum="1" >
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.15" />
+            android:layout_weight="0.15"
+            android:orientation="vertical" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="0.035"
             android:text="Other* (description):"
-            android:layout_weight="0.035" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
+            android:id="@+id/gastroFTOtherDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/gastroFTOtherDesc"
-            android:layout_weight="0.52"
-            android:singleLine="true" />
+            android:layout_weight="0.52" />
     </LinearLayout>
 
 </LinearLayout>

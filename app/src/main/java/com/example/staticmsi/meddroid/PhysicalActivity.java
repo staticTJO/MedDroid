@@ -14,12 +14,11 @@ import com.example.staticmsi.meddroid.models.PatientAssessment;
 /**
  * Created by Hammad Ali on 2015-08-06.
  */
-public class PhysicalActivity extends Activity{
+public class PhysicalActivity extends Activity {
 
 
-    Patient p = null;
     PatientAssessment pa = null;
-
+    Long paId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,28 +26,29 @@ public class PhysicalActivity extends Activity{
         setContentView(R.layout.physical_assessment);
 
 
-        Long pID = getIntent().getExtras().getLong("pID");
-        this.p = (Patient.findById(pID));
-        Long paID = getIntent().getExtras().getLong("paID");
+        Long paID = getIntent().getExtras().getLong("paId");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
         if (paExist) {
             this.pa = (PatientAssessment.findById(paID));
         }
 
+
         start();
-        setSubmitAssButton();
         setEventListeners();
     }
 
+
     private void start() {
-        if (pa == null) {
-            pa = new PatientAssessment();
-            pa.setPatientFile(p);
-            return;
-        } else {
-            fillFields();
-        }
+//        if (pa == null) {
+//            pa = new PatientAssessment();
+//            pa.setPatientFile(p);
+//            return;
+//        } else {
+//            fillFields();
+//        }
+
+        fillFields();
     }
 
     private void fillFields() {
@@ -102,51 +102,50 @@ public class PhysicalActivity extends Activity{
         PhysicalElbowsBrokenR.setChecked(pa.isPhysical_Elbows_Broken_R());
     }
 
+
     private void setEventListeners() {
+        Button btnCancel = (Button) findViewById(R.id.btnCancel);
+        Button btnSaveExit = (Button) findViewById(R.id.btnSaveExit);
 
-        Button btnCancelPhysical = (Button) findViewById(R.id.btnCancelPhysical);
-        Button btnSaveExitPhysical = (Button) findViewById(R.id.btnSaveExitPhysical);
 
-
-        btnSaveExitPhysical.setOnClickListener(new View.OnClickListener() {
+        btnSaveExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-             // skin
+                // skin
                 EditText etPhysicalSkinConditionDescribe = (EditText) findViewById(R.id.etPhysicalSkinConditionDescribe);
 
-             // sacrum
-                CheckBox PhysicalSacremIntact =(CheckBox) findViewById(R.id.PhysicalSacremIntact);
-                CheckBox PhysicalSacremMarked =(CheckBox) findViewById(R.id.PhysicalSacremMarked);
-                CheckBox PhysicalSacremBroken =(CheckBox) findViewById(R.id.PhysicalSacremBroken);
+                // sacrum
+                CheckBox PhysicalSacremIntact = (CheckBox) findViewById(R.id.PhysicalSacremIntact);
+                CheckBox PhysicalSacremMarked = (CheckBox) findViewById(R.id.PhysicalSacremMarked);
+                CheckBox PhysicalSacremBroken = (CheckBox) findViewById(R.id.PhysicalSacremBroken);
 
-             // heels
-                CheckBox PhysicalHeelsIntactL =(CheckBox) findViewById(R.id.PhysicalHeelsIntactL);
-                CheckBox PhysicalHeelsIntactR =(CheckBox) findViewById(R.id.PhysicalHeelsIntactR);
-                CheckBox PhysicalHeelsMarkedL =(CheckBox) findViewById(R.id.PhysicalHeelsMarkedL);
-                CheckBox PhysicalHeelsMarkedR =(CheckBox) findViewById(R.id.PhysicalHeelsMarkedR);
-                CheckBox PhysicalHeelsBrokenL =(CheckBox) findViewById(R.id.PhysicalHeelsBrokenL);
-                CheckBox PhysicalHeelsBrokenR =(CheckBox) findViewById(R.id.PhysicalHeelsBrokenR);
+                // heels
+                CheckBox PhysicalHeelsIntactL = (CheckBox) findViewById(R.id.PhysicalHeelsIntactL);
+                CheckBox PhysicalHeelsIntactR = (CheckBox) findViewById(R.id.PhysicalHeelsIntactR);
+                CheckBox PhysicalHeelsMarkedL = (CheckBox) findViewById(R.id.PhysicalHeelsMarkedL);
+                CheckBox PhysicalHeelsMarkedR = (CheckBox) findViewById(R.id.PhysicalHeelsMarkedR);
+                CheckBox PhysicalHeelsBrokenL = (CheckBox) findViewById(R.id.PhysicalHeelsBrokenL);
+                CheckBox PhysicalHeelsBrokenR = (CheckBox) findViewById(R.id.PhysicalHeelsBrokenR);
 
-             // elbows
-                CheckBox PhysicalElbowsIntactL =(CheckBox) findViewById(R.id.PhysicalElbowsIntactL);
-                CheckBox PhysicalElbowsIntactR =(CheckBox) findViewById(R.id.PhysicalElbowsIntactR);
-                CheckBox PhysicalElbowsMarkedL =(CheckBox) findViewById(R.id.PhysicalElbowsMarkedL);
-                CheckBox PhysicalElbowsMarkedR =(CheckBox) findViewById(R.id.PhysicalElbowsMarkedR);
-                CheckBox PhysicalElbowsBrokenL =(CheckBox) findViewById(R.id.PhysicalElbowsBrokenL);
-                CheckBox PhysicalElbowsBrokenR =(CheckBox) findViewById(R.id.PhysicalElbowsBrokenR);
+                // elbows
+                CheckBox PhysicalElbowsIntactL = (CheckBox) findViewById(R.id.PhysicalElbowsIntactL);
+                CheckBox PhysicalElbowsIntactR = (CheckBox) findViewById(R.id.PhysicalElbowsIntactR);
+                CheckBox PhysicalElbowsMarkedL = (CheckBox) findViewById(R.id.PhysicalElbowsMarkedL);
+                CheckBox PhysicalElbowsMarkedR = (CheckBox) findViewById(R.id.PhysicalElbowsMarkedR);
+                CheckBox PhysicalElbowsBrokenL = (CheckBox) findViewById(R.id.PhysicalElbowsBrokenL);
+                CheckBox PhysicalElbowsBrokenR = (CheckBox) findViewById(R.id.PhysicalElbowsBrokenR);
 
 
-
-             // skin
+                // skin
                 pa.setPhysical_SkinCondition(etPhysicalSkinConditionDescribe.getText().toString());
 
-             // sacrum
+                // sacrum
                 pa.setPhysical_Sacrum_Intact(PhysicalSacremIntact.isChecked());
                 pa.setPhysical_Sacrum_Marked(PhysicalSacremMarked.isChecked());
                 pa.setPhysical_Sacrum_broken(PhysicalSacremBroken.isChecked());
 
-             // heels
+                // heels
                 pa.setPhysical_Heels_Intact_L(PhysicalHeelsIntactL.isChecked());
                 pa.setPhysical_Heels_Intact_R(PhysicalHeelsIntactR.isChecked());
                 pa.setPhysical_Heels_Marked_L(PhysicalHeelsMarkedL.isChecked());
@@ -154,7 +153,7 @@ public class PhysicalActivity extends Activity{
                 pa.setPhysical_Heels_Broken_L(PhysicalHeelsBrokenL.isChecked());
                 pa.setPhysical_Heels_Broken_R(PhysicalHeelsBrokenR.isChecked());
 
-             // elbows
+                // elbows
                 pa.setPhysical_Elbows_Elbows_L(PhysicalElbowsIntactL.isChecked());
                 pa.setPhysical_Elbows_Elbows_R(PhysicalElbowsIntactR.isChecked());
                 pa.setPhysical_Elbows_Marked_L(PhysicalElbowsMarkedL.isChecked());
@@ -170,96 +169,12 @@ public class PhysicalActivity extends Activity{
         });
 
 
-        btnCancelPhysical.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-    }
-
-    private void setSubmitAssButton() {
-        Button b = (Button) findViewById(R.id.btnSubmitAss);
-
-        b.setOnClickListener(new submitBtnOnClick(this, this.pa.getId()));
-    }
-
-    class submitBtnOnClick implements View.OnClickListener {
-
-        Long paId = null;
-        PhysicalActivity phy;
-
-        public submitBtnOnClick(PhysicalActivity phy, Long paId) {
-            this.phy = phy;
-            this.paId = paId;
-        }
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(PhysicalActivity.this, MainActivity.class);
-
-            if (paId != null) {
-                intent.putExtra("paExist", true);
-                intent.putExtra("paId", paId);
-            } else {
-                intent.putExtra("paExist", false);
-            }
-
-            // skin
-            EditText etPhysicalSkinConditionDescribe = (EditText) findViewById(R.id.etPhysicalSkinConditionDescribe);
-
-            // sacrum
-            CheckBox PhysicalSacremIntact = (CheckBox) findViewById(R.id.PhysicalSacremIntact);
-            CheckBox PhysicalSacremMarked = (CheckBox) findViewById(R.id.PhysicalSacremMarked);
-            CheckBox PhysicalSacremBroken = (CheckBox) findViewById(R.id.PhysicalSacremBroken);
-
-            // heels
-            CheckBox PhysicalHeelsIntactL = (CheckBox) findViewById(R.id.PhysicalHeelsIntactL);
-            CheckBox PhysicalHeelsIntactR = (CheckBox) findViewById(R.id.PhysicalHeelsIntactR);
-            CheckBox PhysicalHeelsMarkedL = (CheckBox) findViewById(R.id.PhysicalHeelsMarkedL);
-            CheckBox PhysicalHeelsMarkedR = (CheckBox) findViewById(R.id.PhysicalHeelsMarkedR);
-            CheckBox PhysicalHeelsBrokenL = (CheckBox) findViewById(R.id.PhysicalHeelsBrokenL);
-            CheckBox PhysicalHeelsBrokenR = (CheckBox) findViewById(R.id.PhysicalHeelsBrokenR);
-
-            // elbows
-            CheckBox PhysicalElbowsIntactL = (CheckBox) findViewById(R.id.PhysicalElbowsIntactL);
-            CheckBox PhysicalElbowsIntactR = (CheckBox) findViewById(R.id.PhysicalElbowsIntactR);
-            CheckBox PhysicalElbowsMarkedL = (CheckBox) findViewById(R.id.PhysicalElbowsMarkedL);
-            CheckBox PhysicalElbowsMarkedR = (CheckBox) findViewById(R.id.PhysicalElbowsMarkedR);
-            CheckBox PhysicalElbowsBrokenL = (CheckBox) findViewById(R.id.PhysicalElbowsBrokenL);
-            CheckBox PhysicalElbowsBrokenR = (CheckBox) findViewById(R.id.PhysicalElbowsBrokenR);
-
-
-            // skin
-            pa.setPhysical_SkinCondition(etPhysicalSkinConditionDescribe.getText().toString());
-
-            // sacrum
-            pa.setPhysical_Sacrum_Intact(PhysicalSacremIntact.isChecked());
-            pa.setPhysical_Sacrum_Marked(PhysicalSacremMarked.isChecked());
-            pa.setPhysical_Sacrum_broken(PhysicalSacremBroken.isChecked());
-
-            // heels
-            pa.setPhysical_Heels_Intact_L(PhysicalHeelsIntactL.isChecked());
-            pa.setPhysical_Heels_Intact_R(PhysicalHeelsIntactR.isChecked());
-            pa.setPhysical_Heels_Marked_L(PhysicalHeelsMarkedL.isChecked());
-            pa.setPhysical_Heels_Marked_R(PhysicalHeelsMarkedR.isChecked());
-            pa.setPhysical_Heels_Broken_L(PhysicalHeelsBrokenL.isChecked());
-            pa.setPhysical_Heels_Broken_R(PhysicalHeelsBrokenR.isChecked());
-
-            // elbows
-            pa.setPhysical_Elbows_Elbows_L(PhysicalElbowsIntactL.isChecked());
-            pa.setPhysical_Elbows_Elbows_R(PhysicalElbowsIntactR.isChecked());
-            pa.setPhysical_Elbows_Marked_L(PhysicalElbowsMarkedL.isChecked());
-            pa.setPhysical_Elbows_Marked_R(PhysicalElbowsMarkedR.isChecked());
-            pa.setPhysical_Elbows_Broken_L(PhysicalElbowsBrokenL.isChecked());
-            pa.setPhysical_Elbows_Broken_R(PhysicalElbowsBrokenR.isChecked());
-
-
-            startActivity(intent);
-            pa.update();
-            finish();
-        }
 
     }
 }

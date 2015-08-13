@@ -1,42 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gastrointestinal"
-        android:id="@+id/textView59" />
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.03"></LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.08"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView60"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Bowel Sounds:"
-                android:id="@+id/textView60" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
         <GridLayout
@@ -44,49 +32,49 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Absent"
                 android:id="@+id/gastrobowelAbsent"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:checked="false" />
-
-            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Present"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:checked="false"
+                android:text="Absent" />
+
+            <CheckBox
                 android:id="@+id/gastrobowelPresent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
                 android:layout_row="0"
-                android:layout_column="1"
-                android:checked="false" />
+                android:checked="false"
+                android:text="Present" />
 
             <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Normal"
                 android:id="@+id/gastrobowelNormal"
-                android:layout_row="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="0"
-                android:checked="false" />
+                android:layout_row="1"
+                android:checked="false"
+                android:text="Normal" />
 
             <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Increased"
                 android:id="@+id/gastrobowelIncreased"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:checked="false" />
-
-            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Decreased"
-                android:id="@+id/gastrobowelDecreased"
+                android:layout_column="1"
                 android:layout_row="1"
+                android:checked="false"
+                android:text="Increased" />
+
+            <CheckBox
+                android:id="@+id/gastrobowelDecreased"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:checked="false" />
+                android:layout_row="1"
+                android:checked="false"
+                android:text="Decreased" />
         </GridLayout>
     </LinearLayout>
 </LinearLayout>

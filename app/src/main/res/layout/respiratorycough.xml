@@ -81,8 +81,7 @@
         <EditText
             android:layout_width="257dp"
             android:layout_height="wrap_content"
-            android:id="@+id/RespiratoryCoughNotes"
-            android:singleLine="true" />
+            android:id="@+id/RespiratoryCoughNotes" />
     </LinearLayout>
 
 </LinearLayout>

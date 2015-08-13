@@ -4,12 +4,7 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gastrointestinal"
-        android:id="@+id/textView61" />
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -132,8 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/gastroSpecialDesc"
-            android:layout_weight="0.364"
-            android:singleLine="true" />
+            android:layout_weight="0.364" />
 
         <CheckBox
             android:layout_width="wrap_content"

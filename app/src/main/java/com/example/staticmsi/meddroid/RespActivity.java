@@ -32,7 +32,7 @@ public class RespActivity extends Activity {
 
         Long pID = getIntent().getExtras().getLong("pID");
         this.p = (Patient.findById(pID));
-        Long paID = getIntent().getExtras().getLong("paID");
+        Long paID = getIntent().getExtras().getLong("paId");
         boolean paExist = getIntent().getExtras().getBoolean("paExist");
 
         if (paExist) {
@@ -43,6 +43,96 @@ public class RespActivity extends Activity {
         setButtonToCardio();
         setEventListeners();
     }
+
+
+    class BtnToCardioOnClick implements View.OnClickListener {
+
+        Long paId = null;
+        RespActivity ra;
+
+        public BtnToCardioOnClick (RespActivity ra, Long paId) {
+            this.ra = ra;
+            this.paId = paId;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(RespActivity.this,CardioActivity.class);
+
+            if (paId != null) {
+                intent.putExtra("paExist", true);
+                intent.putExtra("paId", paId);
+            } else {
+                intent.putExtra("paExist", false);
+            }
+
+            CheckBox RespiratoryAirwayMaintainsOwn = (CheckBox) findViewById(R.id.RespiratoryAirwayMaintainsOwn);
+            CheckBox BiPAPCPAP = (CheckBox) findViewById(R.id.RespiratoryAirwayBIPAPCPAP);
+            CheckBox RespiratoryETT = (CheckBox) findViewById(R.id.RespiratoryETT);
+            EditText RespiratorySize = (EditText) findViewById(R.id.RespiratorySize);
+            EditText RespiratoryLengthAtTeeth = (EditText) findViewById(R.id.RespiratoryLengthAtTeeth);
+            EditText RespiratoryLengthAtGums = (EditText) findViewById(R.id.RespiratoryLengthAtGums);
+            EditText RespiratoryCuffPressure = (EditText) findViewById(R.id.RespiratoryCuffPressure);
+            EditText RespiratoryTracheostomySize = (EditText) findViewById(R.id.RespiratoryTracheostomySize);
+            EditText RespiratoryChestExpansion = (EditText) findViewById(R.id.RespiratoryChestExpansion);
+
+            CheckBox RespiratoryCoughSimulatedBySuctioning =(CheckBox) findViewById(R.id.RespiratoryCoughSimulatedBySuctioning);
+            CheckBox RespiratoryCoughSpontaneous = (CheckBox) findViewById(R.id.RespiratoryCoughSpontaneous);
+            EditText RespiratoryCoughNotes = (EditText) findViewById(R.id.RespiratoryCoughNotes);
+
+            CheckBox RespiratoryLipConditionIntact = (CheckBox) findViewById(R.id.RespiratoryLipConditionIntact);
+            CheckBox RespiratoryLipConditionOther = (CheckBox) findViewById(R.id. RespiratoryLipConditionOther);
+            CheckBox RespiratoryOralMucosaIntact = (CheckBox) findViewById(R.id. RespiratoryOralMucosaIntact);
+            CheckBox RespiratoryOralMucosaOther = (CheckBox) findViewById(R.id.RespiratoryOralMucosaOther);
+
+            CheckBox RespiratoryRespirationsClear  = (CheckBox) findViewById(R.id.RespiratoryRespirationsClear);
+            CheckBox RespiratoryRespirationsDecreased  = (CheckBox) findViewById(R.id.RespiratoryRespirationsDecreased);
+            CheckBox RespiratoryRespirationsWheezes = (CheckBox) findViewById(R.id.RespiratoryRespirationsWheezes);
+            CheckBox RespiratoryRespirationsFineCreps = (CheckBox) findViewById(R.id.RespiratoryRespirationsFineCreps);
+            CheckBox RespiratoryRespirationsAbsentBreath = (CheckBox) findViewById(R.id.RespiratoryRespirationsAbsentBreath);
+            CheckBox RespiratoryRespirationsBronchial = (CheckBox) findViewById(R.id.RespiratoryRespirationsBronchial);
+            CheckBox RespiratoryRespirationsInspiratory = (CheckBox) findViewById(R.id.RespiratoryRespirationsInspiratory);
+            CheckBox RespiratoryRespirationsExpiratory = (CheckBox) findViewById(R.id.RespiratoryRespirationsExpiratory);
+
+            EditText RespiratoryRespirationsOther = (EditText) findViewById(R.id.RespiratoryRespirationsOther);
+            EditText RespiratoryTrachealStomaDescribe = (EditText) findViewById(R.id.RespiratoryTrachealStomaDescribe);
+
+
+            // Unsure about check boxes should work tho.
+            pa.setRespiratory_Airway_Maintains_Own(RespiratoryAirwayMaintainsOwn.isChecked());
+            pa.setRespiratory_Airway_BIPAP_CPAP(BiPAPCPAP.isChecked());
+            pa.setRespiratory_ETT(RespiratoryETT.isChecked());
+            // Really.. java.. thank god for conversion functions
+//            pa.setRespiratory_Size(Float.valueOf(RespiratorySize.getText().toString()));
+//            pa.setRespiratory_LengthAtGums(Float.valueOf(RespiratoryLengthAtGums.getText().toString())); // error here converting string to float. Is breaking the activity.
+//            pa.setRespiratory_LengthAtTeeth(Float.valueOf(RespiratoryLengthAtTeeth.getText().toString()));
+//            pa.setRespiratory_CuffPressure(Float.valueOf(RespiratoryCuffPressure.getText().toString()));
+//            pa.setRespiratory_TracheostomySize(Float.valueOf(RespiratoryTracheostomySize.getText().toString()));
+            pa.setRespiratory_ChestExpansion(RespiratoryChestExpansion.getText().toString());
+            pa.setRespiratory_Cough_SimulatedBySuctioning(RespiratoryCoughSimulatedBySuctioning.isChecked());
+            pa.setRespiratory_Cough_Spontaneous(RespiratoryCoughSpontaneous.isChecked());
+            pa.setRespiratory_Cough(RespiratoryCoughNotes.getText().toString());
+            pa.setRespiratory_LipCondition_intact(RespiratoryLipConditionIntact.isChecked());
+            pa.setRespiratory_LipCondition_other(RespiratoryLipConditionOther.isChecked());
+            pa.setRespiratory_OralMucosa_intact(RespiratoryOralMucosaIntact.isChecked());
+            pa.setRespiratory_OralMucosa_other(RespiratoryOralMucosaOther.isChecked());
+            pa.setRespiratory_Clear(RespiratoryRespirationsClear.isChecked());
+            pa.setRespiratory_Decreased(RespiratoryRespirationsDecreased.isChecked());
+            pa.setRespiratory_Wheezes(RespiratoryRespirationsWheezes.isChecked());
+            pa.setRespiratory_FineCreps(RespiratoryRespirationsFineCreps.isChecked());
+            pa.setRespiratory_AbsentBreath(RespiratoryRespirationsAbsentBreath.isChecked());
+            pa.setRespiratory_Bronchial(RespiratoryRespirationsBronchial.isChecked());
+            pa.setRespiratory_Inspiratory(RespiratoryRespirationsInspiratory.isChecked());
+            pa.setRespiratory_Expiratory(RespiratoryRespirationsExpiratory.isChecked());
+            pa.setRespiratory_OtherDescription(RespiratoryRespirationsOther.getText().toString());
+            pa.setRespiratory_Trechea(RespiratoryTrachealStomaDescribe.getText().toString());
+
+            pa.update();
+            startActivity(intent);
+        }
+
+    }
+
 
     private void start() {
         if (pa == null) {
@@ -124,11 +214,13 @@ public class RespActivity extends Activity {
         RespiratoryTrachealStomaDescribe.setText(pa.getRespiratory_Trechea());
     }
 
-    private void setEventListeners() {
-        Button btnCancelResp = (Button) findViewById(R.id.btncancelres);
-        Button btnSaveExitResp = (Button) findViewById(R.id.btnseres);
 
-        btnSaveExitResp.setOnClickListener(new View.OnClickListener() {
+
+    private void setEventListeners() {
+        Button btnCancel = (Button) findViewById(R.id.btncancelres);
+        Button btnSaveExit = (Button) findViewById(R.id.btnseres);
+
+        btnSaveExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -199,7 +291,7 @@ public class RespActivity extends Activity {
         });
 
 
-        btnCancelResp.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -213,94 +305,6 @@ public class RespActivity extends Activity {
         Button b = (Button) findViewById(R.id.btntocardio);
 
         b.setOnClickListener(new BtnToCardioOnClick(this, this.pa.getId()));
-    }
-
-    class BtnToCardioOnClick implements View.OnClickListener {
-
-        Long paId = null;
-        RespActivity ra;
-
-        public BtnToCardioOnClick(RespActivity ra, Long paId) {
-            this.ra = ra;
-            this.paId = paId;
-        }
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(RespActivity.this, CardioActivity.class);
-
-            if (paId != null) {
-                intent.putExtra("paExist", true);
-                intent.putExtra("paId", paId);
-            } else {
-                intent.putExtra("paExist", false);
-            }
-
-            CheckBox RespiratoryAirwayMaintainsOwn = (CheckBox) findViewById(R.id.RespiratoryAirwayMaintainsOwn);
-            CheckBox BiPAPCPAP = (CheckBox) findViewById(R.id.RespiratoryAirwayBIPAPCPAP);
-            CheckBox RespiratoryETT = (CheckBox) findViewById(R.id.RespiratoryETT);
-            EditText RespiratorySize = (EditText) findViewById(R.id.RespiratorySize);
-            EditText RespiratoryLengthAtTeeth = (EditText) findViewById(R.id.RespiratoryLengthAtTeeth);
-            EditText RespiratoryLengthAtGums = (EditText) findViewById(R.id.RespiratoryLengthAtGums);
-            EditText RespiratoryCuffPressure = (EditText) findViewById(R.id.RespiratoryCuffPressure);
-            EditText RespiratoryTracheostomySize = (EditText) findViewById(R.id.RespiratoryTracheostomySize);
-            EditText RespiratoryChestExpansion = (EditText) findViewById(R.id.RespiratoryChestExpansion);
-
-            CheckBox RespiratoryCoughSimulatedBySuctioning = (CheckBox) findViewById(R.id.RespiratoryCoughSimulatedBySuctioning);
-            CheckBox RespiratoryCoughSpontaneous = (CheckBox) findViewById(R.id.RespiratoryCoughSpontaneous);
-            EditText RespiratoryCoughNotes = (EditText) findViewById(R.id.RespiratoryCoughNotes);
-
-            CheckBox RespiratoryLipConditionIntact = (CheckBox) findViewById(R.id.RespiratoryLipConditionIntact);
-            CheckBox RespiratoryLipConditionOther = (CheckBox) findViewById(R.id.RespiratoryLipConditionOther);
-            CheckBox RespiratoryOralMucosaIntact = (CheckBox) findViewById(R.id.RespiratoryOralMucosaIntact);
-            CheckBox RespiratoryOralMucosaOther = (CheckBox) findViewById(R.id.RespiratoryOralMucosaOther);
-
-            CheckBox RespiratoryRespirationsClear = (CheckBox) findViewById(R.id.RespiratoryRespirationsClear);
-            CheckBox RespiratoryRespirationsDecreased = (CheckBox) findViewById(R.id.RespiratoryRespirationsDecreased);
-            CheckBox RespiratoryRespirationsWheezes = (CheckBox) findViewById(R.id.RespiratoryRespirationsWheezes);
-            CheckBox RespiratoryRespirationsFineCreps = (CheckBox) findViewById(R.id.RespiratoryRespirationsFineCreps);
-            CheckBox RespiratoryRespirationsAbsentBreath = (CheckBox) findViewById(R.id.RespiratoryRespirationsAbsentBreath);
-            CheckBox RespiratoryRespirationsBronchial = (CheckBox) findViewById(R.id.RespiratoryRespirationsBronchial);
-            CheckBox RespiratoryRespirationsInspiratory = (CheckBox) findViewById(R.id.RespiratoryRespirationsInspiratory);
-            CheckBox RespiratoryRespirationsExpiratory = (CheckBox) findViewById(R.id.RespiratoryRespirationsExpiratory);
-
-            EditText RespiratoryRespirationsOther = (EditText) findViewById(R.id.RespiratoryRespirationsOther);
-            EditText RespiratoryTrachealStomaDescribe = (EditText) findViewById(R.id.RespiratoryTrachealStomaDescribe);
-
-
-            // Unsure about check boxes should work tho.
-            pa.setRespiratory_Airway_Maintains_Own(RespiratoryAirwayMaintainsOwn.isChecked());
-            pa.setRespiratory_Airway_BIPAP_CPAP(BiPAPCPAP.isChecked());
-            pa.setRespiratory_ETT(RespiratoryETT.isChecked());
-            // Really.. java.. thank god for conversion functions
-//            pa.setRespiratory_Size(Float.valueOf(RespiratorySize.getText().toString()));
-//            pa.setRespiratory_LengthAtGums(Float.valueOf(RespiratoryLengthAtGums.getText().toString())); // error here converting string to float. Is breaking the activity.
-//            pa.setRespiratory_LengthAtTeeth(Float.valueOf(RespiratoryLengthAtTeeth.getText().toString()));
-//            pa.setRespiratory_CuffPressure(Float.valueOf(RespiratoryCuffPressure.getText().toString()));
-//            pa.setRespiratory_TracheostomySize(Float.valueOf(RespiratoryTracheostomySize.getText().toString()));
-            pa.setRespiratory_ChestExpansion(RespiratoryChestExpansion.getText().toString());
-            pa.setRespiratory_Cough_SimulatedBySuctioning(RespiratoryCoughSimulatedBySuctioning.isChecked());
-            pa.setRespiratory_Cough_Spontaneous(RespiratoryCoughSpontaneous.isChecked());
-            pa.setRespiratory_Cough(RespiratoryCoughNotes.getText().toString());
-            pa.setRespiratory_LipCondition_intact(RespiratoryLipConditionIntact.isChecked());
-            pa.setRespiratory_LipCondition_other(RespiratoryLipConditionOther.isChecked());
-            pa.setRespiratory_OralMucosa_intact(RespiratoryOralMucosaIntact.isChecked());
-            pa.setRespiratory_OralMucosa_other(RespiratoryOralMucosaOther.isChecked());
-            pa.setRespiratory_Clear(RespiratoryRespirationsClear.isChecked());
-            pa.setRespiratory_Decreased(RespiratoryRespirationsDecreased.isChecked());
-            pa.setRespiratory_Wheezes(RespiratoryRespirationsWheezes.isChecked());
-            pa.setRespiratory_FineCreps(RespiratoryRespirationsFineCreps.isChecked());
-            pa.setRespiratory_AbsentBreath(RespiratoryRespirationsAbsentBreath.isChecked());
-            pa.setRespiratory_Bronchial(RespiratoryRespirationsBronchial.isChecked());
-            pa.setRespiratory_Inspiratory(RespiratoryRespirationsInspiratory.isChecked());
-            pa.setRespiratory_Expiratory(RespiratoryRespirationsExpiratory.isChecked());
-            pa.setRespiratory_OtherDescription(RespiratoryRespirationsOther.getText().toString());
-            pa.setRespiratory_Trechea(RespiratoryTrachealStomaDescribe.getText().toString());
-
-            pa.update();
-            startActivity(intent);
-        }
-
     }
 
 

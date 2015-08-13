@@ -30,8 +30,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
             android:ems="10"
-            android:id="@+id/etPainLevel"
-            android:singleLine="true" />
+            android:id="@+id/etPainLevel" />
 
     </LinearLayout>
 
@@ -55,7 +54,7 @@
             android:inputType="textMultiLine"
             android:id="@+id/etPainDesc"
             android:layout_gravity="center_horizontal"
-            android:singleLine="true" />
+             />
     </LinearLayout>
 
 

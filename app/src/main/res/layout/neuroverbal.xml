@@ -28,8 +28,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/etGagRef"
-                android:singleLine="true" />
+                android:id="@+id/etGagRef" />
 
     </LinearLayout>
 </LinearLayout>

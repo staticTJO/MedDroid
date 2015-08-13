@@ -92,8 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
             android:ems="10"
-            android:inputType="textMultiLine"
-            android:singleLine="true" />
+            android:inputType="textMultiLine" />
     </LinearLayout>
 
 </LinearLayout>

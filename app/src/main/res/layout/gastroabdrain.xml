@@ -4,19 +4,6 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gastrointestinal"
-        android:id="@+id/textView80" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.03"></LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -44,8 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Type:"
             android:id="@+id/gastroabdrainType"
-            android:checked="false"
-            android:singleLine="true" />
+            android:checked="false" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -65,8 +51,7 @@
             android:text="Location:"
             android:id="@+id/gastroabdrainLocation"
             android:layout_weight="0.05"
-            android:checked="false"
-            android:singleLine="true" />
+            android:checked="false" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -77,8 +62,7 @@
             <EditText
                 android:layout_width="234dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/gastroabdraindesc"
-                android:singleLine="true" />
+                android:id="@+id/gastroabdraindesc" />
         </LinearLayout>
     </LinearLayout>
 
@@ -90,11 +74,6 @@
         android:layout_weight="0.07"
         android:weightSum="1">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.13"></LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,15 +81,14 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Drainage(describe):"
             android:id="@+id/textView82"
-            android:layout_weight="0.17" />
+            />
 
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:inputType="textMultiLine"
-            android:ems="10"
             android:id="@+id/DrainageDescribe"
-            android:layout_weight="0.42" />
+            />
     </LinearLayout>
 
 </LinearLayout>
